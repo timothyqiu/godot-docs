@@ -30,6 +30,8 @@ Tutorials
 
 - :doc:`Playing videos <../tutorials/animation/playing_videos>`
 
+- :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
+
 .. rst-class:: classref-reftable-group
 
 Properties
@@ -50,9 +52,9 @@ Methods
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------+----------------------------------------------------------------------------------------------------+
-   | :ref:`VideoStreamPlayback<class_VideoStreamPlayback>` | :ref:`_instantiate_playback<class_VideoStream_method__instantiate_playback>` **(** **)** |virtual| |
-   +-------------------------------------------------------+----------------------------------------------------------------------------------------------------+
+   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`VideoStreamPlayback<class_VideoStreamPlayback>` | :ref:`_instantiate_playback<class_VideoStream_private_method__instantiate_playback>` **(** **)** |virtual| |
+   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -87,7 +89,7 @@ For :ref:`VideoStreamTheora<class_VideoStreamTheora>`, this filename should be a
 Method Descriptions
 -------------------
 
-.. _class_VideoStream_method__instantiate_playback:
+.. _class_VideoStream_private_method__instantiate_playback:
 
 .. rst-class:: classref-method
 
