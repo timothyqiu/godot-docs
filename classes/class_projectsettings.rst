@@ -1113,8 +1113,6 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`memory/limits/message_queue/max_size_mb<class_ProjectSettings_property_memory/limits/message_queue/max_size_mb>`                                                                                     | ``32``                                                                                           |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`memory/limits/multithreaded_server/rid_pool_prealloc<class_ProjectSettings_property_memory/limits/multithreaded_server/rid_pool_prealloc>`                                                           | ``60``                                                                                           |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`navigation/2d/default_cell_size<class_ProjectSettings_property_navigation/2d/default_cell_size>`                                                                                                     | ``1.0``                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`navigation/2d/default_edge_connection_margin<class_ProjectSettings_property_navigation/2d/default_edge_connection_margin>`                                                                           | ``1.0``                                                                                          |
@@ -1405,8 +1403,6 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`rendering/limits/cluster_builder/max_clustered_elements<class_ProjectSettings_property_rendering/limits/cluster_builder/max_clustered_elements>`                                                     | ``512``                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`rendering/limits/forward_renderer/threaded_render_minimum_instances<class_ProjectSettings_property_rendering/limits/forward_renderer/threaded_render_minimum_instances>`                             | ``500``                                                                                          |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/limits/global_shader_variables/buffer_size<class_ProjectSettings_property_rendering/limits/global_shader_variables/buffer_size>`                                                           | ``65536``                                                                                        |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/limits/opengl/max_lights_per_object<class_ProjectSettings_property_rendering/limits/opengl/max_lights_per_object>`                                                                         | ``8``                                                                                            |
@@ -1452,6 +1448,14 @@ Properties
    | :ref:`String<class_String>`                       | :ref:`rendering/renderer/rendering_method.mobile<class_ProjectSettings_property_rendering/renderer/rendering_method.mobile>`                                                                               | ``"mobile"``                                                                                     |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`rendering/renderer/rendering_method.web<class_ProjectSettings_property_rendering/renderer/rendering_method.web>`                                                                                     | ``"gl_compatibility"``                                                                           |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`rendering/rendering_device/d3d12/agility_sdk_version<class_ProjectSettings_property_rendering/rendering_device/d3d12/agility_sdk_version>`                                                           | ``610``                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`rendering/rendering_device/d3d12/max_misc_descriptors_per_frame<class_ProjectSettings_property_rendering/rendering_device/d3d12/max_misc_descriptors_per_frame>`                                     | ``512``                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`rendering/rendering_device/d3d12/max_resource_descriptors_per_frame<class_ProjectSettings_property_rendering/rendering_device/d3d12/max_resource_descriptors_per_frame>`                             | ``16384``                                                                                        |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`rendering/rendering_device/d3d12/max_sampler_descriptors_per_frame<class_ProjectSettings_property_rendering/rendering_device/d3d12/max_sampler_descriptors_per_frame>`                               | ``1024``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>`                                                                                                 |                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
@@ -1534,8 +1538,6 @@ Properties
    | :ref:`float<class_float>`                         | :ref:`threading/worker_pool/low_priority_thread_ratio<class_ProjectSettings_property_threading/worker_pool/low_priority_thread_ratio>`                                                                     | ``0.3``                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`threading/worker_pool/max_threads<class_ProjectSettings_property_threading/worker_pool/max_threads>`                                                                                                 | ``-1``                                                                                           |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`threading/worker_pool/use_system_threads_for_low_priority_tasks<class_ProjectSettings_property_threading/worker_pool/use_system_threads_for_low_priority_tasks>`                                     | ``true``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`xr/openxr/default_action_map<class_ProjectSettings_property_xr/openxr/default_action_map>`                                                                                                           | ``"res://openxr_action_map.tres"``                                                               |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
@@ -3834,7 +3836,11 @@ Main window can't be focused. No-focus window will ignore all input, except mous
 
 :ref:`bool<class_bool>` **display/window/size/resizable** = ``true``
 
-Allows the window to be resizable by default.
+If ``true``, allows the window to be resizable by default.
+
+\ **Note:** This property is only read when the project starts. To change whether the window is resizable at runtime, set :ref:`Window.unresizable<class_Window_property_unresizable>` instead on the root Window, which can be retrieved using ``get_viewport().get_window()``. :ref:`Window.unresizable<class_Window_property_unresizable>` takes the opposite value of this setting.
+
+\ **Note:** Certain window managers can be configured to ignore the non-resizable status of a window. Do not rely on this setting as a guarantee that the window will *never* be resizable.
 
 \ **Note:** This setting is ignored on iOS.
 
@@ -4928,7 +4934,7 @@ Default :ref:`InputEventAction<class_InputEventAction>` to select an item in a :
 
 :ref:`Dictionary<class_Dictionary>` **input/ui_swap_input_direction**
 
-Default :ref:`InputEventAction<class_InputEventAction>` to swap input direction, i.e. change between left-to-right to right-to-left modes. Affects text-editting controls (:ref:`LineEdit<class_LineEdit>`, :ref:`TextEdit<class_TextEdit>`).
+Default :ref:`InputEventAction<class_InputEventAction>` to swap input direction, i.e. change between left-to-right to right-to-left modes. Affects text-editing controls (:ref:`LineEdit<class_LineEdit>`, :ref:`TextEdit<class_TextEdit>`).
 
 .. rst-class:: classref-item-separator
 
@@ -5330,7 +5336,7 @@ In case there's more than one caret active, removes the secondary carets and cle
 
 :ref:`Dictionary<class_Dictionary>` **input/ui_text_completion_accept**
 
-Default :ref:`InputEventAction<class_InputEventAction>` to accept an autocompetion hint.
+Default :ref:`InputEventAction<class_InputEventAction>` to accept an autocompletion hint.
 
 \ **Note:** Default ``ui_*`` actions cannot be removed as they are necessary for the internal logic of several :ref:`Control<class_Control>`\ s. The events assigned to the action can however be modified.
 
@@ -5344,7 +5350,7 @@ Default :ref:`InputEventAction<class_InputEventAction>` to accept an autocompeti
 
 :ref:`Dictionary<class_Dictionary>` **input/ui_text_completion_query**
 
-Default :ref:`InputEventAction<class_InputEventAction>` to request autocompetion.
+Default :ref:`InputEventAction<class_InputEventAction>` to request autocompletion.
 
 \ **Note:** Default ``ui_*`` actions cannot be removed as they are necessary for the internal logic of several :ref:`Control<class_Control>`\ s. The events assigned to the action can however be modified.
 
@@ -5358,7 +5364,7 @@ Default :ref:`InputEventAction<class_InputEventAction>` to request autocompetion
 
 :ref:`Dictionary<class_Dictionary>` **input/ui_text_completion_replace**
 
-Default :ref:`InputEventAction<class_InputEventAction>` to accept an autocompetion hint, replacing existing text.
+Default :ref:`InputEventAction<class_InputEventAction>` to accept an autocompletion hint, replacing existing text.
 
 \ **Note:** Default ``ui_*`` actions cannot be removed as they are necessary for the internal logic of several :ref:`Control<class_Control>`\ s. The events assigned to the action can however be modified.
 
@@ -8362,18 +8368,6 @@ Godot uses a message queue to defer some function calls. If you run out of space
 
 ----
 
-.. _class_ProjectSettings_property_memory/limits/multithreaded_server/rid_pool_prealloc:
-
-.. rst-class:: classref-property
-
-:ref:`int<class_int>` **memory/limits/multithreaded_server/rid_pool_prealloc** = ``60``
-
-This is used by servers when used in multi-threading mode (servers and visual). RIDs are preallocated to avoid stalling the server requesting them on threads. If servers get stalled too often when loading resources in a thread, increase this number.
-
-.. rst-class:: classref-item-separator
-
-----
-
 .. _class_ProjectSettings_property_navigation/2d/default_cell_size:
 
 .. rst-class:: classref-property
@@ -10306,20 +10300,6 @@ Decreasing this value may improve GPU performance on certain setups, even if the
 
 ----
 
-.. _class_ProjectSettings_property_rendering/limits/forward_renderer/threaded_render_minimum_instances:
-
-.. rst-class:: classref-property
-
-:ref:`int<class_int>` **rendering/limits/forward_renderer/threaded_render_minimum_instances** = ``500``
-
-.. container:: contribute
-
-	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-.. rst-class:: classref-item-separator
-
-----
-
 .. _class_ProjectSettings_property_rendering/limits/global_shader_variables/buffer_size:
 
 .. rst-class:: classref-property
@@ -10623,6 +10603,60 @@ Override for :ref:`rendering/renderer/rendering_method<class_ProjectSettings_pro
 :ref:`String<class_String>` **rendering/renderer/rendering_method.web** = ``"gl_compatibility"``
 
 Override for :ref:`rendering/renderer/rendering_method<class_ProjectSettings_property_rendering/renderer/rendering_method>` on web.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/rendering_device/d3d12/agility_sdk_version:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **rendering/rendering_device/d3d12/agility_sdk_version** = ``610``
+
+Version code of the Direct3D 12 Agility SDK to use (``D3D12SDKVersion``).
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/rendering_device/d3d12/max_misc_descriptors_per_frame:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **rendering/rendering_device/d3d12/max_misc_descriptors_per_frame** = ``512``
+
+The number of entries in the miscellaneous descriptors heap the Direct3D 12 rendering driver uses each frame, used for various operations like clearing a texture.
+
+Depending on the complexity of scenes, this value may be lowered or may need to be raised.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/rendering_device/d3d12/max_resource_descriptors_per_frame:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **rendering/rendering_device/d3d12/max_resource_descriptors_per_frame** = ``16384``
+
+The number of entries in the resource descriptors heap the Direct3D 12 rendering driver uses each frame, used for most rendering operations.
+
+Depending on the complexity of scenes, this value may be lowered or may need to be raised.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/rendering_device/d3d12/max_sampler_descriptors_per_frame:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **rendering/rendering_device/d3d12/max_sampler_descriptors_per_frame** = ``1024``
+
+The number of entries in the sampler descriptors heap the Direct3D 12 rendering driver uses each frame, used for most rendering operations.
+
+Depending on the complexity of scenes, this value may be lowered or may need to be raised.
 
 .. rst-class:: classref-item-separator
 
@@ -11174,20 +11208,6 @@ The texture *must* use a lossless compression format so that colors can be match
 :ref:`int<class_int>` **threading/worker_pool/max_threads** = ``-1``
 
 Maximum number of threads to be used by :ref:`WorkerThreadPool<class_WorkerThreadPool>`. Value of ``-1`` means no limit.
-
-.. rst-class:: classref-item-separator
-
-----
-
-.. _class_ProjectSettings_property_threading/worker_pool/use_system_threads_for_low_priority_tasks:
-
-.. rst-class:: classref-property
-
-:ref:`bool<class_bool>` **threading/worker_pool/use_system_threads_for_low_priority_tasks** = ``true``
-
-.. container:: contribute
-
-	There is currently no description for this property. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 .. rst-class:: classref-item-separator
 
