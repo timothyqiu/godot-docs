@@ -132,6 +132,8 @@ Methods
    +-------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                             | :ref:`global_menu_get_item_tooltip<class_DisplayServer_method_global_menu_get_item_tooltip>` **(** :ref:`String<class_String>` menu_root, :ref:`int<class_int>` idx **)** |const|                                                                                                                                                                                                                                                                                                                     |
    +-------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`                                     | :ref:`global_menu_get_system_menu_roots<class_DisplayServer_method_global_menu_get_system_menu_roots>` **(** **)** |const|                                                                                                                                                                                                                                                                                                                                                                            |
+   +-------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                                 | :ref:`global_menu_is_item_checkable<class_DisplayServer_method_global_menu_is_item_checkable>` **(** :ref:`String<class_String>` menu_root, :ref:`int<class_int>` idx **)** |const|                                                                                                                                                                                                                                                                                                                   |
    +-------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                                 | :ref:`global_menu_is_item_checked<class_DisplayServer_method_global_menu_is_item_checked>` **(** :ref:`String<class_String>` menu_root, :ref:`int<class_int>` idx **)** |const|                                                                                                                                                                                                                                                                                                                       |
@@ -1206,7 +1208,7 @@ enum **VSyncMode**:
 
 :ref:`VSyncMode<enum_DisplayServer_VSyncMode>` **VSYNC_DISABLED** = ``0``
 
-No vertical synchronization, which means the engine will display frames as fast as possible (tearing may be visible). Framerate is unlimited (notwithstanding :ref:`Engine.max_fps<class_Engine_property_max_fps>`).
+No vertical synchronization, which means the engine will display frames as fast as possible (tearing may be visible). Framerate is unlimited (regardless of :ref:`Engine.max_fps<class_Engine_property_max_fps>`).
 
 .. _class_DisplayServer_constant_VSYNC_ENABLED:
 
@@ -1214,7 +1216,7 @@ No vertical synchronization, which means the engine will display frames as fast 
 
 :ref:`VSyncMode<enum_DisplayServer_VSyncMode>` **VSYNC_ENABLED** = ``1``
 
-Default vertical synchronization mode, the image is displayed only on vertical blanking intervals (no tearing is visible). Framerate is limited by the monitor refresh rate (notwithstanding :ref:`Engine.max_fps<class_Engine_property_max_fps>`).
+Default vertical synchronization mode, the image is displayed only on vertical blanking intervals (no tearing is visible). Framerate is limited by the monitor refresh rate (regardless of :ref:`Engine.max_fps<class_Engine_property_max_fps>`).
 
 .. _class_DisplayServer_constant_VSYNC_ADAPTIVE:
 
@@ -1222,7 +1224,7 @@ Default vertical synchronization mode, the image is displayed only on vertical b
 
 :ref:`VSyncMode<enum_DisplayServer_VSyncMode>` **VSYNC_ADAPTIVE** = ``2``
 
-Behaves like :ref:`VSYNC_DISABLED<class_DisplayServer_constant_VSYNC_DISABLED>` when the framerate drops below the screen's refresh rate to reduce stuttering (tearing may be visible). Otherwise, vertical synchronization is enabled to avoid tearing. Framerate is limited by the monitor refresh rate (notwithstanding :ref:`Engine.max_fps<class_Engine_property_max_fps>`). Behaves like :ref:`VSYNC_ENABLED<class_DisplayServer_constant_VSYNC_ENABLED>` when using the Compatibility rendering method.
+Behaves like :ref:`VSYNC_DISABLED<class_DisplayServer_constant_VSYNC_DISABLED>` when the framerate drops below the screen's refresh rate to reduce stuttering (tearing may be visible). Otherwise, vertical synchronization is enabled to avoid tearing. Framerate is limited by the monitor refresh rate (regardless of :ref:`Engine.max_fps<class_Engine_property_max_fps>`). Behaves like :ref:`VSYNC_ENABLED<class_DisplayServer_constant_VSYNC_ENABLED>` when using the Compatibility rendering method.
 
 .. _class_DisplayServer_constant_VSYNC_MAILBOX:
 
@@ -1230,7 +1232,7 @@ Behaves like :ref:`VSYNC_DISABLED<class_DisplayServer_constant_VSYNC_DISABLED>` 
 
 :ref:`VSyncMode<enum_DisplayServer_VSyncMode>` **VSYNC_MAILBOX** = ``3``
 
-Displays the most recent image in the queue on vertical blanking intervals, while rendering to the other images (no tearing is visible). Framerate is unlimited (notwithstanding :ref:`Engine.max_fps<class_Engine_property_max_fps>`).
+Displays the most recent image in the queue on vertical blanking intervals, while rendering to the other images (no tearing is visible). Framerate is unlimited (regardless of :ref:`Engine.max_fps<class_Engine_property_max_fps>`).
 
 Although not guaranteed, the images can be rendered as fast as possible, which may reduce input lag (also called "Fast" V-Sync mode). :ref:`VSYNC_MAILBOX<class_DisplayServer_constant_VSYNC_MAILBOX>` works best when at least twice as many frames as the display refresh rate are rendered. Behaves like :ref:`VSYNC_ENABLED<class_DisplayServer_constant_VSYNC_ENABLED>` when using the Compatibility rendering method.
 
@@ -1401,7 +1403,7 @@ The ID of the main window spawned by the engine, which can be passed to methods 
 
 **INVALID_WINDOW_ID** = ``-1``
 
-The ID that refers to a nonexisting window. This is be returned by some **DisplayServer** methods if no window matches the requested result.
+The ID that refers to a nonexistent window. This is returned by some **DisplayServer** methods if no window matches the requested result.
 
 .. rst-class:: classref-section-separator
 
@@ -1791,6 +1793,9 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
+    "_apple" - Apple menu (macOS, custom items added before "Services").
+    "_window" - Window menu (macOS, custom items added after "Bring All to Front").
+    "_help" - Help menu (macOS).
 
 .. rst-class:: classref-item-separator
 
@@ -1818,6 +1823,9 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
+    "_apple" - Apple menu (macOS, custom items added before "Services").
+    "_window" - Window menu (macOS, custom items added after "Bring All to Front").
+    "_help" - Help menu (macOS).
 
 .. rst-class:: classref-item-separator
 
@@ -1845,6 +1853,9 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
+    "_apple" - Apple menu (macOS, custom items added before "Services").
+    "_window" - Window menu (macOS, custom items added after "Bring All to Front").
+    "_help" - Help menu (macOS).
 
 .. rst-class:: classref-item-separator
 
@@ -1874,6 +1885,9 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
+    "_apple" - Apple menu (macOS, custom items added before "Services").
+    "_window" - Window menu (macOS, custom items added after "Bring All to Front").
+    "_help" - Help menu (macOS).
 
 .. rst-class:: classref-item-separator
 
@@ -1901,6 +1915,9 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
+    "_apple" - Apple menu (macOS, custom items added before "Services").
+    "_window" - Window menu (macOS, custom items added after "Bring All to Front").
+    "_help" - Help menu (macOS).
 
 .. rst-class:: classref-item-separator
 
@@ -1932,6 +1949,9 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
+    "_apple" - Apple menu (macOS, custom items added before "Services").
+    "_window" - Window menu (macOS, custom items added after "Bring All to Front").
+    "_help" - Help menu (macOS).
 
 .. rst-class:: classref-item-separator
 
@@ -1961,6 +1981,9 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
+    "_apple" - Apple menu (macOS, custom items added before "Services").
+    "_window" - Window menu (macOS, custom items added after "Bring All to Front").
+    "_help" - Help menu (macOS).
 
 .. rst-class:: classref-item-separator
 
@@ -1984,6 +2007,9 @@ Returns index of the inserted item, it's not guaranteed to be the same as ``inde
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
+    "_apple" - Apple menu (macOS, custom items added before "Services").
+    "_window" - Window menu (macOS, custom items added after "Bring All to Front").
+    "_help" - Help menu (macOS).
 
 .. rst-class:: classref-item-separator
 
@@ -2007,6 +2033,9 @@ Returns index of the inserted item, it's not guaranteed to be the same as ``inde
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
+    "_apple" - Apple menu (macOS, custom items added before "Services").
+    "_window" - Window menu (macOS, custom items added after "Bring All to Front").
+    "_help" - Help menu (macOS).
 
 .. rst-class:: classref-item-separator
 
@@ -2028,6 +2057,9 @@ Removes all items from the global menu with ID ``menu_root``.
 
     "_main" - Main menu (macOS).
     "_dock" - Dock popup menu (macOS).
+    "_apple" - Apple menu (macOS, custom items added before "Services").
+    "_window" - Window menu (macOS, custom items added after "Bring All to Front").
+    "_help" - Help menu (macOS).
 
 .. rst-class:: classref-item-separator
 
@@ -2222,6 +2254,20 @@ Returns the text of the item at index ``idx``.
 :ref:`String<class_String>` **global_menu_get_item_tooltip** **(** :ref:`String<class_String>` menu_root, :ref:`int<class_int>` idx **)** |const|
 
 Returns the tooltip associated with the specified index ``idx``.
+
+\ **Note:** This method is implemented only on macOS.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_DisplayServer_method_global_menu_get_system_menu_roots:
+
+.. rst-class:: classref-method
+
+:ref:`Dictionary<class_Dictionary>` **global_menu_get_system_menu_roots** **(** **)** |const|
+
+Returns Dictionary of supported system menu IDs and names.
 
 \ **Note:** This method is implemented only on macOS.
 
@@ -3104,6 +3150,14 @@ Returns the tablet driver name for the given index.
 void **tablet_set_current_driver** **(** :ref:`String<class_String>` name **)**
 
 Set active tablet driver name.
+
+Supported drivers:
+
+- ``winink``: Windows Ink API, default (Windows 8.1+ required).
+
+- ``wintab``: Wacom Wintab API (compatible device driver required).
+
+- ``dummy``: Dummy driver, tablet input is disabled.
 
 \ **Note:** This method is implemented only on Windows.
 
