@@ -40,9 +40,11 @@ Properties
    +----------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
    | :ref:`float<class_float>`                          | :ref:`connection_lines_curvature<class_GraphEdit_property_connection_lines_curvature>`     | ``0.5``                                                                   |
    +----------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                          | :ref:`connection_lines_thickness<class_GraphEdit_property_connection_lines_thickness>`     | ``2.0``                                                                   |
+   | :ref:`float<class_float>`                          | :ref:`connection_lines_thickness<class_GraphEdit_property_connection_lines_thickness>`     | ``4.0``                                                                   |
    +----------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
    | :ref:`FocusMode<enum_Control_FocusMode>`           | focus_mode                                                                                 | ``2`` (overrides :ref:`Control<class_Control_property_focus_mode>`)       |
+   +----------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`GridPattern<enum_GraphEdit_GridPattern>`     | :ref:`grid_pattern<class_GraphEdit_property_grid_pattern>`                                 | ``0``                                                                     |
    +----------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                            | :ref:`minimap_enabled<class_GraphEdit_property_minimap_enabled>`                           | ``true``                                                                  |
    +----------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
@@ -116,9 +118,13 @@ Methods
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                | :ref:`force_connection_drag_end<class_GraphEdit_method_force_connection_drag_end>` **(** **)**                                                                                                                                                                                          |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedVector2Array<class_PackedVector2Array>` | :ref:`get_connection_line<class_GraphEdit_method_get_connection_line>` **(** :ref:`Vector2<class_Vector2>` from_node, :ref:`Vector2<class_Vector2>` to_node **)**                                                                                                                       |
+   | :ref:`Dictionary<class_Dictionary>`                 | :ref:`get_closest_connection_at_point<class_GraphEdit_method_get_closest_connection_at_point>` **(** :ref:`Vector2<class_Vector2>` point, :ref:`float<class_float>` max_distance=4.0 **)** |const|                                                                                      |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedVector2Array<class_PackedVector2Array>` | :ref:`get_connection_line<class_GraphEdit_method_get_connection_line>` **(** :ref:`Vector2<class_Vector2>` from_node, :ref:`Vector2<class_Vector2>` to_node **)** |const|                                                                                                               |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary[]<class_Dictionary>`               | :ref:`get_connection_list<class_GraphEdit_method_get_connection_list>` **(** **)** |const|                                                                                                                                                                                              |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary[]<class_Dictionary>`               | :ref:`get_connections_intersecting_with_rect<class_GraphEdit_method_get_connections_intersecting_with_rect>` **(** :ref:`Rect2<class_Rect2>` rect **)** |const|                                                                                                                         |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`HBoxContainer<class_HBoxContainer>`           | :ref:`get_menu_hbox<class_GraphEdit_method_get_menu_hbox>` **(** **)**                                                                                                                                                                                                                  |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -145,39 +151,45 @@ Theme Properties
 .. table::
    :widths: auto
 
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Color<class_Color>`         | :ref:`activity<class_GraphEdit_theme_color_activity>`                                      | ``Color(1, 1, 1, 1)``    |
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Color<class_Color>`         | :ref:`grid_major<class_GraphEdit_theme_color_grid_major>`                                  | ``Color(1, 1, 1, 0.2)``  |
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Color<class_Color>`         | :ref:`grid_minor<class_GraphEdit_theme_color_grid_minor>`                                  | ``Color(1, 1, 1, 0.05)`` |
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Color<class_Color>`         | :ref:`selection_fill<class_GraphEdit_theme_color_selection_fill>`                          | ``Color(1, 1, 1, 0.3)``  |
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Color<class_Color>`         | :ref:`selection_stroke<class_GraphEdit_theme_color_selection_stroke>`                      | ``Color(1, 1, 1, 0.8)``  |
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`int<class_int>`             | :ref:`port_hotzone_inner_extent<class_GraphEdit_theme_constant_port_hotzone_inner_extent>` | ``22``                   |
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`int<class_int>`             | :ref:`port_hotzone_outer_extent<class_GraphEdit_theme_constant_port_hotzone_outer_extent>` | ``26``                   |
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`grid_toggle<class_GraphEdit_theme_icon_grid_toggle>`                                 |                          |
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`layout<class_GraphEdit_theme_icon_layout>`                                           |                          |
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`minimap_toggle<class_GraphEdit_theme_icon_minimap_toggle>`                           |                          |
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`snapping_toggle<class_GraphEdit_theme_icon_snapping_toggle>`                         |                          |
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`zoom_in<class_GraphEdit_theme_icon_zoom_in>`                                         |                          |
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`zoom_out<class_GraphEdit_theme_icon_zoom_out>`                                       |                          |
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`zoom_reset<class_GraphEdit_theme_icon_zoom_reset>`                                   |                          |
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`StyleBox<class_StyleBox>`   | :ref:`menu_panel<class_GraphEdit_theme_style_menu_panel>`                                  |                          |
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`StyleBox<class_StyleBox>`   | :ref:`panel<class_GraphEdit_theme_style_panel>`                                            |                          |
-   +-----------------------------------+--------------------------------------------------------------------------------------------+--------------------------+
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`Color<class_Color>`         | :ref:`activity<class_GraphEdit_theme_color_activity>`                                                     | ``Color(1, 1, 1, 1)``         |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`Color<class_Color>`         | :ref:`connection_hover_tint_color<class_GraphEdit_theme_color_connection_hover_tint_color>`               | ``Color(0, 0, 0, 0.3)``       |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`Color<class_Color>`         | :ref:`connection_rim_color<class_GraphEdit_theme_color_connection_rim_color>`                             | ``Color(0.1, 0.1, 0.1, 0.6)`` |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`Color<class_Color>`         | :ref:`connection_valid_target_tint_color<class_GraphEdit_theme_color_connection_valid_target_tint_color>` | ``Color(1, 1, 1, 0.4)``       |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`Color<class_Color>`         | :ref:`grid_major<class_GraphEdit_theme_color_grid_major>`                                                 | ``Color(1, 1, 1, 0.2)``       |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`Color<class_Color>`         | :ref:`grid_minor<class_GraphEdit_theme_color_grid_minor>`                                                 | ``Color(1, 1, 1, 0.05)``      |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`Color<class_Color>`         | :ref:`selection_fill<class_GraphEdit_theme_color_selection_fill>`                                         | ``Color(1, 1, 1, 0.3)``       |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`Color<class_Color>`         | :ref:`selection_stroke<class_GraphEdit_theme_color_selection_stroke>`                                     | ``Color(1, 1, 1, 0.8)``       |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`int<class_int>`             | :ref:`port_hotzone_inner_extent<class_GraphEdit_theme_constant_port_hotzone_inner_extent>`                | ``22``                        |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`int<class_int>`             | :ref:`port_hotzone_outer_extent<class_GraphEdit_theme_constant_port_hotzone_outer_extent>`                | ``26``                        |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`grid_toggle<class_GraphEdit_theme_icon_grid_toggle>`                                                |                               |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`layout<class_GraphEdit_theme_icon_layout>`                                                          |                               |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`minimap_toggle<class_GraphEdit_theme_icon_minimap_toggle>`                                          |                               |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`snapping_toggle<class_GraphEdit_theme_icon_snapping_toggle>`                                        |                               |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`zoom_in<class_GraphEdit_theme_icon_zoom_in>`                                                        |                               |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`zoom_out<class_GraphEdit_theme_icon_zoom_out>`                                                      |                               |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`zoom_reset<class_GraphEdit_theme_icon_zoom_reset>`                                                  |                               |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`StyleBox<class_StyleBox>`   | :ref:`menu_panel<class_GraphEdit_theme_style_menu_panel>`                                                 |                               |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
+   | :ref:`StyleBox<class_StyleBox>`   | :ref:`panel<class_GraphEdit_theme_style_panel>`                                                           |                               |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -409,6 +421,32 @@ enum **PanningScheme**:
 
 :kbd:`Mouse Wheel` will move the view, :kbd:`Ctrl + Mouse Wheel` will zoom.
 
+.. rst-class:: classref-item-separator
+
+----
+
+.. _enum_GraphEdit_GridPattern:
+
+.. rst-class:: classref-enumeration
+
+enum **GridPattern**:
+
+.. _class_GraphEdit_constant_GRID_PATTERN_LINES:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`GridPattern<enum_GraphEdit_GridPattern>` **GRID_PATTERN_LINES** = ``0``
+
+Draw the grid using solid lines.
+
+.. _class_GraphEdit_constant_GRID_PATTERN_DOTS:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`GridPattern<enum_GraphEdit_GridPattern>` **GRID_PATTERN_DOTS** = ``1``
+
+Draw the grid using dots.
+
 .. rst-class:: classref-section-separator
 
 ----
@@ -456,7 +494,7 @@ The curvature of the lines between the nodes. 0 results in straight lines.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **connection_lines_thickness** = ``2.0``
+:ref:`float<class_float>` **connection_lines_thickness** = ``4.0``
 
 .. rst-class:: classref-property-setget
 
@@ -464,6 +502,23 @@ The curvature of the lines between the nodes. 0 results in straight lines.
 - :ref:`float<class_float>` **get_connection_lines_thickness** **(** **)**
 
 The thickness of the lines between the nodes.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_GraphEdit_property_grid_pattern:
+
+.. rst-class:: classref-property
+
+:ref:`GridPattern<enum_GraphEdit_GridPattern>` **grid_pattern** = ``0``
+
+.. rst-class:: classref-property-setget
+
+- void **set_grid_pattern** **(** :ref:`GridPattern<enum_GraphEdit_GridPattern>` value **)**
+- :ref:`GridPattern<enum_GraphEdit_GridPattern>` **get_grid_pattern** **(** **)**
+
+The pattern used for drawing the grid.
 
 .. rst-class:: classref-item-separator
 
@@ -992,11 +1047,36 @@ This is best used together with :ref:`connection_drag_started<class_GraphEdit_si
 
 ----
 
+.. _class_GraphEdit_method_get_closest_connection_at_point:
+
+.. rst-class:: classref-method
+
+:ref:`Dictionary<class_Dictionary>` **get_closest_connection_at_point** **(** :ref:`Vector2<class_Vector2>` point, :ref:`float<class_float>` max_distance=4.0 **)** |const|
+
+Returns the closest connection to the given point in screen space. If no connection is found within ``max_distance`` pixels, an empty :ref:`Dictionary<class_Dictionary>` is returned.
+
+A connection consists in a structure of the form ``{ from_port: 0, from_node: "GraphNode name 0", to_port: 1, to_node: "GraphNode name 1" }``.
+
+For example, getting a connection at a given mouse position can be achieved like this:
+
+
+.. tabs::
+
+ .. code-tab:: gdscript
+
+    var connection = get_closest_connection_at_point(mouse_event.get_position())
+
+
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_GraphEdit_method_get_connection_line:
 
 .. rst-class:: classref-method
 
-:ref:`PackedVector2Array<class_PackedVector2Array>` **get_connection_line** **(** :ref:`Vector2<class_Vector2>` from_node, :ref:`Vector2<class_Vector2>` to_node **)**
+:ref:`PackedVector2Array<class_PackedVector2Array>` **get_connection_line** **(** :ref:`Vector2<class_Vector2>` from_node, :ref:`Vector2<class_Vector2>` to_node **)** |const|
 
 Returns the points which would make up a connection between ``from_node`` and ``to_node``.
 
@@ -1010,7 +1090,19 @@ Returns the points which would make up a connection between ``from_node`` and ``
 
 :ref:`Dictionary[]<class_Dictionary>` **get_connection_list** **(** **)** |const|
 
-Returns an Array containing the list of connections. A connection consists in a structure of the form ``{ from_port: 0, from: "GraphNode name 0", to_port: 1, to: "GraphNode name 1" }``.
+Returns an :ref:`Array<class_Array>` containing the list of connections. A connection consists in a structure of the form ``{ from_port: 0, from_node: "GraphNode name 0", to_port: 1, to_node: "GraphNode name 1" }``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_GraphEdit_method_get_connections_intersecting_with_rect:
+
+.. rst-class:: classref-method
+
+:ref:`Dictionary[]<class_Dictionary>` **get_connections_intersecting_with_rect** **(** :ref:`Rect2<class_Rect2>` rect **)** |const|
+
+Returns an :ref:`Array<class_Array>` containing the list of connections that intersect with the given :ref:`Rect2<class_Rect2>`. A connection consists in a structure of the form ``{ from_port: 0, from_node: "GraphNode name 0", to_port: 1, to_node: "GraphNode name 1" }``.
 
 .. rst-class:: classref-item-separator
 
@@ -1129,7 +1221,43 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **activity** = ``Color(1, 1, 1, 1)``
 
-Color of the connection's activity (see :ref:`set_connection_activity<class_GraphEdit_method_set_connection_activity>`).
+Color the connection line is interpolated to based on the activity value of a connection (see :ref:`set_connection_activity<class_GraphEdit_method_set_connection_activity>`).
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_GraphEdit_theme_color_connection_hover_tint_color:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Color<class_Color>` **connection_hover_tint_color** = ``Color(0, 0, 0, 0.3)``
+
+Color which is blended with the connection line when the mouse is hovering over it.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_GraphEdit_theme_color_connection_rim_color:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Color<class_Color>` **connection_rim_color** = ``Color(0.1, 0.1, 0.1, 0.6)``
+
+Color of the rim around each connection line used for making intersecting lines more distinguishable.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_GraphEdit_theme_color_connection_valid_target_tint_color:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`Color<class_Color>` **connection_valid_target_tint_color** = ``Color(1, 1, 1, 0.4)``
+
+Color which is blended with the connection line when the currently dragged connection is hovering over a valid target port.
 
 .. rst-class:: classref-item-separator
 
@@ -1141,7 +1269,7 @@ Color of the connection's activity (see :ref:`set_connection_activity<class_Grap
 
 :ref:`Color<class_Color>` **grid_major** = ``Color(1, 1, 1, 0.2)``
 
-Color of major grid lines.
+Color of major grid lines/dots.
 
 .. rst-class:: classref-item-separator
 
@@ -1153,7 +1281,7 @@ Color of major grid lines.
 
 :ref:`Color<class_Color>` **grid_minor** = ``Color(1, 1, 1, 0.05)``
 
-Color of minor grid lines.
+Color of minor grid lines/dots.
 
 .. rst-class:: classref-item-separator
 

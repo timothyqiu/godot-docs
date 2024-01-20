@@ -267,6 +267,8 @@ Methods
    +----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RenderingDevice<class_RenderingDevice>`                                    | :ref:`create_local_rendering_device<class_RenderingServer_method_create_local_rendering_device>` **(** **)** |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
    +----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`                                                        | :ref:`debug_canvas_item_get_rect<class_RenderingServer_method_debug_canvas_item_get_rect>` **(** :ref:`RID<class_RID>` item **)**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+   +----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                                            | :ref:`decal_create<class_RenderingServer_method_decal_create>` **(** **)**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
    +----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                                             | :ref:`decal_set_albedo_mix<class_RenderingServer_method_decal_set_albedo_mix>` **(** :ref:`RID<class_RID>` decal, :ref:`float<class_float>` albedo_mix **)**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -1508,6 +1510,10 @@ Flag used to mark an index array.
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FORMAT_BLEND_SHAPE_MASK** = ``7``
 
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_ARRAY_FORMAT_CUSTOM_BASE:
@@ -1515,6 +1521,10 @@ Flag used to mark an index array.
 .. rst-class:: classref-enumeration-constant
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FORMAT_CUSTOM_BASE** = ``13``
+
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 
 
@@ -1524,6 +1534,10 @@ Flag used to mark an index array.
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FORMAT_CUSTOM_BITS** = ``3``
 
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_ARRAY_FORMAT_CUSTOM0_SHIFT:
@@ -1531,6 +1545,10 @@ Flag used to mark an index array.
 .. rst-class:: classref-enumeration-constant
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FORMAT_CUSTOM0_SHIFT** = ``13``
+
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 
 
@@ -1540,6 +1558,10 @@ Flag used to mark an index array.
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FORMAT_CUSTOM1_SHIFT** = ``16``
 
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_ARRAY_FORMAT_CUSTOM2_SHIFT:
@@ -1547,6 +1569,10 @@ Flag used to mark an index array.
 .. rst-class:: classref-enumeration-constant
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FORMAT_CUSTOM2_SHIFT** = ``19``
+
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 
 
@@ -1556,6 +1582,10 @@ Flag used to mark an index array.
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FORMAT_CUSTOM3_SHIFT** = ``22``
 
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_ARRAY_FORMAT_CUSTOM_MASK:
@@ -1564,6 +1594,10 @@ Flag used to mark an index array.
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FORMAT_CUSTOM_MASK** = ``7``
 
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_ARRAY_COMPRESS_FLAGS_BASE:
@@ -1571,6 +1605,10 @@ Flag used to mark an index array.
 .. rst-class:: classref-enumeration-constant
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_COMPRESS_FLAGS_BASE** = ``25``
+
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 
 
@@ -1587,6 +1625,10 @@ Flag used to mark that the array contains 2D vertices.
 .. rst-class:: classref-enumeration-constant
 
 :ref:`ArrayFormat<enum_RenderingServer_ArrayFormat>` **ARRAY_FLAG_USE_DYNAMIC_UPDATE** = ``67108864``
+
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 
 
@@ -2031,6 +2073,10 @@ Blurs the edges of the shadow. Can be used to hide pixel artifacts in low resolu
 .. rst-class:: classref-enumeration-constant
 
 :ref:`LightParam<enum_RenderingServer_LightParam>` **LIGHT_PARAM_TRANSMITTANCE_BIAS** = ``19``
+
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 
 
@@ -2482,6 +2528,10 @@ enum **ParticlesTransformAlign**:
 
 :ref:`ParticlesTransformAlign<enum_RenderingServer_ParticlesTransformAlign>` **PARTICLES_TRANSFORM_ALIGN_DISABLED** = ``0``
 
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_PARTICLES_TRANSFORM_ALIGN_Z_BILLBOARD:
@@ -2489,6 +2539,10 @@ enum **ParticlesTransformAlign**:
 .. rst-class:: classref-enumeration-constant
 
 :ref:`ParticlesTransformAlign<enum_RenderingServer_ParticlesTransformAlign>` **PARTICLES_TRANSFORM_ALIGN_Z_BILLBOARD** = ``1``
+
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 
 
@@ -2498,6 +2552,10 @@ enum **ParticlesTransformAlign**:
 
 :ref:`ParticlesTransformAlign<enum_RenderingServer_ParticlesTransformAlign>` **PARTICLES_TRANSFORM_ALIGN_Y_TO_VELOCITY** = ``2``
 
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_PARTICLES_TRANSFORM_ALIGN_Z_BILLBOARD_Y_TO_VELOCITY:
@@ -2505,6 +2563,10 @@ enum **ParticlesTransformAlign**:
 .. rst-class:: classref-enumeration-constant
 
 :ref:`ParticlesTransformAlign<enum_RenderingServer_ParticlesTransformAlign>` **PARTICLES_TRANSFORM_ALIGN_Z_BILLBOARD_Y_TO_VELOCITY** = ``3``
+
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 
 
@@ -2566,6 +2628,10 @@ enum **ParticlesCollisionType**:
 
 :ref:`ParticlesCollisionType<enum_RenderingServer_ParticlesCollisionType>` **PARTICLES_COLLISION_TYPE_SPHERE_ATTRACT** = ``0``
 
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_PARTICLES_COLLISION_TYPE_BOX_ATTRACT:
@@ -2573,6 +2639,10 @@ enum **ParticlesCollisionType**:
 .. rst-class:: classref-enumeration-constant
 
 :ref:`ParticlesCollisionType<enum_RenderingServer_ParticlesCollisionType>` **PARTICLES_COLLISION_TYPE_BOX_ATTRACT** = ``1``
+
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 
 
@@ -2582,6 +2652,10 @@ enum **ParticlesCollisionType**:
 
 :ref:`ParticlesCollisionType<enum_RenderingServer_ParticlesCollisionType>` **PARTICLES_COLLISION_TYPE_VECTOR_FIELD_ATTRACT** = ``2``
 
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_PARTICLES_COLLISION_TYPE_SPHERE_COLLIDE:
@@ -2589,6 +2663,10 @@ enum **ParticlesCollisionType**:
 .. rst-class:: classref-enumeration-constant
 
 :ref:`ParticlesCollisionType<enum_RenderingServer_ParticlesCollisionType>` **PARTICLES_COLLISION_TYPE_SPHERE_COLLIDE** = ``3``
+
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 
 
@@ -2598,6 +2676,10 @@ enum **ParticlesCollisionType**:
 
 :ref:`ParticlesCollisionType<enum_RenderingServer_ParticlesCollisionType>` **PARTICLES_COLLISION_TYPE_BOX_COLLIDE** = ``4``
 
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_PARTICLES_COLLISION_TYPE_SDF_COLLIDE:
@@ -2606,6 +2688,10 @@ enum **ParticlesCollisionType**:
 
 :ref:`ParticlesCollisionType<enum_RenderingServer_ParticlesCollisionType>` **PARTICLES_COLLISION_TYPE_SDF_COLLIDE** = ``5``
 
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_PARTICLES_COLLISION_TYPE_HEIGHTFIELD_COLLIDE:
@@ -2613,6 +2699,10 @@ enum **ParticlesCollisionType**:
 .. rst-class:: classref-enumeration-constant
 
 :ref:`ParticlesCollisionType<enum_RenderingServer_ParticlesCollisionType>` **PARTICLES_COLLISION_TYPE_HEIGHTFIELD_COLLIDE** = ``6``
+
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 
 
@@ -2632,6 +2722,10 @@ enum **ParticlesCollisionHeightfieldResolution**:
 
 :ref:`ParticlesCollisionHeightfieldResolution<enum_RenderingServer_ParticlesCollisionHeightfieldResolution>` **PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_256** = ``0``
 
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_512:
@@ -2639,6 +2733,10 @@ enum **ParticlesCollisionHeightfieldResolution**:
 .. rst-class:: classref-enumeration-constant
 
 :ref:`ParticlesCollisionHeightfieldResolution<enum_RenderingServer_ParticlesCollisionHeightfieldResolution>` **PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_512** = ``1``
+
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 
 
@@ -2648,6 +2746,10 @@ enum **ParticlesCollisionHeightfieldResolution**:
 
 :ref:`ParticlesCollisionHeightfieldResolution<enum_RenderingServer_ParticlesCollisionHeightfieldResolution>` **PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_1024** = ``2``
 
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_2048:
@@ -2655,6 +2757,10 @@ enum **ParticlesCollisionHeightfieldResolution**:
 .. rst-class:: classref-enumeration-constant
 
 :ref:`ParticlesCollisionHeightfieldResolution<enum_RenderingServer_ParticlesCollisionHeightfieldResolution>` **PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_2048** = ``3``
+
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 
 
@@ -2664,6 +2770,10 @@ enum **ParticlesCollisionHeightfieldResolution**:
 
 :ref:`ParticlesCollisionHeightfieldResolution<enum_RenderingServer_ParticlesCollisionHeightfieldResolution>` **PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_4096** = ``4``
 
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_8192:
@@ -2671,6 +2781,10 @@ enum **ParticlesCollisionHeightfieldResolution**:
 .. rst-class:: classref-enumeration-constant
 
 :ref:`ParticlesCollisionHeightfieldResolution<enum_RenderingServer_ParticlesCollisionHeightfieldResolution>` **PARTICLES_COLLISION_HEIGHTFIELD_RESOLUTION_8192** = ``5``
+
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 
 
@@ -3186,11 +3300,19 @@ Visible render pass (excluding shadows).
 
 Shadow render pass. Objects will be rendered several times depending on the number of amounts of lights with shadows and the number of directional shadow splits.
 
+.. _class_RenderingServer_constant_VIEWPORT_RENDER_INFO_TYPE_CANVAS:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`ViewportRenderInfoType<enum_RenderingServer_ViewportRenderInfoType>` **VIEWPORT_RENDER_INFO_TYPE_CANVAS** = ``2``
+
+Canvas item rendering. This includes all 2D rendering.
+
 .. _class_RenderingServer_constant_VIEWPORT_RENDER_INFO_TYPE_MAX:
 
 .. rst-class:: classref-enumeration-constant
 
-:ref:`ViewportRenderInfoType<enum_RenderingServer_ViewportRenderInfoType>` **VIEWPORT_RENDER_INFO_TYPE_MAX** = ``2``
+:ref:`ViewportRenderInfoType<enum_RenderingServer_ViewportRenderInfoType>` **VIEWPORT_RENDER_INFO_TYPE_MAX** = ``3``
 
 Represents the size of the :ref:`ViewportRenderInfoType<enum_RenderingServer_ViewportRenderInfoType>` enum.
 
@@ -4778,6 +4900,10 @@ Parent is used for clipping child, but parent is also drawn underneath child as 
 
 :ref:`CanvasGroupMode<enum_RenderingServer_CanvasGroupMode>` **CANVAS_GROUP_MODE_TRANSPARENT** = ``3``
 
+.. container:: contribute
+
+	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. rst-class:: classref-item-separator
@@ -5232,7 +5358,7 @@ enum **Features**:
 
 :ref:`Features<enum_RenderingServer_Features>` **FEATURE_SHADERS** = ``0``
 
-Hardware supports shaders. This enum is currently unused in Godot 3.x.
+*Deprecated.* This constant has not been used since Godot 3.0.
 
 .. _class_RenderingServer_constant_FEATURE_MULTITHREADED:
 
@@ -5240,7 +5366,7 @@ Hardware supports shaders. This enum is currently unused in Godot 3.x.
 
 :ref:`Features<enum_RenderingServer_Features>` **FEATURE_MULTITHREADED** = ``1``
 
-Hardware supports multithreading. This enum is currently unused in Godot 3.x.
+*Deprecated.* This constant has not been used since Godot 3.0.
 
 .. rst-class:: classref-section-separator
 
@@ -5337,6 +5463,10 @@ The number of custom data arrays available (:ref:`ARRAY_CUSTOM0<class_RenderingS
 
 **PARTICLES_EMIT_FLAG_POSITION** = ``1``
 
+.. container:: contribute
+
+	There is currently no description for this constant. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_PARTICLES_EMIT_FLAG_ROTATION_SCALE:
@@ -5344,6 +5474,10 @@ The number of custom data arrays available (:ref:`ARRAY_CUSTOM0<class_RenderingS
 .. rst-class:: classref-constant
 
 **PARTICLES_EMIT_FLAG_ROTATION_SCALE** = ``2``
+
+.. container:: contribute
+
+	There is currently no description for this constant. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 
 
@@ -5353,6 +5487,10 @@ The number of custom data arrays available (:ref:`ARRAY_CUSTOM0<class_RenderingS
 
 **PARTICLES_EMIT_FLAG_VELOCITY** = ``4``
 
+.. container:: contribute
+
+	There is currently no description for this constant. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_PARTICLES_EMIT_FLAG_COLOR:
@@ -5361,6 +5499,10 @@ The number of custom data arrays available (:ref:`ARRAY_CUSTOM0<class_RenderingS
 
 **PARTICLES_EMIT_FLAG_COLOR** = ``8``
 
+.. container:: contribute
+
+	There is currently no description for this constant. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
 
 
 .. _class_RenderingServer_constant_PARTICLES_EMIT_FLAG_CUSTOM:
@@ -5368,6 +5510,10 @@ The number of custom data arrays available (:ref:`ARRAY_CUSTOM0<class_RenderingS
 .. rst-class:: classref-constant
 
 **PARTICLES_EMIT_FLAG_CUSTOM** = ``16``
+
+.. container:: contribute
+
+	There is currently no description for this constant. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
 
 
 
@@ -6674,6 +6820,20 @@ Creates a RenderingDevice that can be used to do draw and compute operations on 
 
 ----
 
+.. _class_RenderingServer_method_debug_canvas_item_get_rect:
+
+.. rst-class:: classref-method
+
+:ref:`Rect2<class_Rect2>` **debug_canvas_item_get_rect** **(** :ref:`RID<class_RID>` item **)**
+
+Returns the bounding rectangle for a canvas item in local space, as calculated by the renderer. This bound is used internally for culling.
+
+\ **Warning:** This function is intended for debugging in the editor, and will pass through and return a zero :ref:`Rect2<class_Rect2>` in exported projects.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_RenderingServer_method_decal_create:
 
 .. rst-class:: classref-method
@@ -7582,7 +7742,7 @@ Returns ``true`` if changes have been made to the RenderingServer's data. :ref:`
 
 :ref:`bool<class_bool>` **has_feature** **(** :ref:`Features<enum_RenderingServer_Features>` feature **)** |const|
 
-Not yet implemented. Always returns ``false``.
+*Deprecated.* This method has not been used since Godot 3.0. Always returns false.
 
 .. rst-class:: classref-item-separator
 
@@ -10365,7 +10525,7 @@ Updates the texture specified by the ``texture`` :ref:`RID<class_RID>`'s data wi
 
 :ref:`Format<enum_Image_Format>` **texture_get_format** **(** :ref:`RID<class_RID>` texture **)** |const|
 
-Returns the :ref:`Format<enum_Image_Format>` for the texture.
+Returns the format for the texture.
 
 .. rst-class:: classref-item-separator
 

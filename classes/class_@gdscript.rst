@@ -662,7 +662,7 @@ Add a custom icon to the current script. The icon specified at ``icon_path`` is 
 
 \ **Note:** As annotations describe their subject, the :ref:`@icon<class_@GDScript_annotation_@icon>` annotation must be placed before the class definition and inheritance.
 
-\ **Note:** Unlike other annotations, the argument of the :ref:`@icon<class_@GDScript_annotation_@icon>` annotation must be a string literal (constant expressions are not supported).
+\ **Note:** Unlike most other annotations, the argument of the :ref:`@icon<class_@GDScript_annotation_@icon>` annotation must be a string literal (constant expressions are not supported).
 
 .. rst-class:: classref-item-separator
 
@@ -743,6 +743,20 @@ Mark the current script as a tool script, allowing it to be loaded and executed 
     extends Node
 
 \ **Note:** As annotations describe their subject, the :ref:`@tool<class_@GDScript_annotation_@tool>` annotation must be placed before the class definition and inheritance.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_@GDScript_annotation_@uid:
+
+.. rst-class:: classref-annotation
+
+**@uid** **(** :ref:`String<class_String>` uid **)**
+
+Stores information about UID of this script. This annotation is auto-generated when saving the script and must not be modified manually. Only applies to scripts saved as separate files (i.e. not built-in).
+
+\ **Note:** Unlike most other annotations, the argument of the :ref:`@uid<class_@GDScript_annotation_@uid>` annotation must be a string literal (constant expressions are not supported).
 
 .. rst-class:: classref-item-separator
 
@@ -972,7 +986,7 @@ See also :ref:`@GlobalScope.typeof<class_@GlobalScope_method_typeof>`, :ref:`typ
 
 :ref:`int<class_int>` **len** **(** :ref:`Variant<class_Variant>` var **)**
 
-Returns the length of the given Variant ``var``. The length can be the character count of a :ref:`String<class_String>`, the element count of any array type or the size of a :ref:`Dictionary<class_Dictionary>`. For every other Variant type, a run-time error is generated and execution is stopped.
+Returns the length of the given Variant ``var``. The length can be the character count of a :ref:`String<class_String>` or :ref:`StringName<class_StringName>`, the element count of any array type, or the size of a :ref:`Dictionary<class_Dictionary>`. For every other Variant type, a run-time error is generated and execution is stopped.
 
 ::
 
@@ -992,7 +1006,7 @@ Returns the length of the given Variant ``var``. The length can be the character
 
 :ref:`Resource<class_Resource>` **load** **(** :ref:`String<class_String>` path **)**
 
-Returns a :ref:`Resource<class_Resource>` from the filesystem located at the absolute ``path``. Unless it's already referenced elsewhere (such as in another script or in the scene), the resource is loaded from disk on function call, which might cause a slight delay, especially when loading large scenes. To avoid unnecessary delays when loading something multiple times, either store the resource in a variable or use :ref:`preload<class_@GDScript_method_preload>`.
+Returns a :ref:`Resource<class_Resource>` from the filesystem located at the absolute ``path``. Unless it's already referenced elsewhere (such as in another script or in the scene), the resource is loaded from disk on function call, which might cause a slight delay, especially when loading large scenes. To avoid unnecessary delays when loading something multiple times, either store the resource in a variable or use :ref:`preload<class_@GDScript_method_preload>`. This method is equivalent of using :ref:`ResourceLoader.load<class_ResourceLoader_method_load>` with :ref:`ResourceLoader.CACHE_MODE_REUSE<class_ResourceLoader_constant_CACHE_MODE_REUSE>`.
 
 \ **Note:** Resource paths can be obtained by right-clicking on a resource in the FileSystem dock and choosing "Copy Path", or by dragging the file from the FileSystem dock into the current script.
 
