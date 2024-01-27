@@ -217,7 +217,7 @@ Emitted when any project setting has changed.
 
 **resource_saved** **(** :ref:`Resource<class_Resource>` resource **)**
 
-Emitted when the given ``resource`` was saved on disc.
+Emitted when the given ``resource`` was saved on disc. See also :ref:`scene_saved<class_EditorPlugin_signal_scene_saved>`.
 
 .. rst-class:: classref-item-separator
 
@@ -241,7 +241,19 @@ Emitted when the scene is changed in the editor. The argument will return the ro
 
 **scene_closed** **(** :ref:`String<class_String>` filepath **)**
 
-Emitted when user closes a scene. The argument is file path to a closed scene.
+Emitted when user closes a scene. The argument is a file path to the closed scene.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_EditorPlugin_signal_scene_saved:
+
+.. rst-class:: classref-signal
+
+**scene_saved** **(** :ref:`String<class_String>` filepath **)**
+
+Emitted when a scene was saved on disc. The argument is a file path to the saved scene. See also :ref:`resource_saved<class_EditorPlugin_signal_resource_saved>`.
 
 .. rst-class:: classref-section-separator
 
@@ -956,7 +968,7 @@ Use :ref:`_set_window_layout<class_EditorPlugin_private_method__set_window_layou
 
 Implement this function if your plugin edits a specific type of object (Resource or Node). If you return ``true``, then you will get the functions :ref:`_edit<class_EditorPlugin_private_method__edit>` and :ref:`_make_visible<class_EditorPlugin_private_method__make_visible>` called when the editor requests them. If you have declared the methods :ref:`_forward_canvas_gui_input<class_EditorPlugin_private_method__forward_canvas_gui_input>` and :ref:`_forward_3d_gui_input<class_EditorPlugin_private_method__forward_3d_gui_input>` these will be called too.
 
-\ **Note:** Each plugin should handle only one type of objects at a time. If a plugin handes more types of objects and they are edited at the same time, it will result in errors.
+\ **Note:** Each plugin should handle only one type of objects at a time. If a plugin handles more types of objects and they are edited at the same time, it will result in errors.
 
 .. rst-class:: classref-item-separator
 
