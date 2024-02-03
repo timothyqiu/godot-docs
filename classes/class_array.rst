@@ -936,7 +936,7 @@ Returns a random value from the target array. Prints an error and returns ``null
 
 :ref:`Variant<class_Variant>` **pop_at** **(** :ref:`int<class_int>` position **)**
 
-Removes and returns the element of the array at index ``position``. If negative, ``position`` is considered relative to the end of the array. Leaves the array untouched and returns ``null`` if the array is empty or if it's accessed out of bounds. An error message is printed when the array is accessed out of bounds, but not when the array is empty.
+Removes and returns the element of the array at index ``position``. If negative, ``position`` is considered relative to the end of the array. Leaves the array unchanged and returns ``null`` if the array is empty or if it's accessed out of bounds. An error message is printed when the array is accessed out of bounds, but not when the array is empty.
 
 \ **Note:** On large arrays, this method can be slower than :ref:`pop_back<class_Array_method_pop_back>` as it will reindex the array's elements that are located after the removed element. The larger the array and the lower the index of the removed element, the slower :ref:`pop_at<class_Array_method_pop_at>` will be.
 
@@ -1046,6 +1046,8 @@ Removes an element from the array by index. If the index does not exist in the a
 :ref:`int<class_int>` **resize** **(** :ref:`int<class_int>` size **)**
 
 Resizes the array to contain a different number of elements. If the array size is smaller, elements are cleared, if bigger, new elements are ``null``. Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or one of the other :ref:`Error<enum_@GlobalScope_Error>` values if the operation failed.
+
+Calling :ref:`resize<class_Array_method_resize>` once and assigning the new values is faster than adding new elements one by one.
 
 \ **Note:** This method acts in-place and doesn't return a modified array.
 
