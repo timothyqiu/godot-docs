@@ -29,7 +29,7 @@ The **LightmapGI** node is used to compute and store baked lightmaps. Lightmaps 
 
 \ **Note:** Lightmap baking on :ref:`CSGShape3D<class_CSGShape3D>`\ s and :ref:`PrimitiveMesh<class_PrimitiveMesh>`\ es is not supported, as these cannot store UV2 data required for baking.
 
-\ **Note:** If no custom lightmappers are installed, **LightmapGI** can only be baked when using the Vulkan backend (Forward+ or Mobile), not OpenGL.
+\ **Note:** If no custom lightmappers are installed, **LightmapGI** can only be baked from devices that support the Forward+ or Mobile rendering backends.
 
 .. rst-class:: classref-introduction-group
 
@@ -76,6 +76,8 @@ Properties
    | :ref:`int<class_int>`                                   | :ref:`max_texture_size<class_LightmapGI_property_max_texture_size>`                   | ``16384``  |
    +---------------------------------------------------------+---------------------------------------------------------------------------------------+------------+
    | :ref:`BakeQuality<enum_LightmapGI_BakeQuality>`         | :ref:`quality<class_LightmapGI_property_quality>`                                     | ``1``      |
+   +---------------------------------------------------------+---------------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>`                               | :ref:`texel_scale<class_LightmapGI_property_texel_scale>`                             | ``1.0``    |
    +---------------------------------------------------------+---------------------------------------------------------------------------------------+------------+
    | :ref:`bool<class_bool>`                                 | :ref:`use_denoiser<class_LightmapGI_property_use_denoiser>`                           | ``true``   |
    +---------------------------------------------------------+---------------------------------------------------------------------------------------+------------+
@@ -582,6 +584,23 @@ The maximum texture size for the generated texture atlas. Higher values will res
 The quality preset to use when baking lightmaps. This affects bake times, but output file sizes remain mostly identical across quality levels.
 
 To further speed up bake times, decrease :ref:`bounces<class_LightmapGI_property_bounces>`, disable :ref:`use_denoiser<class_LightmapGI_property_use_denoiser>` and increase the lightmap texel size on 3D scenes in the Import doc.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_LightmapGI_property_texel_scale:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **texel_scale** = ``1.0``
+
+.. rst-class:: classref-property-setget
+
+- void **set_texel_scale** **(** :ref:`float<class_float>` value **)**
+- :ref:`float<class_float>` **get_texel_scale** **(** **)**
+
+Scales the lightmap texel density of all meshes for the current bake. This is a multiplier that builds upon the existing lightmap texel size defined in each imported 3D scene, along with the per-mesh density multiplier (which is designed to be used when the same mesh is used at different scales). Lower values will result in faster bake times.
 
 .. rst-class:: classref-item-separator
 

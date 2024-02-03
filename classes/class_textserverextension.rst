@@ -58,6 +58,8 @@ Methods
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                                       | :ref:`_font_get_ascent<class_TextServerExtension_private_method__font_get_ascent>` **(** :ref:`RID<class_RID>` font_rid, :ref:`int<class_int>` size **)** |virtual| |const|                                                                                                                                                                                                        |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                       | :ref:`_font_get_baseline_offset<class_TextServerExtension_private_method__font_get_baseline_offset>` **(** :ref:`RID<class_RID>` font_rid **)** |virtual| |const|                                                                                                                                                                                                                  |
+   +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                           | :ref:`_font_get_char_from_glyph_index<class_TextServerExtension_private_method__font_get_char_from_glyph_index>` **(** :ref:`RID<class_RID>` font_rid, :ref:`int<class_int>` size, :ref:`int<class_int>` glyph_index **)** |virtual| |const|                                                                                                                                       |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                                       | :ref:`_font_get_descent<class_TextServerExtension_private_method__font_get_descent>` **(** :ref:`RID<class_RID>` font_rid, :ref:`int<class_int>` size **)** |virtual| |const|                                                                                                                                                                                                      |
@@ -187,6 +189,8 @@ Methods
    | void                                                            | :ref:`_font_set_antialiasing<class_TextServerExtension_private_method__font_set_antialiasing>` **(** :ref:`RID<class_RID>` font_rid, :ref:`FontAntialiasing<enum_TextServer_FontAntialiasing>` antialiasing **)** |virtual|                                                                                                                                                        |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                            | :ref:`_font_set_ascent<class_TextServerExtension_private_method__font_set_ascent>` **(** :ref:`RID<class_RID>` font_rid, :ref:`int<class_int>` size, :ref:`float<class_float>` ascent **)** |virtual|                                                                                                                                                                              |
+   +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | void                                                            | :ref:`_font_set_baseline_offset<class_TextServerExtension_private_method__font_set_baseline_offset>` **(** :ref:`RID<class_RID>` font_rid, :ref:`float<class_float>` baseline_offset **)** |virtual|                                                                                                                                                                               |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                            | :ref:`_font_set_data<class_TextServerExtension_private_method__font_set_data>` **(** :ref:`RID<class_RID>` font_rid, :ref:`PackedByteArray<class_PackedByteArray>` data **)** |virtual|                                                                                                                                                                                            |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -330,6 +334,8 @@ Methods
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedInt32Array<class_PackedInt32Array>`                 | :ref:`_shaped_text_get_character_breaks<class_TextServerExtension_private_method__shaped_text_get_character_breaks>` **(** :ref:`RID<class_RID>` shaped **)** |virtual| |const|                                                                                                                                                                                                    |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                           | :ref:`_shaped_text_get_custom_ellipsis<class_TextServerExtension_private_method__shaped_text_get_custom_ellipsis>` **(** :ref:`RID<class_RID>` shaped **)** |virtual| |const|                                                                                                                                                                                                      |
+   +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                     | :ref:`_shaped_text_get_custom_punctuation<class_TextServerExtension_private_method__shaped_text_get_custom_punctuation>` **(** :ref:`RID<class_RID>` shaped **)** |virtual| |const|                                                                                                                                                                                                |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                                       | :ref:`_shaped_text_get_descent<class_TextServerExtension_private_method__shaped_text_get_descent>` **(** :ref:`RID<class_RID>` shaped **)** |virtual| |const|                                                                                                                                                                                                                      |
@@ -405,6 +411,8 @@ Methods
    | :ref:`bool<class_bool>`                                         | :ref:`_shaped_text_resize_object<class_TextServerExtension_private_method__shaped_text_resize_object>` **(** :ref:`RID<class_RID>` shaped, :ref:`Variant<class_Variant>` key, :ref:`Vector2<class_Vector2>` size, :ref:`InlineAlignment<enum_@GlobalScope_InlineAlignment>` inline_align, :ref:`float<class_float>` baseline **)** |virtual|                                       |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                            | :ref:`_shaped_text_set_bidi_override<class_TextServerExtension_private_method__shaped_text_set_bidi_override>` **(** :ref:`RID<class_RID>` shaped, :ref:`Array<class_Array>` override **)** |virtual|                                                                                                                                                                              |
+   +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | void                                                            | :ref:`_shaped_text_set_custom_ellipsis<class_TextServerExtension_private_method__shaped_text_set_custom_ellipsis>` **(** :ref:`RID<class_RID>` shaped, :ref:`int<class_int>` char **)** |virtual|                                                                                                                                                                                  |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                                                            | :ref:`_shaped_text_set_custom_punctuation<class_TextServerExtension_private_method__shaped_text_set_custom_punctuation>` **(** :ref:`RID<class_RID>` shaped, :ref:`String<class_String>` punct **)** |virtual|                                                                                                                                                                     |
    +-----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -627,6 +635,20 @@ void **_font_draw_glyph_outline** **(** :ref:`RID<class_RID>` font_rid, :ref:`RI
 .. rst-class:: classref-method
 
 :ref:`float<class_float>` **_font_get_ascent** **(** :ref:`RID<class_RID>` font_rid, :ref:`int<class_int>` size **)** |virtual| |const|
+
+.. container:: contribute
+
+	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TextServerExtension_private_method__font_get_baseline_offset:
+
+.. rst-class:: classref-method
+
+:ref:`float<class_float>` **_font_get_baseline_offset** **(** :ref:`RID<class_RID>` font_rid **)** |virtual| |const|
 
 .. container:: contribute
 
@@ -1537,6 +1559,20 @@ void **_font_set_antialiasing** **(** :ref:`RID<class_RID>` font_rid, :ref:`Font
 .. rst-class:: classref-method
 
 void **_font_set_ascent** **(** :ref:`RID<class_RID>` font_rid, :ref:`int<class_int>` size, :ref:`float<class_float>` ascent **)** |virtual|
+
+.. container:: contribute
+
+	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TextServerExtension_private_method__font_set_baseline_offset:
+
+.. rst-class:: classref-method
+
+void **_font_set_baseline_offset** **(** :ref:`RID<class_RID>` font_rid, :ref:`float<class_float>` baseline_offset **)** |virtual|
 
 .. container:: contribute
 
@@ -2540,6 +2576,20 @@ void **_shaped_text_get_carets** **(** :ref:`RID<class_RID>` shaped, :ref:`int<c
 
 ----
 
+.. _class_TextServerExtension_private_method__shaped_text_get_custom_ellipsis:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **_shaped_text_get_custom_ellipsis** **(** :ref:`RID<class_RID>` shaped **)** |virtual| |const|
+
+.. container:: contribute
+
+	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_TextServerExtension_private_method__shaped_text_get_custom_punctuation:
 
 .. rst-class:: classref-method
@@ -3063,6 +3113,20 @@ void **_shaped_text_overrun_trim_to_width** **(** :ref:`RID<class_RID>` shaped, 
 .. rst-class:: classref-method
 
 void **_shaped_text_set_bidi_override** **(** :ref:`RID<class_RID>` shaped, :ref:`Array<class_Array>` override **)** |virtual|
+
+.. container:: contribute
+
+	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TextServerExtension_private_method__shaped_text_set_custom_ellipsis:
+
+.. rst-class:: classref-method
+
+void **_shaped_text_set_custom_ellipsis** **(** :ref:`RID<class_RID>` shaped, :ref:`int<class_int>` char **)** |virtual|
 
 .. container:: contribute
 
