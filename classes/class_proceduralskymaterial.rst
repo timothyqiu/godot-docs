@@ -23,7 +23,7 @@ Description
 
 \ **ProceduralSkyMaterial** supports up to 4 suns, using the color, and energy, direction, and angular distance of the first four :ref:`DirectionalLight3D<class_DirectionalLight3D>` nodes in the scene. This means that the suns are defined individually by the properties of their corresponding :ref:`DirectionalLight3D<class_DirectionalLight3D>`\ s and globally by :ref:`sun_angle_max<class_ProceduralSkyMaterial_property_sun_angle_max>` and :ref:`sun_curve<class_ProceduralSkyMaterial_property_sun_curve>`.
 
-\ **ProceduralSkyMaterial** uses a lightweight shader to draw the sky and is therefore suited for real time updates. This makes it a great option for a sky that is simple and computationally cheap, but unrealistic. If you need a more realistic procedural option, use :ref:`PhysicalSkyMaterial<class_PhysicalSkyMaterial>`.
+\ **ProceduralSkyMaterial** uses a lightweight shader to draw the sky and is therefore suited for real-time updates. This makes it a great option for a sky that is simple and computationally cheap, but unrealistic. If you need a more realistic procedural option, use :ref:`PhysicalSkyMaterial<class_PhysicalSkyMaterial>`.
 
 .. rst-class:: classref-reftable-group
 
@@ -33,6 +33,8 @@ Properties
 .. table::
    :widths: auto
 
+   +-----------------------------------+------------------------------------------------------------------------------------------------+--------------------------------------+
+   | :ref:`float<class_float>`         | :ref:`energy_multiplier<class_ProceduralSkyMaterial_property_energy_multiplier>`               | ``1.0``                              |
    +-----------------------------------+------------------------------------------------------------------------------------------------+--------------------------------------+
    | :ref:`Color<class_Color>`         | :ref:`ground_bottom_color<class_ProceduralSkyMaterial_property_ground_bottom_color>`           | ``Color(0.2, 0.169, 0.133, 1)``      |
    +-----------------------------------+------------------------------------------------------------------------------------------------+--------------------------------------+
@@ -69,6 +71,23 @@ Properties
 
 Property Descriptions
 ---------------------
+
+.. _class_ProceduralSkyMaterial_property_energy_multiplier:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **energy_multiplier** = ``1.0``
+
+.. rst-class:: classref-property-setget
+
+- void **set_energy_multiplier** **(** :ref:`float<class_float>` value **)**
+- :ref:`float<class_float>` **get_energy_multiplier** **(** **)**
+
+The sky's overall brightness multiplier. Higher values result in a brighter sky.
+
+.. rst-class:: classref-item-separator
+
+----
 
 .. _class_ProceduralSkyMaterial_property_ground_bottom_color:
 
