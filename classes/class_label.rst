@@ -41,6 +41,8 @@ Properties
    +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                                     | :ref:`clip_text<class_Label_property_clip_text>`                                                         | ``false``                                                                    |
    +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                                 | :ref:`ellipsis_char<class_Label_property_ellipsis_char>`                                                 | ``"…"``                                                                      |
+   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
    | :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>`           | :ref:`horizontal_alignment<class_Label_property_horizontal_alignment>`                                   | ``0``                                                                        |
    +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
    | |bitfield|\<:ref:`JustificationFlag<enum_TextServer_JustificationFlag>`\>   | :ref:`justification_flags<class_Label_property_justification_flags>`                                     | ``163``                                                                      |
@@ -88,15 +90,17 @@ Methods
 .. table::
    :widths: auto
 
-   +-----------------------+--------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>` | :ref:`get_line_count<class_Label_method_get_line_count>` **(** **)** |const|                                 |
-   +-----------------------+--------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>` | :ref:`get_line_height<class_Label_method_get_line_height>` **(** :ref:`int<class_int>` line=-1 **)** |const| |
-   +-----------------------+--------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>` | :ref:`get_total_character_count<class_Label_method_get_total_character_count>` **(** **)** |const|           |
-   +-----------------------+--------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>` | :ref:`get_visible_line_count<class_Label_method_get_visible_line_count>` **(** **)** |const|                 |
-   +-----------------------+--------------------------------------------------------------------------------------------------------------+
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>` | :ref:`get_character_bounds<class_Label_method_get_character_bounds>` **(** :ref:`int<class_int>` pos **)** |const| |
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`     | :ref:`get_line_count<class_Label_method_get_line_count>` **(** **)** |const|                                       |
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`     | :ref:`get_line_height<class_Label_method_get_line_height>` **(** :ref:`int<class_int>` line=-1 **)** |const|       |
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`     | :ref:`get_total_character_count<class_Label_method_get_total_character_count>` **(** **)** |const|                 |
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`     | :ref:`get_visible_line_count<class_Label_method_get_visible_line_count>` **(** **)** |const|                       |
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
@@ -168,6 +172,23 @@ If set to something other than :ref:`TextServer.AUTOWRAP_OFF<class_TextServer_co
 - :ref:`bool<class_bool>` **is_clipping_text** **(** **)**
 
 If ``true``, the Label only shows the text that fits inside its bounding rectangle and will clip text horizontally.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Label_property_ellipsis_char:
+
+.. rst-class:: classref-property
+
+:ref:`String<class_String>` **ellipsis_char** = ``"…"``
+
+.. rst-class:: classref-property-setget
+
+- void **set_ellipsis_char** **(** :ref:`String<class_String>` value **)**
+- :ref:`String<class_String>` **get_ellipsis_char** **(** **)**
+
+Ellipsis character used for text clipping.
 
 .. rst-class:: classref-item-separator
 
@@ -471,6 +492,18 @@ The fraction of characters to display, relative to the total number of character
 Method Descriptions
 -------------------
 
+.. _class_Label_method_get_character_bounds:
+
+.. rst-class:: classref-method
+
+:ref:`Rect2<class_Rect2>` **get_character_bounds** **(** :ref:`int<class_int>` pos **)** |const|
+
+Returns the bounding rectangle of the character at position ``pos``. If the character is a non-visual character or ``pos`` is outside the valid range, an empty :ref:`Rect2<class_Rect2>` is returned. If the character is a part of a composite grapheme, the bounding rectangle of the whole grapheme is returned.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Label_method_get_line_count:
 
 .. rst-class:: classref-method
@@ -585,6 +618,8 @@ Vertical space between lines in multiline **Label**.
 Text outline size.
 
 \ **Note:** If using a font with :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` enabled, its :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` must be set to at least *twice* the value of :ref:`outline_size<class_Label_theme_constant_outline_size>` for outline rendering to look correct. Otherwise, the outline may appear to be cut off earlier than intended.
+
+\ **Note:** Using a value that is larger than half the font size is not recommended, as the font outline may fail to be fully closed in this case.
 
 .. rst-class:: classref-item-separator
 

@@ -10,6 +10,8 @@
 NavigationRegion3D
 ==================
 
+**Experimental:** This class may be changed or removed in future versions.
+
 **Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
 A traversable 3D region that :ref:`NavigationAgent3D<class_NavigationAgent3D>`\ s can use for pathfinding.
@@ -80,6 +82,8 @@ Methods
    | :ref:`RID<class_RID>`   | :ref:`get_region_rid<class_NavigationRegion3D_method_get_region_rid>` **(** **)** |const|                                                                                   |
    +-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`   | :ref:`get_rid<class_NavigationRegion3D_method_get_rid>` **(** **)** |const|                                                                                                 |
+   +-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`is_baking<class_NavigationRegion3D_method_is_baking>` **(** **)** |const|                                                                                             |
    +-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | void                    | :ref:`set_navigation_layer_value<class_NavigationRegion3D_method_set_navigation_layer_value>` **(** :ref:`int<class_int>` layer_number, :ref:`bool<class_bool>` value **)** |
    +-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -273,9 +277,9 @@ Returns the current navigation map :ref:`RID<class_RID>` used by this region.
 
 :ref:`RID<class_RID>` **get_region_rid** **(** **)** |const|
 
-Returns the :ref:`RID<class_RID>` of this region on the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+**Deprecated:** Use :ref:`get_rid<class_NavigationRegion3D_method_get_rid>` instead.
 
-\ *Deprecated.* Use :ref:`get_rid<class_NavigationRegion3D_method_get_rid>` instead.
+Returns the :ref:`RID<class_RID>` of this region on the :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -288,6 +292,18 @@ Returns the :ref:`RID<class_RID>` of this region on the :ref:`NavigationServer3D
 :ref:`RID<class_RID>` **get_rid** **(** **)** |const|
 
 Returns the :ref:`RID<class_RID>` of this region on the :ref:`NavigationServer3D<class_NavigationServer3D>`. Combined with :ref:`NavigationServer3D.map_get_closest_point_owner<class_NavigationServer3D_method_map_get_closest_point_owner>` can be used to identify the **NavigationRegion3D** closest to a point on the merged navigation map.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_NavigationRegion3D_method_is_baking:
+
+.. rst-class:: classref-method
+
+:ref:`bool<class_bool>` **is_baking** **(** **)** |const|
+
+Returns ``true`` when the :ref:`NavigationMesh<class_NavigationMesh>` is being baked on a background thread.
 
 .. rst-class:: classref-item-separator
 

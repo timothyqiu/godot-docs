@@ -10,6 +10,8 @@
 NavigationPolygon
 =================
 
+**Experimental:** This class may be changed or removed in future versions.
+
 **Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
 A 2D navigation mesh that describes a traversable surface for pathfinding.
@@ -88,6 +90,12 @@ Properties
 
    +----------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
    | :ref:`float<class_float>`                                            | :ref:`agent_radius<class_NavigationPolygon_property_agent_radius>`                             | ``10.0``                                        |
+   +----------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`                                            | :ref:`baking_rect<class_NavigationPolygon_property_baking_rect>`                               | ``Rect2(0, 0, 0, 0)``                           |
+   +----------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                        | :ref:`baking_rect_offset<class_NavigationPolygon_property_baking_rect_offset>`                 | ``Vector2(0, 0)``                               |
+   +----------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`border_size<class_NavigationPolygon_property_border_size>`                               | ``0.0``                                         |
    +----------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
    | :ref:`float<class_float>`                                            | :ref:`cell_size<class_NavigationPolygon_property_cell_size>`                                   | ``1.0``                                         |
    +----------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
@@ -258,6 +266,59 @@ Property Descriptions
 - :ref:`float<class_float>` **get_agent_radius** **(** **)**
 
 The distance to erode/shrink the walkable surface when baking the navigation mesh.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_NavigationPolygon_property_baking_rect:
+
+.. rst-class:: classref-property
+
+:ref:`Rect2<class_Rect2>` **baking_rect** = ``Rect2(0, 0, 0, 0)``
+
+.. rst-class:: classref-property-setget
+
+- void **set_baking_rect** **(** :ref:`Rect2<class_Rect2>` value **)**
+- :ref:`Rect2<class_Rect2>` **get_baking_rect** **(** **)**
+
+If the baking :ref:`Rect2<class_Rect2>` has an area the navigation mesh baking will be restricted to its enclosing area.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_NavigationPolygon_property_baking_rect_offset:
+
+.. rst-class:: classref-property
+
+:ref:`Vector2<class_Vector2>` **baking_rect_offset** = ``Vector2(0, 0)``
+
+.. rst-class:: classref-property-setget
+
+- void **set_baking_rect_offset** **(** :ref:`Vector2<class_Vector2>` value **)**
+- :ref:`Vector2<class_Vector2>` **get_baking_rect_offset** **(** **)**
+
+The position offset applied to the :ref:`baking_rect<class_NavigationPolygon_property_baking_rect>` :ref:`Rect2<class_Rect2>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_NavigationPolygon_property_border_size:
+
+.. rst-class:: classref-property
+
+:ref:`float<class_float>` **border_size** = ``0.0``
+
+.. rst-class:: classref-property-setget
+
+- void **set_border_size** **(** :ref:`float<class_float>` value **)**
+- :ref:`float<class_float>` **get_border_size** **(** **)**
+
+The size of the non-navigable border around the bake bounding area defined by the :ref:`baking_rect<class_NavigationPolygon_property_baking_rect>` :ref:`Rect2<class_Rect2>`.
+
+In conjunction with the :ref:`baking_rect<class_NavigationPolygon_property_baking_rect>` the border size can be used to bake tile aligned navigation meshes without the tile edges being shrunk by :ref:`agent_radius<class_NavigationPolygon_property_agent_radius>`.
 
 .. rst-class:: classref-item-separator
 
@@ -519,9 +580,9 @@ Returns a :ref:`PackedVector2Array<class_PackedVector2Array>` containing all the
 
 void **make_polygons_from_outlines** **(** **)**
 
-Creates polygons from the outlines added in the editor or by script.
+**Deprecated:** Use :ref:`NavigationServer2D.parse_source_geometry_data<class_NavigationServer2D_method_parse_source_geometry_data>` and :ref:`NavigationServer2D.bake_from_source_geometry_data<class_NavigationServer2D_method_bake_from_source_geometry_data>` instead.
 
-\ *Deprecated.* This function is deprecated, and might be removed in a future release. Use :ref:`NavigationServer2D.parse_source_geometry_data<class_NavigationServer2D_method_parse_source_geometry_data>` and :ref:`NavigationServer2D.bake_from_source_geometry_data<class_NavigationServer2D_method_bake_from_source_geometry_data>` instead.
+Creates polygons from the outlines added in the editor or by script.
 
 .. rst-class:: classref-item-separator
 

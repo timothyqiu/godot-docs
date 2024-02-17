@@ -290,7 +290,7 @@ Player is free to move around, full positional tracking.
 
 :ref:`PlayAreaMode<enum_XRInterface_PlayAreaMode>` **XR_PLAY_AREA_STAGE** = ``4``
 
-Same as :ref:`XR_PLAY_AREA_ROOMSCALE<class_XRInterface_constant_XR_PLAY_AREA_ROOMSCALE>` but origin point is fixed to the center of the physical space, :ref:`XRServer.center_on_hmd<class_XRServer_method_center_on_hmd>` disabled.
+Same as :ref:`XR_PLAY_AREA_ROOMSCALE<class_XRInterface_constant_XR_PLAY_AREA_ROOMSCALE>` but origin point is fixed to the center of the physical space. In this mode, system-level recentering may be disabled, requiring the use of :ref:`XRServer.center_on_hmd<class_XRServer_method_center_on_hmd>`.
 
 .. rst-class:: classref-item-separator
 
@@ -584,6 +584,8 @@ Is ``true`` if this interface has been initialized.
 
 :ref:`bool<class_bool>` **is_passthrough_enabled** **(** **)**
 
+**Deprecated:** Check if :ref:`environment_blend_mode<class_XRInterface_property_environment_blend_mode>` is :ref:`XR_ENV_BLEND_MODE_ALPHA_BLEND<class_XRInterface_constant_XR_ENV_BLEND_MODE_ALPHA_BLEND>`, instead.
+
 Is ``true`` if passthrough is enabled.
 
 .. rst-class:: classref-item-separator
@@ -595,6 +597,8 @@ Is ``true`` if passthrough is enabled.
 .. rst-class:: classref-method
 
 :ref:`bool<class_bool>` **is_passthrough_supported** **(** **)**
+
+**Deprecated:** Check that :ref:`XR_ENV_BLEND_MODE_ALPHA_BLEND<class_XRInterface_constant_XR_ENV_BLEND_MODE_ALPHA_BLEND>` is supported using :ref:`get_supported_environment_blend_modes<class_XRInterface_method_get_supported_environment_blend_modes>`, instead.
 
 Is ``true`` if this interface supports passthrough.
 
@@ -610,7 +614,7 @@ Is ``true`` if this interface supports passthrough.
 
 Sets the active environment blend mode.
 
-\ ``mode`` is the :ref:`EnvironmentBlendMode<enum_XRInterface_EnvironmentBlendMode>` starting with the next frame.
+\ ``mode`` is the environment blend mode starting with the next frame.
 
 \ **Note:** Not all runtimes support all environment blend modes, so it is important to check this at startup. For example:
 
@@ -640,6 +644,8 @@ Sets the active environment blend mode.
 
 Sets the active play area mode, will return ``false`` if the mode can't be used with this interface.
 
+\ **Note:** Changing this after the interface has already been initialized can be jarring for the player, so it's recommended to recenter on the HMD with :ref:`XRServer.center_on_hmd<class_XRServer_method_center_on_hmd>` (if switching to :ref:`XR_PLAY_AREA_STAGE<class_XRInterface_constant_XR_PLAY_AREA_STAGE>`) or make the switch during a scene change.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -649,6 +655,8 @@ Sets the active play area mode, will return ``false`` if the mode can't be used 
 .. rst-class:: classref-method
 
 :ref:`bool<class_bool>` **start_passthrough** **(** **)**
+
+**Deprecated:** Set the :ref:`environment_blend_mode<class_XRInterface_property_environment_blend_mode>` to :ref:`XR_ENV_BLEND_MODE_ALPHA_BLEND<class_XRInterface_constant_XR_ENV_BLEND_MODE_ALPHA_BLEND>`, instead.
 
 Starts passthrough, will return ``false`` if passthrough couldn't be started.
 
@@ -663,6 +671,8 @@ Starts passthrough, will return ``false`` if passthrough couldn't be started.
 .. rst-class:: classref-method
 
 void **stop_passthrough** **(** **)**
+
+**Deprecated:** Set the :ref:`environment_blend_mode<class_XRInterface_property_environment_blend_mode>` to :ref:`XR_ENV_BLEND_MODE_OPAQUE<class_XRInterface_constant_XR_ENV_BLEND_MODE_OPAQUE>`, instead.
 
 Stops passthrough.
 

@@ -21,7 +21,7 @@ A 4-element structure that can be used to represent 4D grid coordinates or any o
 
 It uses integer coordinates and is therefore preferable to :ref:`Vector4<class_Vector4>` when exact precision is required. Note that the values are limited to 32 bits, and unlike :ref:`Vector4<class_Vector4>` this cannot be configured with an engine build option. Use :ref:`int<class_int>` or :ref:`PackedInt64Array<class_PackedInt64Array>` if 64-bit values are needed.
 
-\ **Note:** In a boolean context, a Vector4i will evaluate to ``false`` if it's equal to ``Vector4i(0, 0, 0, 0)``. Otherwise, a Vector3i will always evaluate to ``true``.
+\ **Note:** In a boolean context, a Vector4i will evaluate to ``false`` if it's equal to ``Vector4i(0, 0, 0, 0)``. Otherwise, a Vector4i will always evaluate to ``true``.
 
 .. rst-class:: classref-reftable-group
 
@@ -71,6 +71,10 @@ Methods
    | :ref:`Vector4i<class_Vector4i>` | :ref:`abs<class_Vector4i_method_abs>` **(** **)** |const|                                                                              |
    +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector4i<class_Vector4i>` | :ref:`clamp<class_Vector4i_method_clamp>` **(** :ref:`Vector4i<class_Vector4i>` min, :ref:`Vector4i<class_Vector4i>` max **)** |const| |
+   +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`           | :ref:`distance_squared_to<class_Vector4i_method_distance_squared_to>` **(** :ref:`Vector4i<class_Vector4i>` to **)** |const|           |
+   +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`       | :ref:`distance_to<class_Vector4i_method_distance_to>` **(** :ref:`Vector4i<class_Vector4i>` to **)** |const|                           |
    +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`       | :ref:`length<class_Vector4i_method_length>` **(** **)** |const|                                                                        |
    +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------+
@@ -334,6 +338,32 @@ Returns a new vector with all components in absolute values (i.e. positive).
 :ref:`Vector4i<class_Vector4i>` **clamp** **(** :ref:`Vector4i<class_Vector4i>` min, :ref:`Vector4i<class_Vector4i>` max **)** |const|
 
 Returns a new vector with all components clamped between the components of ``min`` and ``max``, by running :ref:`@GlobalScope.clamp<class_@GlobalScope_method_clamp>` on each component.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Vector4i_method_distance_squared_to:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **distance_squared_to** **(** :ref:`Vector4i<class_Vector4i>` to **)** |const|
+
+Returns the squared distance between this vector and ``to``.
+
+This method runs faster than :ref:`distance_to<class_Vector4i_method_distance_to>`, so prefer it if you need to compare vectors or need the squared distance for some formula.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Vector4i_method_distance_to:
+
+.. rst-class:: classref-method
+
+:ref:`float<class_float>` **distance_to** **(** :ref:`Vector4i<class_Vector4i>` to **)** |const|
+
+Returns the distance between this vector and ``to``.
 
 .. rst-class:: classref-item-separator
 
