@@ -289,7 +289,7 @@ Name of the current device for audio output (see :ref:`get_output_device_list<cl
 - void **set_playback_speed_scale** **(** :ref:`float<class_float>` value **)**
 - :ref:`float<class_float>` **get_playback_speed_scale** **(** **)**
 
-Scales the rate at which audio is played (i.e. setting it to ``0.5`` will make the audio be played at half its speed).
+Scales the rate at which audio is played (i.e. setting it to ``0.5`` will make the audio be played at half its speed). See also :ref:`Engine.time_scale<class_Engine_property_time_scale>` to affect the general simulation speed, which is independent from :ref:`playback_speed_scale<class_AudioServer_property_playback_speed_scale>`.
 
 .. rst-class:: classref-section-separator
 
@@ -744,9 +744,9 @@ Sets the volume of the bus at index ``bus_idx`` to ``volume_db``.
 
 void **set_enable_tagging_used_audio_streams** **(** :ref:`bool<class_bool>` enable **)**
 
-.. container:: contribute
+If set to ``true``, all instances of :ref:`AudioStreamPlayback<class_AudioStreamPlayback>` will call :ref:`AudioStreamPlayback._tag_used_streams<class_AudioStreamPlayback_private_method__tag_used_streams>` every mix step.
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+\ **Note:** This is enabled by default in the editor, as it is used by editor plugins for the audio stream previews.
 
 .. rst-class:: classref-item-separator
 

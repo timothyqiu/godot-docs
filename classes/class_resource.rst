@@ -21,9 +21,11 @@ Base class for serializable objects.
 Description
 -----------
 
-Resource is the base class for all Godot-specific resource types, serving primarily as data containers. Since they inherit from :ref:`RefCounted<class_RefCounted>`, resources are reference-counted and freed when no longer in use. They can also be nested within other resources, and saved on disk. Once loaded from disk, further attempts to load a resource by :ref:`resource_path<class_Resource_property_resource_path>` returns the same reference. :ref:`PackedScene<class_PackedScene>`, one of the most common :ref:`Object<class_Object>`\ s in a Godot project, is also a resource, uniquely capable of storing and instantiating the :ref:`Node<class_Node>`\ s it contains as many times as desired.
+Resource is the base class for all Godot-specific resource types, serving primarily as data containers. Since they inherit from :ref:`RefCounted<class_RefCounted>`, resources are reference-counted and freed when no longer in use. They can also be nested within other resources, and saved on disk. :ref:`PackedScene<class_PackedScene>`, one of the most common :ref:`Object<class_Object>`\ s in a Godot project, is also a resource, uniquely capable of storing and instantiating the :ref:`Node<class_Node>`\ s it contains as many times as desired.
 
 In GDScript, resources can loaded from disk by their :ref:`resource_path<class_Resource_property_resource_path>` using :ref:`@GDScript.load<class_@GDScript_method_load>` or :ref:`@GDScript.preload<class_@GDScript_method_preload>`.
+
+The engine keeps a global cache of all loaded resources, referenced by paths (see :ref:`ResourceLoader.has_cached<class_ResourceLoader_method_has_cached>`). A resource will be cached when loaded for the first time and removed from cache once all references are released. When a resource is cached, subsequent loads using its path will return the cached reference.
 
 \ **Note:** In C#, resources will not be freed instantly after they are no longer in use. Instead, garbage collection will run periodically and will free resources that are no longer in use. This means that unused resources will linger on for a while before being removed.
 
@@ -107,9 +109,9 @@ Emitted when the resource changes, usually when one of its properties is modifie
 
 **setup_local_to_scene_requested** **(** **)**
 
-Emitted by a newly duplicated resource with :ref:`resource_local_to_scene<class_Resource_property_resource_local_to_scene>` set to ``true``. 
+**Deprecated:** This signal is only emitted when the resource is created. Override :ref:`_setup_local_to_scene<class_Resource_private_method__setup_local_to_scene>` instead.
 
-\ *Deprecated.* This signal is only emitted when the resource is created. Override :ref:`_setup_local_to_scene<class_Resource_private_method__setup_local_to_scene>` instead.
+Emitted by a newly duplicated resource with :ref:`resource_local_to_scene<class_Resource_property_resource_local_to_scene>` set to ``true``.
 
 .. rst-class:: classref-section-separator
 
@@ -287,9 +289,9 @@ Returns the :ref:`RID<class_RID>` of this resource (or an empty RID). Many resou
 
 void **setup_local_to_scene** **(** **)**
 
-Calls :ref:`_setup_local_to_scene<class_Resource_private_method__setup_local_to_scene>`. If :ref:`resource_local_to_scene<class_Resource_property_resource_local_to_scene>` is set to ``true``, this method is automatically called from :ref:`PackedScene.instantiate<class_PackedScene_method_instantiate>` by the newly duplicated resource within the scene instance.
+**Deprecated:** This method should only be called internally. Override :ref:`_setup_local_to_scene<class_Resource_private_method__setup_local_to_scene>` instead.
 
-\ *Deprecated.* This method should only be called internally. Override :ref:`_setup_local_to_scene<class_Resource_private_method__setup_local_to_scene>` instead.
+Calls :ref:`_setup_local_to_scene<class_Resource_private_method__setup_local_to_scene>`. If :ref:`resource_local_to_scene<class_Resource_property_resource_local_to_scene>` is set to ``true``, this method is automatically called from :ref:`PackedScene.instantiate<class_PackedScene_method_instantiate>` by the newly duplicated resource within the scene instance.
 
 .. rst-class:: classref-item-separator
 

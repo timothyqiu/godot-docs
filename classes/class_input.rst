@@ -42,11 +42,15 @@ Properties
 .. table::
    :widths: auto
 
-   +----------------------------------------+--------------------------------------------------------------------------+
-   | :ref:`MouseMode<enum_Input_MouseMode>` | :ref:`mouse_mode<class_Input_property_mouse_mode>`                       |
-   +----------------------------------------+--------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                | :ref:`use_accumulated_input<class_Input_property_use_accumulated_input>` |
-   +----------------------------------------+--------------------------------------------------------------------------+
+   +----------------------------------------+--------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                | :ref:`emulate_mouse_from_touch<class_Input_property_emulate_mouse_from_touch>` |
+   +----------------------------------------+--------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                | :ref:`emulate_touch_from_mouse<class_Input_property_emulate_touch_from_mouse>` |
+   +----------------------------------------+--------------------------------------------------------------------------------+
+   | :ref:`MouseMode<enum_Input_MouseMode>` | :ref:`mouse_mode<class_Input_property_mouse_mode>`                             |
+   +----------------------------------------+--------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                | :ref:`use_accumulated_input<class_Input_property_use_accumulated_input>`       |
+   +----------------------------------------+--------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
@@ -92,6 +96,8 @@ Methods
    | :ref:`float<class_float>`                                               | :ref:`get_joy_vibration_duration<class_Input_method_get_joy_vibration_duration>` **(** :ref:`int<class_int>` device **)**                                                                                                                                                                                    |
    +-------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>`                                           | :ref:`get_joy_vibration_strength<class_Input_method_get_joy_vibration_strength>` **(** :ref:`int<class_int>` device **)**                                                                                                                                                                                    |
+   +-------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                           | :ref:`get_last_mouse_screen_velocity<class_Input_method_get_last_mouse_screen_velocity>` **(** **)**                                                                                                                                                                                                         |
    +-------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>`                                           | :ref:`get_last_mouse_velocity<class_Input_method_get_last_mouse_velocity>` **(** **)**                                                                                                                                                                                                                       |
    +-------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -378,6 +384,40 @@ Help cursor. Usually a question mark.
 
 Property Descriptions
 ---------------------
+
+.. _class_Input_property_emulate_mouse_from_touch:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **emulate_mouse_from_touch**
+
+.. rst-class:: classref-property-setget
+
+- void **set_emulate_mouse_from_touch** **(** :ref:`bool<class_bool>` value **)**
+- :ref:`bool<class_bool>` **is_emulating_mouse_from_touch** **(** **)**
+
+If ``true``, sends mouse input events when tapping or swiping on the touchscreen. See also :ref:`ProjectSettings.input_devices/pointing/emulate_mouse_from_touch<class_ProjectSettings_property_input_devices/pointing/emulate_mouse_from_touch>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Input_property_emulate_touch_from_mouse:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **emulate_touch_from_mouse**
+
+.. rst-class:: classref-property-setget
+
+- void **set_emulate_touch_from_mouse** **(** :ref:`bool<class_bool>` value **)**
+- :ref:`bool<class_bool>` **is_emulating_touch_from_mouse** **(** **)**
+
+If ``true``, sends touch input events when clicking or dragging the mouse. See also :ref:`ProjectSettings.input_devices/pointing/emulate_touch_from_mouse<class_ProjectSettings_property_input_devices/pointing/emulate_touch_from_mouse>`.
+
+.. rst-class:: classref-item-separator
+
+----
 
 .. _class_Input_property_mouse_mode:
 
@@ -667,6 +707,18 @@ Returns the duration of the current vibration effect in seconds.
 :ref:`Vector2<class_Vector2>` **get_joy_vibration_strength** **(** :ref:`int<class_int>` device **)**
 
 Returns the strength of the joypad vibration: x is the strength of the weak motor, and y is the strength of the strong motor.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Input_method_get_last_mouse_screen_velocity:
+
+.. rst-class:: classref-method
+
+:ref:`Vector2<class_Vector2>` **get_last_mouse_screen_velocity** **(** **)**
+
+Returns the last mouse velocity in screen coordinates. To provide a precise and jitter-free velocity, mouse velocity is only calculated every 0.1s. Therefore, mouse velocity will lag mouse movements.
 
 .. rst-class:: classref-item-separator
 

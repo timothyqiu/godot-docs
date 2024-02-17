@@ -1723,6 +1723,8 @@ If ``true``, the shader will keep the scale set for the mesh. Otherwise, the sca
 
 Controls how the object faces the camera. See :ref:`BillboardMode<enum_BaseMaterial3D_BillboardMode>`.
 
+\ **Note:** When billboarding is enabled and the material also casts shadows, billboards will face **the** camera in the scene when rendering shadows. In scenes with multiple cameras, the intended shadow cannot be determined and this will result in undefined behavior. See `GitHub Pull Request #72638 <https://github.com/godotengine/godot/pull/72638>`__ for details.
+
 \ **Note:** Billboard mode is not suitable for VR because the left-right vector of the camera is not horizontal when the screen is attached to your head instead of on the table. See `GitHub issue #41567 <https://github.com/godotengine/godot/issues/41567>`__ for details.
 
 .. rst-class:: classref-item-separator
@@ -3108,7 +3110,7 @@ If ``true``, enables subsurface scattering transmittance. Only effective if :ref
 - void **set_texture** **(** :ref:`TextureParam<enum_BaseMaterial3D_TextureParam>` param, :ref:`Texture2D<class_Texture2D>` texture **)**
 - :ref:`Texture2D<class_Texture2D>` **get_texture** **(** :ref:`TextureParam<enum_BaseMaterial3D_TextureParam>` param **)** |const|
 
-The texture to use for multiplying the intensity of the subsurface scattering transmitteance intensity. See also :ref:`subsurf_scatter_texture<class_BaseMaterial3D_property_subsurf_scatter_texture>`. Ignored if :ref:`subsurf_scatter_skin_mode<class_BaseMaterial3D_property_subsurf_scatter_skin_mode>` is ``true``.
+The texture to use for multiplying the intensity of the subsurface scattering transmittance intensity. See also :ref:`subsurf_scatter_texture<class_BaseMaterial3D_property_subsurf_scatter_texture>`. Ignored if :ref:`subsurf_scatter_skin_mode<class_BaseMaterial3D_property_subsurf_scatter_skin_mode>` is ``true``.
 
 .. rst-class:: classref-item-separator
 
