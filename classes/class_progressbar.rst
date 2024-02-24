@@ -29,11 +29,15 @@ Properties
 .. table::
    :widths: auto
 
-   +-------------------------+--------------------------------------------------------------------+----------+
-   | :ref:`int<class_int>`   | :ref:`fill_mode<class_ProgressBar_property_fill_mode>`             | ``0``    |
-   +-------------------------+--------------------------------------------------------------------+----------+
-   | :ref:`bool<class_bool>` | :ref:`show_percentage<class_ProgressBar_property_show_percentage>` | ``true`` |
-   +-------------------------+--------------------------------------------------------------------+----------+
+   +-------------------------+----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>` | :ref:`editor_preview_indeterminate<class_ProgressBar_property_editor_preview_indeterminate>` |           |
+   +-------------------------+----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`   | :ref:`fill_mode<class_ProgressBar_property_fill_mode>`                                       | ``0``     |
+   +-------------------------+----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>` | :ref:`indeterminate<class_ProgressBar_property_indeterminate>`                               | ``false`` |
+   +-------------------------+----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>` | :ref:`show_percentage<class_ProgressBar_property_show_percentage>`                           | ``true``  |
+   +-------------------------+----------------------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
@@ -115,6 +119,23 @@ The progress fills from bottom to top.
 Property Descriptions
 ---------------------
 
+.. _class_ProgressBar_property_editor_preview_indeterminate:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **editor_preview_indeterminate**
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_editor_preview_indeterminate**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_editor_preview_indeterminate_enabled**\ (\ )
+
+If ``false``, the :ref:`indeterminate<class_ProgressBar_property_indeterminate>` animation will be paused in the editor.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProgressBar_property_fill_mode:
 
 .. rst-class:: classref-property
@@ -123,10 +144,27 @@ Property Descriptions
 
 .. rst-class:: classref-property-setget
 
-- void **set_fill_mode** **(** :ref:`int<class_int>` value **)**
-- :ref:`int<class_int>` **get_fill_mode** **(** **)**
+- |void| **set_fill_mode**\ (\ value\: :ref:`int<class_int>`\ )
+- :ref:`int<class_int>` **get_fill_mode**\ (\ )
 
 The fill direction. See :ref:`FillMode<enum_ProgressBar_FillMode>` for possible values.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProgressBar_property_indeterminate:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **indeterminate** = ``false``
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_indeterminate**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_indeterminate**\ (\ )
+
+When set to ``true``, the progress bar indicates that something is happening with an animation, but does not show the fill percentage or value.
 
 .. rst-class:: classref-item-separator
 
@@ -140,8 +178,8 @@ The fill direction. See :ref:`FillMode<enum_ProgressBar_FillMode>` for possible 
 
 .. rst-class:: classref-property-setget
 
-- void **set_show_percentage** **(** :ref:`bool<class_bool>` value **)**
-- :ref:`bool<class_bool>` **is_percentage_shown** **(** **)**
+- |void| **set_show_percentage**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_percentage_shown**\ (\ )
 
 If ``true``, the fill percentage is displayed on the bar.
 
@@ -243,3 +281,4 @@ The style of the progress (i.e. the part that fills the bar).
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
 .. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
+.. |void| replace:: :abbr:`void (No return value.)`

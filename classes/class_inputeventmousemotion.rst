@@ -42,17 +42,21 @@ Properties
 .. table::
    :widths: auto
 
-   +-------------------------------+------------------------------------------------------------------------+-------------------+
-   | :ref:`bool<class_bool>`       | :ref:`pen_inverted<class_InputEventMouseMotion_property_pen_inverted>` | ``false``         |
-   +-------------------------------+------------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`     | :ref:`pressure<class_InputEventMouseMotion_property_pressure>`         | ``0.0``           |
-   +-------------------------------+------------------------------------------------------------------------+-------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`relative<class_InputEventMouseMotion_property_relative>`         | ``Vector2(0, 0)`` |
-   +-------------------------------+------------------------------------------------------------------------+-------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`tilt<class_InputEventMouseMotion_property_tilt>`                 | ``Vector2(0, 0)`` |
-   +-------------------------------+------------------------------------------------------------------------+-------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`velocity<class_InputEventMouseMotion_property_velocity>`         | ``Vector2(0, 0)`` |
-   +-------------------------------+------------------------------------------------------------------------+-------------------+
+   +-------------------------------+------------------------------------------------------------------------------+-------------------+
+   | :ref:`bool<class_bool>`       | :ref:`pen_inverted<class_InputEventMouseMotion_property_pen_inverted>`       | ``false``         |
+   +-------------------------------+------------------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`     | :ref:`pressure<class_InputEventMouseMotion_property_pressure>`               | ``0.0``           |
+   +-------------------------------+------------------------------------------------------------------------------+-------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`relative<class_InputEventMouseMotion_property_relative>`               | ``Vector2(0, 0)`` |
+   +-------------------------------+------------------------------------------------------------------------------+-------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`screen_relative<class_InputEventMouseMotion_property_screen_relative>` | ``Vector2(0, 0)`` |
+   +-------------------------------+------------------------------------------------------------------------------+-------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`screen_velocity<class_InputEventMouseMotion_property_screen_velocity>` | ``Vector2(0, 0)`` |
+   +-------------------------------+------------------------------------------------------------------------------+-------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`tilt<class_InputEventMouseMotion_property_tilt>`                       | ``Vector2(0, 0)`` |
+   +-------------------------------+------------------------------------------------------------------------------+-------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`velocity<class_InputEventMouseMotion_property_velocity>`               | ``Vector2(0, 0)`` |
+   +-------------------------------+------------------------------------------------------------------------------+-------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -71,8 +75,8 @@ Property Descriptions
 
 .. rst-class:: classref-property-setget
 
-- void **set_pen_inverted** **(** :ref:`bool<class_bool>` value **)**
-- :ref:`bool<class_bool>` **get_pen_inverted** **(** **)**
+- |void| **set_pen_inverted**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **get_pen_inverted**\ (\ )
 
 Returns ``true`` when using the eraser end of a stylus pen.
 
@@ -90,8 +94,8 @@ Returns ``true`` when using the eraser end of a stylus pen.
 
 .. rst-class:: classref-property-setget
 
-- void **set_pressure** **(** :ref:`float<class_float>` value **)**
-- :ref:`float<class_float>` **get_pressure** **(** **)**
+- |void| **set_pressure**\ (\ value\: :ref:`float<class_float>`\ )
+- :ref:`float<class_float>` **get_pressure**\ (\ )
 
 Represents the pressure the user puts on the pen. Ranges from ``0.0`` to ``1.0``.
 
@@ -107,12 +111,50 @@ Represents the pressure the user puts on the pen. Ranges from ``0.0`` to ``1.0``
 
 .. rst-class:: classref-property-setget
 
-- void **set_relative** **(** :ref:`Vector2<class_Vector2>` value **)**
-- :ref:`Vector2<class_Vector2>` **get_relative** **(** **)**
+- |void| **set_relative**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
+- :ref:`Vector2<class_Vector2>` **get_relative**\ (\ )
 
 The mouse position relative to the previous position (position at the last frame).
 
 \ **Note:** Since **InputEventMouseMotion** is only emitted when the mouse moves, the last event won't have a relative position of ``Vector2(0, 0)`` when the user stops moving the mouse.
+
+\ **Note:** :ref:`relative<class_InputEventMouseMotion_property_relative>` is automatically scaled according to the content scale factor, which is defined by the project's stretch mode settings. This means mouse sensitivity will appear different depending on resolution when using :ref:`relative<class_InputEventMouseMotion_property_relative>` in a script that handles mouse aiming with the :ref:`Input.MOUSE_MODE_CAPTURED<class_Input_constant_MOUSE_MODE_CAPTURED>` mouse mode. To avoid this, use :ref:`screen_relative<class_InputEventMouseMotion_property_screen_relative>` instead.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_InputEventMouseMotion_property_screen_relative:
+
+.. rst-class:: classref-property
+
+:ref:`Vector2<class_Vector2>` **screen_relative** = ``Vector2(0, 0)``
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_screen_relative**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
+- :ref:`Vector2<class_Vector2>` **get_screen_relative**\ (\ )
+
+The unscaled mouse position relative to the previous position in the coordinate system of the screen (position at the last frame).
+
+\ **Note:** Since **InputEventMouseMotion** is only emitted when the mouse moves, the last event won't have a relative position of ``Vector2(0, 0)`` when the user stops moving the mouse. This coordinate is *not* scaled according to the content scale factor or calls to :ref:`InputEvent.xformed_by<class_InputEvent_method_xformed_by>`. This should be preferred over :ref:`relative<class_InputEventMouseMotion_property_relative>` for mouse aiming when using the :ref:`Input.MOUSE_MODE_CAPTURED<class_Input_constant_MOUSE_MODE_CAPTURED>` mouse mode, regardless of the project's stretch mode.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_InputEventMouseMotion_property_screen_velocity:
+
+.. rst-class:: classref-property
+
+:ref:`Vector2<class_Vector2>` **screen_velocity** = ``Vector2(0, 0)``
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_screen_velocity**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
+- :ref:`Vector2<class_Vector2>` **get_screen_velocity**\ (\ )
+
+The unscaled mouse velocity in pixels per second in screen coordinates. This velocity is *not* scaled according to the content scale factor or calls to :ref:`InputEvent.xformed_by<class_InputEvent_method_xformed_by>`. This should be preferred over :ref:`velocity<class_InputEventMouseMotion_property_velocity>` for mouse aiming when using the :ref:`Input.MOUSE_MODE_CAPTURED<class_Input_constant_MOUSE_MODE_CAPTURED>` mouse mode, regardless of the project's stretch mode.
 
 .. rst-class:: classref-item-separator
 
@@ -126,8 +168,8 @@ The mouse position relative to the previous position (position at the last frame
 
 .. rst-class:: classref-property-setget
 
-- void **set_tilt** **(** :ref:`Vector2<class_Vector2>` value **)**
-- :ref:`Vector2<class_Vector2>` **get_tilt** **(** **)**
+- |void| **set_tilt**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
+- :ref:`Vector2<class_Vector2>` **get_tilt**\ (\ )
 
 Represents the angles of tilt of the pen. Positive X-coordinate value indicates a tilt to the right. Positive Y-coordinate value indicates a tilt toward the user. Ranges from ``-1.0`` to ``1.0`` for both axes.
 
@@ -143,10 +185,12 @@ Represents the angles of tilt of the pen. Positive X-coordinate value indicates 
 
 .. rst-class:: classref-property-setget
 
-- void **set_velocity** **(** :ref:`Vector2<class_Vector2>` value **)**
-- :ref:`Vector2<class_Vector2>` **get_velocity** **(** **)**
+- |void| **set_velocity**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
+- :ref:`Vector2<class_Vector2>` **get_velocity**\ (\ )
 
 The mouse velocity in pixels per second.
+
+\ **Note:** :ref:`velocity<class_InputEventMouseMotion_property_velocity>` is automatically scaled according to the content scale factor, which is defined by the project's stretch mode settings. This means mouse sensitivity will appear different depending on resolution when using :ref:`velocity<class_InputEventMouseMotion_property_velocity>` in a script that handles mouse aiming with the :ref:`Input.MOUSE_MODE_CAPTURED<class_Input_constant_MOUSE_MODE_CAPTURED>` mouse mode. To avoid this, use :ref:`screen_velocity<class_InputEventMouseMotion_property_screen_velocity>` instead.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
@@ -155,3 +199,4 @@ The mouse velocity in pixels per second.
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
 .. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
+.. |void| replace:: :abbr:`void (No return value.)`
