@@ -19,7 +19,7 @@ Imports a glTF, FBX, Collada or Blender 3D scene.
 Description
 -----------
 
-See also :ref:`ResourceImporterOBJ<class_ResourceImporterOBJ>`, which is used for OBJ models that can be imported as a standalone :ref:`Mesh<class_Mesh>` or a scene.
+See also :ref:`ResourceImporterOBJ<class_ResourceImporterOBJ>`, which is used for OBJ models that can be imported as an independent :ref:`Mesh<class_Mesh>` or a scene.
 
 Additional options (such as extracting individual meshes or materials to files) are available in the **Advanced Import Settings** dialog. This dialog can be accessed by double-clicking a 3D scene in the FileSystem dock or by selecting a 3D scene in the FileSystem dock, going to the Import dock and choosing **Advanced**.
 
@@ -66,6 +66,8 @@ Properties
    | :ref:`float<class_float>`           | :ref:`meshes/lightmap_texel_size<class_ResourceImporterScene_property_meshes/lightmap_texel_size>`               | ``0.2``   |
    +-------------------------------------+------------------------------------------------------------------------------------------------------------------+-----------+
    | :ref:`bool<class_bool>`             | :ref:`nodes/apply_root_scale<class_ResourceImporterScene_property_nodes/apply_root_scale>`                       | ``true``  |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`             | :ref:`nodes/import_as_skeleton_bones<class_ResourceImporterScene_property_nodes/import_as_skeleton_bones>`       | ``false`` |
    +-------------------------------------+------------------------------------------------------------------------------------------------------------------+-----------+
    | :ref:`String<class_String>`         | :ref:`nodes/root_name<class_ResourceImporterScene_property_nodes/root_name>`                                     | ``""``    |
    +-------------------------------------+------------------------------------------------------------------------------------------------------------------+-----------+
@@ -245,6 +247,18 @@ If ``true``, :ref:`nodes/root_scale<class_ResourceImporterScene_property_nodes/r
 
 ----
 
+.. _class_ResourceImporterScene_property_nodes/import_as_skeleton_bones:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **nodes/import_as_skeleton_bones** = ``false``
+
+Treat all nodes in the imported scene as if they are bones within a single :ref:`Skeleton3D<class_Skeleton3D>`. Can be used to guarantee that imported animations target skeleton bones rather than nodes. May also be used to assign the ``"Root"`` bone in a :ref:`BoneMap<class_BoneMap>`. See :doc:`Retargeting 3D Skeletons <../tutorials/assets_pipeline/retargeting_3d_skeletons>` for more information.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ResourceImporterScene_property_nodes/root_name:
 
 .. rst-class:: classref-property
@@ -304,3 +318,4 @@ Together, this information is enough to tell Godot how to use the bone poses in 
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
 .. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
+.. |void| replace:: :abbr:`void (No return value.)`
