@@ -269,7 +269,7 @@ Unimplemented. This currently has no effect when changed.
 
 :ref:`bool<class_bool>` **process/fix_alpha_border** = ``true``
 
-If ``true``, puts pixels of the same surrounding color in transition from transparent to opaque areas. For textures displayed with bilinear filtering, this helps mitigate the outline effect when exporting images from an image editor.
+If ``true``, puts pixels of the same surrounding color in transition from transparent to opaque areas. For textures displayed with bilinear filtering, this helps to reduce the outline effect when exporting images from an image editor.
 
 It's recommended to leave this enabled (as it is by default), unless this causes issues for a particular image.
 
@@ -394,3 +394,4 @@ The scale the SVG should be rendered at, with ``1.0`` being the original design 
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
 .. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
+.. |void| replace:: :abbr:`void (No return value.)`

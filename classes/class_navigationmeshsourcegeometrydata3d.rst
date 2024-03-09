@@ -10,6 +10,8 @@
 NavigationMeshSourceGeometryData3D
 ==================================
 
+**Experimental:** This class may be changed or removed in future versions.
+
 **Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
 Container for parsed source geometry data used in navigation mesh baking.
@@ -29,25 +31,27 @@ Methods
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | void                                                | :ref:`add_faces<class_NavigationMeshSourceGeometryData3D_method_add_faces>` **(** :ref:`PackedVector3Array<class_PackedVector3Array>` faces, :ref:`Transform3D<class_Transform3D>` xform **)** |
-   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | void                                                | :ref:`add_mesh<class_NavigationMeshSourceGeometryData3D_method_add_mesh>` **(** :ref:`Mesh<class_Mesh>` mesh, :ref:`Transform3D<class_Transform3D>` xform **)**                                |
-   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | void                                                | :ref:`add_mesh_array<class_NavigationMeshSourceGeometryData3D_method_add_mesh_array>` **(** :ref:`Array<class_Array>` mesh_array, :ref:`Transform3D<class_Transform3D>` xform **)**            |
-   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | void                                                | :ref:`clear<class_NavigationMeshSourceGeometryData3D_method_clear>` **(** **)**                                                                                                                |
-   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedInt32Array<class_PackedInt32Array>`     | :ref:`get_indices<class_NavigationMeshSourceGeometryData3D_method_get_indices>` **(** **)** |const|                                                                                            |
-   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedFloat32Array<class_PackedFloat32Array>` | :ref:`get_vertices<class_NavigationMeshSourceGeometryData3D_method_get_vertices>` **(** **)** |const|                                                                                          |
-   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`has_data<class_NavigationMeshSourceGeometryData3D_method_has_data>` **(** **)**                                                                                                          |
-   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | void                                                | :ref:`set_indices<class_NavigationMeshSourceGeometryData3D_method_set_indices>` **(** :ref:`PackedInt32Array<class_PackedInt32Array>` indices **)**                                            |
-   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | void                                                | :ref:`set_vertices<class_NavigationMeshSourceGeometryData3D_method_set_vertices>` **(** :ref:`PackedFloat32Array<class_PackedFloat32Array>` vertices **)**                                     |
-   +-----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`add_faces<class_NavigationMeshSourceGeometryData3D_method_add_faces>`\ (\ faces\: :ref:`PackedVector3Array<class_PackedVector3Array>`, xform\: :ref:`Transform3D<class_Transform3D>`\ ) |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`add_mesh<class_NavigationMeshSourceGeometryData3D_method_add_mesh>`\ (\ mesh\: :ref:`Mesh<class_Mesh>`, xform\: :ref:`Transform3D<class_Transform3D>`\ )                                |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`add_mesh_array<class_NavigationMeshSourceGeometryData3D_method_add_mesh_array>`\ (\ mesh_array\: :ref:`Array<class_Array>`, xform\: :ref:`Transform3D<class_Transform3D>`\ )            |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`clear<class_NavigationMeshSourceGeometryData3D_method_clear>`\ (\ )                                                                                                                     |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedInt32Array<class_PackedInt32Array>`     | :ref:`get_indices<class_NavigationMeshSourceGeometryData3D_method_get_indices>`\ (\ ) |const|                                                                                                 |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedFloat32Array<class_PackedFloat32Array>` | :ref:`get_vertices<class_NavigationMeshSourceGeometryData3D_method_get_vertices>`\ (\ ) |const|                                                                                               |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                             | :ref:`has_data<class_NavigationMeshSourceGeometryData3D_method_has_data>`\ (\ )                                                                                                               |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`merge<class_NavigationMeshSourceGeometryData3D_method_merge>`\ (\ other_geometry\: :ref:`NavigationMeshSourceGeometryData3D<class_NavigationMeshSourceGeometryData3D>`\ )               |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`set_indices<class_NavigationMeshSourceGeometryData3D_method_set_indices>`\ (\ indices\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ )                                              |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`set_vertices<class_NavigationMeshSourceGeometryData3D_method_set_vertices>`\ (\ vertices\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ )                                       |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -62,7 +66,7 @@ Method Descriptions
 
 .. rst-class:: classref-method
 
-void **add_faces** **(** :ref:`PackedVector3Array<class_PackedVector3Array>` faces, :ref:`Transform3D<class_Transform3D>` xform **)**
+|void| **add_faces**\ (\ faces\: :ref:`PackedVector3Array<class_PackedVector3Array>`, xform\: :ref:`Transform3D<class_Transform3D>`\ )
 
 Adds an array of vertex positions to the geometry data for navigation mesh baking to form triangulated faces. For each face the array must have three vertex positions in clockwise winding order. Since :ref:`NavigationMesh<class_NavigationMesh>` resources have no transform, all vertex positions need to be offset by the node's transform using ``xform``.
 
@@ -74,7 +78,7 @@ Adds an array of vertex positions to the geometry data for navigation mesh bakin
 
 .. rst-class:: classref-method
 
-void **add_mesh** **(** :ref:`Mesh<class_Mesh>` mesh, :ref:`Transform3D<class_Transform3D>` xform **)**
+|void| **add_mesh**\ (\ mesh\: :ref:`Mesh<class_Mesh>`, xform\: :ref:`Transform3D<class_Transform3D>`\ )
 
 Adds the geometry data of a :ref:`Mesh<class_Mesh>` resource to the navigation mesh baking data. The mesh must have valid triangulated mesh data to be considered. Since :ref:`NavigationMesh<class_NavigationMesh>` resources have no transform, all vertex positions need to be offset by the node's transform using ``xform``.
 
@@ -86,7 +90,7 @@ Adds the geometry data of a :ref:`Mesh<class_Mesh>` resource to the navigation m
 
 .. rst-class:: classref-method
 
-void **add_mesh_array** **(** :ref:`Array<class_Array>` mesh_array, :ref:`Transform3D<class_Transform3D>` xform **)**
+|void| **add_mesh_array**\ (\ mesh_array\: :ref:`Array<class_Array>`, xform\: :ref:`Transform3D<class_Transform3D>`\ )
 
 Adds an :ref:`Array<class_Array>` the size of :ref:`Mesh.ARRAY_MAX<class_Mesh_constant_ARRAY_MAX>` and with vertices at index :ref:`Mesh.ARRAY_VERTEX<class_Mesh_constant_ARRAY_VERTEX>` and indices at index :ref:`Mesh.ARRAY_INDEX<class_Mesh_constant_ARRAY_INDEX>` to the navigation mesh baking data. The array must have valid triangulated mesh data to be considered. Since :ref:`NavigationMesh<class_NavigationMesh>` resources have no transform, all vertex positions need to be offset by the node's transform using ``xform``.
 
@@ -98,7 +102,7 @@ Adds an :ref:`Array<class_Array>` the size of :ref:`Mesh.ARRAY_MAX<class_Mesh_co
 
 .. rst-class:: classref-method
 
-void **clear** **(** **)**
+|void| **clear**\ (\ )
 
 Clears the internal data.
 
@@ -110,7 +114,7 @@ Clears the internal data.
 
 .. rst-class:: classref-method
 
-:ref:`PackedInt32Array<class_PackedInt32Array>` **get_indices** **(** **)** |const|
+:ref:`PackedInt32Array<class_PackedInt32Array>` **get_indices**\ (\ ) |const|
 
 Returns the parsed source geometry data indices array.
 
@@ -122,7 +126,7 @@ Returns the parsed source geometry data indices array.
 
 .. rst-class:: classref-method
 
-:ref:`PackedFloat32Array<class_PackedFloat32Array>` **get_vertices** **(** **)** |const|
+:ref:`PackedFloat32Array<class_PackedFloat32Array>` **get_vertices**\ (\ ) |const|
 
 Returns the parsed source geometry data vertices array.
 
@@ -134,9 +138,21 @@ Returns the parsed source geometry data vertices array.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **has_data** **(** **)**
+:ref:`bool<class_bool>` **has_data**\ (\ )
 
 Returns ``true`` when parsed source geometry data exists.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_NavigationMeshSourceGeometryData3D_method_merge:
+
+.. rst-class:: classref-method
+
+|void| **merge**\ (\ other_geometry\: :ref:`NavigationMeshSourceGeometryData3D<class_NavigationMeshSourceGeometryData3D>`\ )
+
+Adds the geometry data of another **NavigationMeshSourceGeometryData3D** to the navigation mesh baking data.
 
 .. rst-class:: classref-item-separator
 
@@ -146,7 +162,7 @@ Returns ``true`` when parsed source geometry data exists.
 
 .. rst-class:: classref-method
 
-void **set_indices** **(** :ref:`PackedInt32Array<class_PackedInt32Array>` indices **)**
+|void| **set_indices**\ (\ indices\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ )
 
 Sets the parsed source geometry data indices. The indices need to be matched with appropriated vertices.
 
@@ -160,7 +176,7 @@ Sets the parsed source geometry data indices. The indices need to be matched wit
 
 .. rst-class:: classref-method
 
-void **set_vertices** **(** :ref:`PackedFloat32Array<class_PackedFloat32Array>` vertices **)**
+|void| **set_vertices**\ (\ vertices\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ )
 
 Sets the parsed source geometry data vertices. The vertices need to be matched with appropriated indices.
 
@@ -173,3 +189,4 @@ Sets the parsed source geometry data vertices. The vertices need to be matched w
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
 .. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
+.. |void| replace:: :abbr:`void (No return value.)`

@@ -10,6 +10,8 @@
 NavigationMeshSourceGeometryData2D
 ==================================
 
+**Experimental:** This class may be changed or removed in future versions.
+
 **Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
 Container for parsed source geometry data used in navigation mesh baking.
@@ -29,23 +31,25 @@ Methods
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | void                                                  | :ref:`add_obstruction_outline<class_NavigationMeshSourceGeometryData2D_method_add_obstruction_outline>` **(** :ref:`PackedVector2Array<class_PackedVector2Array>` shape_outline **)**            |
-   +-------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | void                                                  | :ref:`add_traversable_outline<class_NavigationMeshSourceGeometryData2D_method_add_traversable_outline>` **(** :ref:`PackedVector2Array<class_PackedVector2Array>` shape_outline **)**            |
-   +-------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | void                                                  | :ref:`clear<class_NavigationMeshSourceGeometryData2D_method_clear>` **(** **)**                                                                                                                  |
-   +-------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedVector2Array[]<class_PackedVector2Array>` | :ref:`get_obstruction_outlines<class_NavigationMeshSourceGeometryData2D_method_get_obstruction_outlines>` **(** **)** |const|                                                                    |
-   +-------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedVector2Array[]<class_PackedVector2Array>` | :ref:`get_traversable_outlines<class_NavigationMeshSourceGeometryData2D_method_get_traversable_outlines>` **(** **)** |const|                                                                    |
-   +-------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                               | :ref:`has_data<class_NavigationMeshSourceGeometryData2D_method_has_data>` **(** **)**                                                                                                            |
-   +-------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | void                                                  | :ref:`set_obstruction_outlines<class_NavigationMeshSourceGeometryData2D_method_set_obstruction_outlines>` **(** :ref:`PackedVector2Array[]<class_PackedVector2Array>` obstruction_outlines **)** |
-   +-------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | void                                                  | :ref:`set_traversable_outlines<class_NavigationMeshSourceGeometryData2D_method_set_traversable_outlines>` **(** :ref:`PackedVector2Array[]<class_PackedVector2Array>` traversable_outlines **)** |
-   +-------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +----------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                           | :ref:`add_obstruction_outline<class_NavigationMeshSourceGeometryData2D_method_add_obstruction_outline>`\ (\ shape_outline\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )                                       |
+   +----------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                           | :ref:`add_traversable_outline<class_NavigationMeshSourceGeometryData2D_method_add_traversable_outline>`\ (\ shape_outline\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )                                       |
+   +----------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                           | :ref:`clear<class_NavigationMeshSourceGeometryData2D_method_clear>`\ (\ )                                                                                                                                                |
+   +----------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`\[:ref:`PackedVector2Array<class_PackedVector2Array>`\] | :ref:`get_obstruction_outlines<class_NavigationMeshSourceGeometryData2D_method_get_obstruction_outlines>`\ (\ ) |const|                                                                                                  |
+   +----------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`\[:ref:`PackedVector2Array<class_PackedVector2Array>`\] | :ref:`get_traversable_outlines<class_NavigationMeshSourceGeometryData2D_method_get_traversable_outlines>`\ (\ ) |const|                                                                                                  |
+   +----------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                          | :ref:`has_data<class_NavigationMeshSourceGeometryData2D_method_has_data>`\ (\ )                                                                                                                                          |
+   +----------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                           | :ref:`merge<class_NavigationMeshSourceGeometryData2D_method_merge>`\ (\ other_geometry\: :ref:`NavigationMeshSourceGeometryData2D<class_NavigationMeshSourceGeometryData2D>`\ )                                          |
+   +----------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                           | :ref:`set_obstruction_outlines<class_NavigationMeshSourceGeometryData2D_method_set_obstruction_outlines>`\ (\ obstruction_outlines\: :ref:`Array<class_Array>`\[:ref:`PackedVector2Array<class_PackedVector2Array>`\]\ ) |
+   +----------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                           | :ref:`set_traversable_outlines<class_NavigationMeshSourceGeometryData2D_method_set_traversable_outlines>`\ (\ traversable_outlines\: :ref:`Array<class_Array>`\[:ref:`PackedVector2Array<class_PackedVector2Array>`\]\ ) |
+   +----------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -60,7 +64,7 @@ Method Descriptions
 
 .. rst-class:: classref-method
 
-void **add_obstruction_outline** **(** :ref:`PackedVector2Array<class_PackedVector2Array>` shape_outline **)**
+|void| **add_obstruction_outline**\ (\ shape_outline\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )
 
 Adds the outline points of a shape as obstructed area.
 
@@ -72,7 +76,7 @@ Adds the outline points of a shape as obstructed area.
 
 .. rst-class:: classref-method
 
-void **add_traversable_outline** **(** :ref:`PackedVector2Array<class_PackedVector2Array>` shape_outline **)**
+|void| **add_traversable_outline**\ (\ shape_outline\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )
 
 Adds the outline points of a shape as traversable area.
 
@@ -84,7 +88,7 @@ Adds the outline points of a shape as traversable area.
 
 .. rst-class:: classref-method
 
-void **clear** **(** **)**
+|void| **clear**\ (\ )
 
 Clears the internal data.
 
@@ -96,7 +100,7 @@ Clears the internal data.
 
 .. rst-class:: classref-method
 
-:ref:`PackedVector2Array[]<class_PackedVector2Array>` **get_obstruction_outlines** **(** **)** |const|
+:ref:`Array<class_Array>`\[:ref:`PackedVector2Array<class_PackedVector2Array>`\] **get_obstruction_outlines**\ (\ ) |const|
 
 Returns all the obstructed area outlines arrays.
 
@@ -108,7 +112,7 @@ Returns all the obstructed area outlines arrays.
 
 .. rst-class:: classref-method
 
-:ref:`PackedVector2Array[]<class_PackedVector2Array>` **get_traversable_outlines** **(** **)** |const|
+:ref:`Array<class_Array>`\[:ref:`PackedVector2Array<class_PackedVector2Array>`\] **get_traversable_outlines**\ (\ ) |const|
 
 Returns all the traversable area outlines arrays.
 
@@ -120,9 +124,21 @@ Returns all the traversable area outlines arrays.
 
 .. rst-class:: classref-method
 
-:ref:`bool<class_bool>` **has_data** **(** **)**
+:ref:`bool<class_bool>` **has_data**\ (\ )
 
 Returns ``true`` when parsed source geometry data exists.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_NavigationMeshSourceGeometryData2D_method_merge:
+
+.. rst-class:: classref-method
+
+|void| **merge**\ (\ other_geometry\: :ref:`NavigationMeshSourceGeometryData2D<class_NavigationMeshSourceGeometryData2D>`\ )
+
+Adds the geometry data of another **NavigationMeshSourceGeometryData2D** to the navigation mesh baking data.
 
 .. rst-class:: classref-item-separator
 
@@ -132,7 +148,7 @@ Returns ``true`` when parsed source geometry data exists.
 
 .. rst-class:: classref-method
 
-void **set_obstruction_outlines** **(** :ref:`PackedVector2Array[]<class_PackedVector2Array>` obstruction_outlines **)**
+|void| **set_obstruction_outlines**\ (\ obstruction_outlines\: :ref:`Array<class_Array>`\[:ref:`PackedVector2Array<class_PackedVector2Array>`\]\ )
 
 Sets all the obstructed area outlines arrays.
 
@@ -144,7 +160,7 @@ Sets all the obstructed area outlines arrays.
 
 .. rst-class:: classref-method
 
-void **set_traversable_outlines** **(** :ref:`PackedVector2Array[]<class_PackedVector2Array>` traversable_outlines **)**
+|void| **set_traversable_outlines**\ (\ traversable_outlines\: :ref:`Array<class_Array>`\[:ref:`PackedVector2Array<class_PackedVector2Array>`\]\ )
 
 Sets all the traversable area outlines arrays.
 
@@ -155,3 +171,4 @@ Sets all the traversable area outlines arrays.
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
 .. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
+.. |void| replace:: :abbr:`void (No return value.)`
