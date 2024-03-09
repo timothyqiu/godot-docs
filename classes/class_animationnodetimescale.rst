@@ -19,7 +19,7 @@ A time-scaling animation node used in :ref:`AnimationTree<class_AnimationTree>`.
 Description
 -----------
 
-Allows to scale the speed of the animation (or reverse it) in any children :ref:`AnimationNode<class_AnimationNode>`\ s. Setting it to ``0.0`` will pause the animation.
+Allows to scale the speed of the animation (or reverse it) in any child :ref:`AnimationNode<class_AnimationNode>`\ s. Setting it to ``0.0`` will pause the animation.
 
 .. rst-class:: classref-introduction-group
 
@@ -37,3 +37,4 @@ Tutorials
 .. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
 .. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
 .. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
+.. |void| replace:: :abbr:`void (No return value.)`
