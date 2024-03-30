@@ -320,6 +320,7 @@ Resources
     class_audioeffecteq21
     class_audioeffecteq6
     class_audioeffectfilter
+    class_audioeffecthardlimiter
     class_audioeffecthighpassfilter
     class_audioeffecthighshelffilter
     class_audioeffectlimiter
@@ -335,11 +336,14 @@ Resources
     class_audioeffectstereoenhance
     class_audiostream
     class_audiostreamgenerator
+    class_audiostreaminteractive
     class_audiostreammicrophone
     class_audiostreammp3
     class_audiostreamoggvorbis
+    class_audiostreamplaylist
     class_audiostreampolyphonic
     class_audiostreamrandomizer
+    class_audiostreamsynchronized
     class_audiostreamwav
     class_basematerial3d
     class_bitmap
@@ -691,9 +695,12 @@ Other objects
     class_audioserver
     class_audiostreamgeneratorplayback
     class_audiostreamplayback
+    class_audiostreamplaybackinteractive
     class_audiostreamplaybackoggvorbis
+    class_audiostreamplaybackplaylist
     class_audiostreamplaybackpolyphonic
     class_audiostreamplaybackresampled
+    class_audiostreamplaybacksynchronized
     class_callbacktweener
     class_camerafeed
     class_cameraserver
