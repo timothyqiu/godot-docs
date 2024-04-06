@@ -679,6 +679,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_text_select_word_under_caret.macos<class_ProjectSettings_property_input/ui_text_select_word_under_caret.macos>`                                                                             |                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_text_skip_selection_for_next_occurrence<class_ProjectSettings_property_input/ui_text_skip_selection_for_next_occurrence>`                                                                   |                                                                                                  |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_text_submit<class_ProjectSettings_property_input/ui_text_submit>`                                                                                                                           |                                                                                                  |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`               | :ref:`input/ui_text_toggle_insert_mode<class_ProjectSettings_property_input/ui_text_toggle_insert_mode>`                                                                                                   |                                                                                                  |
@@ -1167,6 +1169,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`navigation/baking/thread_model/baking_use_multiple_threads<class_ProjectSettings_property_navigation/baking/thread_model/baking_use_multiple_threads>`                                               | ``true``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`navigation/baking/use_crash_prevention_checks<class_ProjectSettings_property_navigation/baking/use_crash_prevention_checks>`                                                                         | ``true``                                                                                         |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`network/limits/debugger/max_chars_per_second<class_ProjectSettings_property_network/limits/debugger/max_chars_per_second>`                                                                           | ``32768``                                                                                        |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`network/limits/debugger/max_errors_per_second<class_ProjectSettings_property_network/limits/debugger/max_errors_per_second>`                                                                         | ``400``                                                                                          |
@@ -1244,6 +1248,8 @@ Properties
    | :ref:`bool<class_bool>`                           | :ref:`physics/common/enable_object_picking<class_ProjectSettings_property_physics/common/enable_object_picking>`                                                                                           | ``true``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`physics/common/max_physics_steps_per_frame<class_ProjectSettings_property_physics/common/max_physics_steps_per_frame>`                                                                               | ``8``                                                                                            |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`physics/common/physics_interpolation<class_ProjectSettings_property_physics/common/physics_interpolation>`                                                                                           | ``false``                                                                                        |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                         | :ref:`physics/common/physics_jitter_fix<class_ProjectSettings_property_physics/common/physics_jitter_fix>`                                                                                                 | ``0.5``                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
@@ -1448,6 +1454,8 @@ Properties
    | :ref:`float<class_float>`                         | :ref:`rendering/mesh_lod/lod_change/threshold_pixels<class_ProjectSettings_property_rendering/mesh_lod/lod_change/threshold_pixels>`                                                                       | ``1.0``                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/occlusion_culling/bvh_build_quality<class_ProjectSettings_property_rendering/occlusion_culling/bvh_build_quality>`                                                                         | ``2``                                                                                            |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`rendering/occlusion_culling/jitter_projection<class_ProjectSettings_property_rendering/occlusion_culling/jitter_projection>`                                                                         | ``true``                                                                                         |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/occlusion_culling/occlusion_rays_per_thread<class_ProjectSettings_property_rendering/occlusion_culling/occlusion_rays_per_thread>`                                                         | ``512``                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
@@ -2090,7 +2098,7 @@ Limiting the FPS can be useful to reduce system power consumption, which reduces
 
 If :ref:`display/window/vsync/vsync_mode<class_ProjectSettings_property_display/window/vsync/vsync_mode>` is set to ``Enabled`` or ``Adaptive``, it takes precedence and the forced FPS number cannot exceed the monitor's refresh rate.
 
-If :ref:`display/window/vsync/vsync_mode<class_ProjectSettings_property_display/window/vsync/vsync_mode>` is ``Enabled``, on monitors with variable refresh rate enabled (G-Sync/FreeSync), using a FPS limit a few frames lower than the monitor's refresh rate will `reduce input lag while avoiding tearing <https://blurbusters.com/howto-low-lag-vsync-on/>`__.
+If :ref:`display/window/vsync/vsync_mode<class_ProjectSettings_property_display/window/vsync/vsync_mode>` is ``Enabled``, on monitors with variable refresh rate enabled (G-Sync/FreeSync), using an FPS limit a few frames lower than the monitor's refresh rate will `reduce input lag while avoiding tearing <https://blurbusters.com/howto-low-lag-vsync-on/>`__.
 
 If :ref:`display/window/vsync/vsync_mode<class_ProjectSettings_property_display/window/vsync/vsync_mode>` is ``Disabled``, limiting the FPS to a high value that can be consistently reached on the system can reduce input lag compared to an uncapped framerate. Since this works by ensuring the GPU load is lower than 100%, this latency reduction is only effective in GPU-bottlenecked scenarios, not CPU-bottlenecked scenarios.
 
@@ -2530,6 +2538,8 @@ When set to ``warn`` or ``error``, produces a warning or an error respectively w
 
 :ref:`int<class_int>` **debug/gdscript/warnings/constant_used_as_function** = ``1``
 
+**Deprecated:** This warning is never produced. Instead, an error is generated if the expression type is known at compile time.
+
 When set to ``warn`` or ``error``, produces a warning or an error respectively when a constant is used as a function.
 
 .. rst-class:: classref-item-separator
@@ -2543,6 +2553,8 @@ When set to ``warn`` or ``error``, produces a warning or an error respectively w
 :ref:`int<class_int>` **debug/gdscript/warnings/deprecated_keyword** = ``1``
 
 When set to ``warn`` or ``error``, produces a warning or an error respectively when deprecated keywords are used.
+
+\ **Note:** There are currently no deprecated keywords, so this warning is never produced.
 
 .. rst-class:: classref-item-separator
 
@@ -2589,6 +2601,8 @@ If ``true``, scripts in the ``res://addons`` folder will not generate warnings.
 .. rst-class:: classref-property
 
 :ref:`int<class_int>` **debug/gdscript/warnings/function_used_as_property** = ``1``
+
+**Deprecated:** This warning is never produced. When a function is used as a property, a :ref:`Callable<class_Callable>` is returned.
 
 When set to ``warn`` or ``error``, produces a warning or an error respectively when using a function as if it is a property.
 
@@ -2723,6 +2737,8 @@ When set to ``warn`` or ``error``, produces a warning or an error respectively w
 .. rst-class:: classref-property
 
 :ref:`int<class_int>` **debug/gdscript/warnings/property_used_as_function** = ``1``
+
+**Deprecated:** This warning is never produced. Instead, an error is generated if the expression type is known at compile time.
 
 When set to ``warn`` or ``error``, produces a warning or an error respectively when using a property as if it is a function.
 
@@ -3014,7 +3030,7 @@ When set to ``warn`` or ``error``, produces a warning or an error respectively w
 
 :ref:`int<class_int>` **debug/gdscript/warnings/unused_signal** = ``1``
 
-When set to ``warn`` or ``error``, produces a warning or an error respectively when a signal is declared but never emitted.
+When set to ``warn`` or ``error``, produces a warning or an error respectively when a signal is declared but never explicitly used in the class.
 
 .. rst-class:: classref-item-separator
 
@@ -4420,7 +4436,7 @@ The command-line arguments to append to Godot's own command line when running th
 
 It is possible to make another executable run Godot by using the ``%command%`` placeholder. The placeholder will be replaced with Godot's own command line. Program-specific arguments should be placed *before* the placeholder, whereas Godot-specific arguments should be placed *after* the placeholder.
 
-For example, this can be used to force the project to run on the dedicated GPU in a NVIDIA Optimus system on Linux:
+For example, this can be used to force the project to run on the dedicated GPU in an NVIDIA Optimus system on Linux:
 
 ::
 
@@ -4528,7 +4544,7 @@ Override for :ref:`filesystem/import/blender/enabled<class_ProjectSettings_prope
 
 If ``true``, Autodesk FBX 3D scene files with the ``.fbx`` extension will be imported by converting them to glTF 2.0.
 
-This requires configuring a path to a FBX2glTF executable in the editor settings at :ref:`EditorSettings.filesystem/import/fbx2gltf/fbx2gltf_path<class_EditorSettings_property_filesystem/import/fbx2gltf/fbx2gltf_path>`.
+This requires configuring a path to an FBX2glTF executable in the editor settings at :ref:`EditorSettings.filesystem/import/fbx2gltf/fbx2gltf_path<class_EditorSettings_property_filesystem/import/fbx2gltf/fbx2gltf_path>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5769,6 +5785,24 @@ If no selection is currently active, selects the word currently under the caret 
 :ref:`Dictionary<class_Dictionary>` **input/ui_text_select_word_under_caret.macos**
 
 macOS specific override for the shortcut to select the word currently under the caret.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_input/ui_text_skip_selection_for_next_occurrence:
+
+.. rst-class:: classref-property
+
+:ref:`Dictionary<class_Dictionary>` **input/ui_text_skip_selection_for_next_occurrence**
+
+If no selection is currently active with the last caret in text fields, searches for the next occurrence of the the word currently under the caret and moves the caret to the next occurrence. The action can be performed sequentially for other occurrences of the word under the last caret.
+
+If a selection is currently active with the last caret in text fields, searches for the next occurrence of the selection, adds a caret, selects the next occurrence then deselects the previous selection and its associated caret. The action can be performed sequentially for other occurrences of the selection of the last caret.
+
+The viewport is adjusted to the latest newly added caret.
+
+\ **Note:** Default ``ui_*`` actions cannot be removed as they are necessary for the internal logic of several :ref:`Control<class_Control>`\ s. The events assigned to the action can however be modified.
 
 .. rst-class:: classref-item-separator
 
@@ -8734,6 +8768,18 @@ If enabled the async navmesh baking uses multiple threads.
 
 ----
 
+.. _class_ProjectSettings_property_navigation/baking/use_crash_prevention_checks:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **navigation/baking/use_crash_prevention_checks** = ``true``
+
+If enabled, and baking would potentially lead to an engine crash, the baking will be interrupted and an error message with explanation will be raised.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_network/limits/debugger/max_chars_per_second:
 
 .. rst-class:: classref-property
@@ -9316,6 +9362,24 @@ Controls the maximum number of physics steps that can be simulated each rendered
 
 ----
 
+.. _class_ProjectSettings_property_physics/common/physics_interpolation:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **physics/common/physics_interpolation** = ``false``
+
+If ``true``, the renderer will interpolate the transforms of physics objects between the last two transforms, so that smooth motion is seen even when physics ticks do not coincide with rendered frames. See also :ref:`Node.physics_interpolation_mode<class_Node_property_physics_interpolation_mode>` and :ref:`Node.reset_physics_interpolation<class_Node_method_reset_physics_interpolation>`.
+
+\ **Note:** If ``true``, the physics jitter fix should be disabled by setting :ref:`physics/common/physics_jitter_fix<class_ProjectSettings_property_physics/common/physics_jitter_fix>` to ``0.0``.
+
+\ **Note:** This property is only read when the project starts. To toggle physics interpolation at runtime, set :ref:`SceneTree.physics_interpolation<class_SceneTree_property_physics_interpolation>` instead.
+
+\ **Note:** This feature is currently only implemented in the 2D renderer.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_physics/common/physics_jitter_fix:
 
 .. rst-class:: classref-property
@@ -9324,7 +9388,7 @@ Controls the maximum number of physics steps that can be simulated each rendered
 
 Controls how much physics ticks are synchronized with real time. For 0 or less, the ticks are synchronized. Such values are recommended for network games, where clock synchronization matters. Higher values cause higher deviation of in-game clock and real clock, but allows smoothing out framerate jitters. The default value of 0.5 should be good enough for most; values above 2 could cause the game to react to dropped frames with a noticeable delay and are not recommended.
 
-\ **Note:** For best results, when using a custom physics interpolation solution, the physics jitter fix should be disabled by setting :ref:`physics/common/physics_jitter_fix<class_ProjectSettings_property_physics/common/physics_jitter_fix>` to ``0``.
+\ **Note:** When using a physics interpolation solution (such as enabling :ref:`physics/common/physics_interpolation<class_ProjectSettings_property_physics/common/physics_interpolation>` or using a custom solution), the physics jitter fix should be disabled by setting :ref:`physics/common/physics_jitter_fix<class_ProjectSettings_property_physics/common/physics_jitter_fix>` to ``0.0``.
 
 \ **Note:** This property is only read when the project starts. To change the physics jitter fix at runtime, set :ref:`Engine.physics_jitter_fix<class_Engine_property_physics_jitter_fix>` instead.
 
@@ -10661,6 +10725,18 @@ The automatic LOD bias to use for meshes rendered within the :ref:`ReflectionPro
 The `Bounding Volume Hierarchy <https://en.wikipedia.org/wiki/Bounding_volume_hierarchy>`__ quality to use when rendering the occlusion culling buffer. Higher values will result in more accurate occlusion culling, at the cost of higher CPU usage. See also :ref:`rendering/occlusion_culling/occlusion_rays_per_thread<class_ProjectSettings_property_rendering/occlusion_culling/occlusion_rays_per_thread>`.
 
 \ **Note:** This property is only read when the project starts. To adjust the BVH build quality at runtime, use :ref:`RenderingServer.viewport_set_occlusion_culling_build_quality<class_RenderingServer_method_viewport_set_occlusion_culling_build_quality>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/occlusion_culling/jitter_projection:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **rendering/occlusion_culling/jitter_projection** = ``true``
+
+If ``true``, the projection used for rendering the occlusion buffer will be jittered. This can help prevent objects being incorrectly culled when visible through small gaps.
 
 .. rst-class:: classref-item-separator
 

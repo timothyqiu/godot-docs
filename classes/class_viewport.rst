@@ -514,11 +514,7 @@ enum **RenderInfoType**:
 
 :ref:`RenderInfoType<enum_Viewport_RenderInfoType>` **RENDER_INFO_TYPE_VISIBLE** = ``0``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Visible render pass (excluding shadows).
 
 .. _class_Viewport_constant_RENDER_INFO_TYPE_SHADOW:
 
@@ -526,23 +522,23 @@ enum **RenderInfoType**:
 
 :ref:`RenderInfoType<enum_Viewport_RenderInfoType>` **RENDER_INFO_TYPE_SHADOW** = ``1``
 
-.. container:: contribute
+Shadow render pass. Objects will be rendered several times depending on the number of amounts of lights with shadows and the number of directional shadow splits.
 
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+.. _class_Viewport_constant_RENDER_INFO_TYPE_CANVAS:
 
+.. rst-class:: classref-enumeration-constant
 
+:ref:`RenderInfoType<enum_Viewport_RenderInfoType>` **RENDER_INFO_TYPE_CANVAS** = ``2``
+
+Canvas item rendering. This includes all 2D rendering.
 
 .. _class_Viewport_constant_RENDER_INFO_TYPE_MAX:
 
 .. rst-class:: classref-enumeration-constant
 
-:ref:`RenderInfoType<enum_Viewport_RenderInfoType>` **RENDER_INFO_TYPE_MAX** = ``2``
+:ref:`RenderInfoType<enum_Viewport_RenderInfoType>` **RENDER_INFO_TYPE_MAX** = ``3``
 
-.. container:: contribute
-
-	There is currently no description for this enum. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
-
-
+Represents the size of the :ref:`RenderInfoType<enum_Viewport_RenderInfoType>` enum.
 
 .. rst-class:: classref-item-separator
 
@@ -1781,7 +1777,7 @@ In some cases, debanding may introduce a slightly noticeable dithering pattern. 
 - |void| **set_use_hdr_2d**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_hdr_2d**\ (\ )
 
-If ``true``, 2D rendering will use an high dynamic range (HDR) format framebuffer matching the bit depth of the 3D framebuffer. When using the Forward+ renderer this will be a ``RGBA16`` framebuffer, while when using the Mobile renderer it will be a ``RGB10_A2`` framebuffer. Additionally, 2D rendering will take place in linear color space and will be converted to sRGB space immediately before blitting to the screen (if the Viewport is attached to the screen). Practically speaking, this means that the end result of the Viewport will not be clamped into the ``0-1`` range and can be used in 3D rendering without color space adjustments. This allows 2D rendering to take advantage of effects requiring high dynamic range (e.g. 2D glow) as well as substantially improves the appearance of effects requiring highly detailed gradients.
+If ``true``, 2D rendering will use an high dynamic range (HDR) format framebuffer matching the bit depth of the 3D framebuffer. When using the Forward+ renderer this will be an ``RGBA16`` framebuffer, while when using the Mobile renderer it will be an ``RGB10_A2`` framebuffer. Additionally, 2D rendering will take place in linear color space and will be converted to sRGB space immediately before blitting to the screen (if the Viewport is attached to the screen). Practically speaking, this means that the end result of the Viewport will not be clamped into the ``0-1`` range and can be used in 3D rendering without color space adjustments. This allows 2D rendering to take advantage of effects requiring high dynamic range (e.g. 2D glow) as well as substantially improves the appearance of effects requiring highly detailed gradients.
 
 \ **Note:** This setting will have no effect when using the GL Compatibility renderer as the GL Compatibility renderer always renders in low dynamic range for performance reasons.
 
