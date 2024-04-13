@@ -121,6 +121,8 @@ Methods
    +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] | :ref:`get_meta_list<class_Object_method_get_meta_list>`\ (\ ) |const|                                                                                                                                                                    |
    +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                            | :ref:`get_method_argument_count<class_Object_method_get_method_argument_count>`\ (\ method\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                              |
+   +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] | :ref:`get_method_list<class_Object_method_get_method_list>`\ (\ ) |const|                                                                                                                                                                |
    +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] | :ref:`get_property_list<class_Object_method_get_property_list>`\ (\ ) |const|                                                                                                                                                            |
@@ -987,7 +989,7 @@ While all options have the same outcome (``button``'s :ref:`BaseButton.button_do
 
 The syntax to bind parameters is through :ref:`Callable.bind<class_Callable_method_bind>`, which returns a copy of the :ref:`Callable<class_Callable>` with its parameters bound.
 
-When calling :ref:`emit_signal<class_Object_method_emit_signal>`, the signal parameters can be also passed. The examples below show the relationship between these signal parameters and bound parameters.
+When calling :ref:`emit_signal<class_Object_method_emit_signal>` or :ref:`Signal.emit<class_Signal_method_emit>`, the signal parameters can be also passed. The examples below show the relationship between these signal parameters and bound parameters.
 
 
 .. tabs::
@@ -1001,7 +1003,7 @@ When calling :ref:`emit_signal<class_Object_method_emit_signal>`, the signal par
         player.hit.connect(_on_player_hit.bind("sword", 100))
     
         # Parameters added when emitting the signal are passed first.
-        player.emit_signal("hit", "Dark lord", 5)
+        player.hit.emit("Dark lord", 5)
     
     # We pass two arguments when emitting (`hit_by`, `level`),
     # and bind two more arguments when connecting (`weapon_type`, `damage`).
@@ -1225,6 +1227,20 @@ Returns the object's metadata value for the given entry ``name``. If the entry d
 :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] **get_meta_list**\ (\ ) |const|
 
 Returns the object's metadata entry names as a :ref:`PackedStringArray<class_PackedStringArray>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Object_method_get_method_argument_count:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **get_method_argument_count**\ (\ method\: :ref:`StringName<class_StringName>`\ ) |const|
+
+Returns the number of arguments of the given ``method`` by name.
+
+\ **Note:** In C#, ``method`` must be in snake_case when referring to built-in Godot methods. Prefer using the names exposed in the ``MethodName`` class to avoid allocating a new :ref:`StringName<class_StringName>` on each call.
 
 .. rst-class:: classref-item-separator
 
@@ -1729,7 +1745,7 @@ Returns a :ref:`String<class_String>` representing the object. Defaults to ``"<C
 
 :ref:`String<class_String>` **tr**\ (\ message\: :ref:`StringName<class_StringName>`, context\: :ref:`StringName<class_StringName>` = &""\ ) |const|
 
-Translates a ``message``, using the translation catalogs configured in the Project Settings. Further ``context`` can be specified to help with the translation.
+Translates a ``message``, using the translation catalogs configured in the Project Settings. Further ``context`` can be specified to help with the translation. Note that most :ref:`Control<class_Control>` nodes automatically translate their strings, so this method is mostly useful for formatted strings or custom drawn text.
 
 If :ref:`can_translate_messages<class_Object_method_can_translate_messages>` is ``false``, or no translation is available, this method returns the ``message`` without changes. See :ref:`set_message_translation<class_Object_method_set_message_translation>`.
 
