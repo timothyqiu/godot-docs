@@ -12,7 +12,7 @@ GLTFMesh
 
 **Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-GLTFMesh represents an GLTF mesh.
+GLTFMesh represents a GLTF mesh.
 
 .. rst-class:: classref-introduction-group
 
@@ -81,6 +81,8 @@ Property Descriptions
 - :ref:`PackedFloat32Array<class_PackedFloat32Array>` **get_blend_weights**\ (\ )
 
 An array of floats representing the blend weights of the mesh.
+
+**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedFloat32Array<class_PackedFloat32Array>` for more details.
 
 .. rst-class:: classref-item-separator
 

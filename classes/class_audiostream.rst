@@ -12,7 +12,7 @@ AudioStream
 
 **Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`AudioStreamGenerator<class_AudioStreamGenerator>`, :ref:`AudioStreamMicrophone<class_AudioStreamMicrophone>`, :ref:`AudioStreamMP3<class_AudioStreamMP3>`, :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>`, :ref:`AudioStreamPolyphonic<class_AudioStreamPolyphonic>`, :ref:`AudioStreamRandomizer<class_AudioStreamRandomizer>`, :ref:`AudioStreamWAV<class_AudioStreamWAV>`
+**Inherited By:** :ref:`AudioStreamGenerator<class_AudioStreamGenerator>`, :ref:`AudioStreamInteractive<class_AudioStreamInteractive>`, :ref:`AudioStreamMicrophone<class_AudioStreamMicrophone>`, :ref:`AudioStreamMP3<class_AudioStreamMP3>`, :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>`, :ref:`AudioStreamPlaylist<class_AudioStreamPlaylist>`, :ref:`AudioStreamPolyphonic<class_AudioStreamPolyphonic>`, :ref:`AudioStreamRandomizer<class_AudioStreamRandomizer>`, :ref:`AudioStreamSynchronized<class_AudioStreamSynchronized>`, :ref:`AudioStreamWAV<class_AudioStreamWAV>`
 
 Base class for audio streams.
 
@@ -30,11 +30,11 @@ Tutorials
 
 - :doc:`Audio streams <../tutorials/audio/audio_streams>`
 
-- `Audio Generator Demo <https://godotengine.org/asset-library/asset/526>`__
+- `Audio Generator Demo <https://godotengine.org/asset-library/asset/2759>`__
 
-- `Audio Mic Record Demo <https://godotengine.org/asset-library/asset/527>`__
+- `Audio Microphone Record Demo <https://godotengine.org/asset-library/asset/2760>`__
 
-- `Audio Spectrum Demo <https://godotengine.org/asset-library/asset/528>`__
+- `Audio Spectrum Visualizer Demo <https://godotengine.org/asset-library/asset/2762>`__
 
 .. rst-class:: classref-reftable-group
 
