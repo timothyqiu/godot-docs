@@ -71,7 +71,7 @@ Tutorials
 
 - :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
 
-- `3D Voxel Demo <https://godotengine.org/asset-library/asset/676>`__
+- `3D Voxel Demo <https://godotengine.org/asset-library/asset/2755>`__
 
 .. rst-class:: classref-reftable-group
 
@@ -606,7 +606,7 @@ Text is interpreted as being UTF-8 encoded. Text values must be enclosed in doub
 
 For example, the following CSV lines are valid and will be properly parsed as two strings each:
 
-::
+.. code:: text
 
     Alice,"Hello, Bob!"
     Bob,Alice! What a surprise!
@@ -714,7 +714,7 @@ Returns the size of the file in bytes.
 
 :ref:`String<class_String>` **get_line**\ (\ ) |const|
 
-Returns the next line of the file as a :ref:`String<class_String>`.
+Returns the next line of the file as a :ref:`String<class_String>`. The returned string doesn't include newline (``\n``) or carriage return (``\r``) characters, but does include any other leading or trailing whitespace.
 
 Text is interpreted as being UTF-8 encoded.
 
@@ -840,7 +840,7 @@ Returns the next bits from the file as a floating-point number.
 
 :ref:`String<class_String>` **get_sha256**\ (\ path\: :ref:`String<class_String>`\ ) |static|
 
-Returns a SHA-256 :ref:`String<class_String>` representing the file at the given path or an empty :ref:`String<class_String>` on failure.
+Returns an SHA-256 :ref:`String<class_String>` representing the file at the given path or an empty :ref:`String<class_String>` on failure.
 
 .. rst-class:: classref-item-separator
 
