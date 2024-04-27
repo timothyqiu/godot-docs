@@ -72,9 +72,9 @@ Methods
    +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Button<class_Button>` | :ref:`get_ok_button<class_AcceptDialog_method_get_ok_button>`\ (\ )                                                                                                                   |
    +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                      | :ref:`register_text_enter<class_AcceptDialog_method_register_text_enter>`\ (\ line_edit\: :ref:`Control<class_Control>`\ )                                                            |
+   | |void|                      | :ref:`register_text_enter<class_AcceptDialog_method_register_text_enter>`\ (\ line_edit\: :ref:`LineEdit<class_LineEdit>`\ )                                                          |
    +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                      | :ref:`remove_button<class_AcceptDialog_method_remove_button>`\ (\ button\: :ref:`Control<class_Control>`\ )                                                                           |
+   | |void|                      | :ref:`remove_button<class_AcceptDialog_method_remove_button>`\ (\ button\: :ref:`Button<class_Button>`\ )                                                                             |
    +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
@@ -85,6 +85,10 @@ Theme Properties
 .. table::
    :widths: auto
 
+   +---------------------------------+---------------------------------------------------------------------------------+--------+
+   | :ref:`int<class_int>`           | :ref:`buttons_min_height<class_AcceptDialog_theme_constant_buttons_min_height>` | ``0``  |
+   +---------------------------------+---------------------------------------------------------------------------------+--------+
+   | :ref:`int<class_int>`           | :ref:`buttons_min_width<class_AcceptDialog_theme_constant_buttons_min_width>`   | ``0``  |
    +---------------------------------+---------------------------------------------------------------------------------+--------+
    | :ref:`int<class_int>`           | :ref:`buttons_separation<class_AcceptDialog_theme_constant_buttons_separation>` | ``10`` |
    +---------------------------------+---------------------------------------------------------------------------------+--------+
@@ -295,7 +299,7 @@ Returns the OK :ref:`Button<class_Button>` instance.
 
 .. rst-class:: classref-method
 
-|void| **register_text_enter**\ (\ line_edit\: :ref:`Control<class_Control>`\ )
+|void| **register_text_enter**\ (\ line_edit\: :ref:`LineEdit<class_LineEdit>`\ )
 
 Registers a :ref:`LineEdit<class_LineEdit>` in the dialog. When the enter key is pressed, the dialog will be accepted.
 
@@ -307,7 +311,7 @@ Registers a :ref:`LineEdit<class_LineEdit>` in the dialog. When the enter key is
 
 .. rst-class:: classref-method
 
-|void| **remove_button**\ (\ button\: :ref:`Control<class_Control>`\ )
+|void| **remove_button**\ (\ button\: :ref:`Button<class_Button>`\ )
 
 Removes the ``button`` from the dialog. Does NOT free the ``button``. The ``button`` must be a :ref:`Button<class_Button>` added with :ref:`add_button<class_AcceptDialog_method_add_button>` or :ref:`add_cancel_button<class_AcceptDialog_method_add_cancel_button>` method. After removal, pressing the ``button`` will no longer emit this dialog's :ref:`custom_action<class_AcceptDialog_signal_custom_action>` or :ref:`canceled<class_AcceptDialog_signal_canceled>` signals.
 
@@ -319,6 +323,30 @@ Removes the ``button`` from the dialog. Does NOT free the ``button``. The ``butt
 
 Theme Property Descriptions
 ---------------------------
+
+.. _class_AcceptDialog_theme_constant_buttons_min_height:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`int<class_int>` **buttons_min_height** = ``0``
+
+The minimum height of each button in the bottom row (such as OK/Cancel) in pixels. This can be increased to make buttons with short texts easier to click/tap.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_AcceptDialog_theme_constant_buttons_min_width:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`int<class_int>` **buttons_min_width** = ``0``
+
+The minimum width of each button in the bottom row (such as OK/Cancel) in pixels. This can be increased to make buttons with short texts easier to click/tap.
+
+.. rst-class:: classref-item-separator
+
+----
 
 .. _class_AcceptDialog_theme_constant_buttons_separation:
 

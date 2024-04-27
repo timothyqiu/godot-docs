@@ -30,9 +30,9 @@ Tutorials
 
 - :doc:`Inputs documentation index <../tutorials/inputs/index>`
 
-- `2D Dodge The Creeps Demo <https://godotengine.org/asset-library/asset/515>`__
+- `2D Dodge The Creeps Demo <https://godotengine.org/asset-library/asset/2712>`__
 
-- `3D Voxel Demo <https://godotengine.org/asset-library/asset/676>`__
+- `3D Voxel Demo <https://godotengine.org/asset-library/asset/2755>`__
 
 .. rst-class:: classref-reftable-group
 
@@ -644,7 +644,7 @@ Returns the current value of the joypad axis at given index (see :ref:`JoyAxis<e
 
 :ref:`String<class_String>` **get_joy_guid**\ (\ device\: :ref:`int<class_int>`\ ) |const|
 
-Returns a SDL2-compatible device GUID on platforms that use gamepad remapping, e.g. ``030000004c050000c405000000010000``. Returns ``"Default Gamepad"`` otherwise. Godot uses the `SDL2 game controller database <https://github.com/gabomdq/SDL_GameControllerDB>`__ to determine gamepad names and mappings based on this GUID.
+Returns an SDL2-compatible device GUID on platforms that use gamepad remapping, e.g. ``030000004c050000c405000000010000``. Returns ``"Default Gamepad"`` otherwise. Godot uses the `SDL2 game controller database <https://github.com/gabomdq/SDL_GameControllerDB>`__ to determine gamepad names and mappings based on this GUID.
 
 .. rst-class:: classref-item-separator
 

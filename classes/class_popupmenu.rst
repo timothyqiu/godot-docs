@@ -48,6 +48,8 @@ Properties
    +-------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------+
    | :ref:`int<class_int>`                           | :ref:`item_count<class_PopupMenu_property_item_count>`                                             | ``0``     |
    +-------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                         | :ref:`prefer_native_menu<class_PopupMenu_property_prefer_native_menu>`                             | ``false`` |
+   +-------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------+
    | :ref:`float<class_float>`                       | :ref:`submenu_popup_delay<class_PopupMenu_property_submenu_popup_delay>`                           | ``0.3``   |
    +-------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------+
    | :ref:`SystemMenus<enum_NativeMenu_SystemMenus>` | :ref:`system_menu_id<class_PopupMenu_property_system_menu_id>`                                     | ``0``     |
@@ -276,6 +278,8 @@ Theme Properties
    +-----------------------------------+-----------------------------------------------------------------------------------------------+-----------------------------------+
    | :ref:`StyleBox<class_StyleBox>`   | :ref:`labeled_separator_right<class_PopupMenu_theme_style_labeled_separator_right>`           |                                   |
    +-----------------------------------+-----------------------------------------------------------------------------------------------+-----------------------------------+
+   | :ref:`StyleBox<class_StyleBox>`   | :ref:`panel<class_PopupMenu_theme_style_panel>`                                               |                                   |
+   +-----------------------------------+-----------------------------------------------------------------------------------------------+-----------------------------------+
    | :ref:`StyleBox<class_StyleBox>`   | :ref:`separator<class_PopupMenu_theme_style_separator>`                                       |                                   |
    +-----------------------------------+-----------------------------------------------------------------------------------------------+-----------------------------------+
 
@@ -423,6 +427,23 @@ If ``true``, hides the **PopupMenu** when a state item is selected.
 - :ref:`int<class_int>` **get_item_count**\ (\ )
 
 The number of items currently in the list.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_PopupMenu_property_prefer_native_menu:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **prefer_native_menu** = ``false``
+
+.. rst-class:: classref-property-setget
+
+- |void| **set_prefer_native_menu**\ (\ value\: :ref:`bool<class_bool>`\ )
+- :ref:`bool<class_bool>` **is_prefer_native_menu**\ (\ )
+
+If ``true``, :ref:`MenuBar<class_MenuBar>` will use native menu when supported.
 
 .. rst-class:: classref-item-separator
 
@@ -1787,6 +1808,18 @@ Font size of the menu items.
 :ref:`StyleBox<class_StyleBox>` **labeled_separator_right**
 
 :ref:`StyleBox<class_StyleBox>` for the right side of labeled separator. See :ref:`add_separator<class_PopupMenu_method_add_separator>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_PopupMenu_theme_style_panel:
+
+.. rst-class:: classref-themeproperty
+
+:ref:`StyleBox<class_StyleBox>` **panel**
+
+:ref:`StyleBox<class_StyleBox>` for the the background panel.
 
 .. rst-class:: classref-item-separator
 

@@ -59,7 +59,7 @@ Tutorials
 
 - :doc:`Using the SurfaceTool <../tutorials/3d/procedural_geometry/surfacetool>`
 
-- `3D Voxel Demo <https://godotengine.org/asset-library/asset/676>`__
+- `3D Voxel Demo <https://godotengine.org/asset-library/asset/2755>`__
 
 .. rst-class:: classref-reftable-group
 
@@ -87,6 +87,8 @@ Methods
    | :ref:`Array<class_Array>`                                | :ref:`commit_to_arrays<class_SurfaceTool_method_commit_to_arrays>`\ (\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
    +----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                   | :ref:`create_from<class_SurfaceTool_method_create_from>`\ (\ existing\: :ref:`Mesh<class_Mesh>`, surface\: :ref:`int<class_int>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                        |
+   +----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                   | :ref:`create_from_arrays<class_SurfaceTool_method_create_from_arrays>`\ (\ arrays\: :ref:`Array<class_Array>`, primitive_type\: :ref:`PrimitiveType<enum_Mesh_PrimitiveType>` = 3\ )                                                                                                                                                                                                                                                                                                                                                                       |
    +----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                   | :ref:`create_from_blend_shape<class_SurfaceTool_method_create_from_blend_shape>`\ (\ existing\: :ref:`Mesh<class_Mesh>`, surface\: :ref:`int<class_int>`, blend_shape\: :ref:`String<class_String>`\ )                                                                                                                                                                                                                                                                                                                                                     |
    +----------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -351,7 +353,7 @@ Returns a constructed :ref:`ArrayMesh<class_ArrayMesh>` from current information
 
 :ref:`Array<class_Array>` **commit_to_arrays**\ (\ )
 
-Commits the data to the same format used by :ref:`ArrayMesh.add_surface_from_arrays<class_ArrayMesh_method_add_surface_from_arrays>`. This way you can further process the mesh data using the :ref:`ArrayMesh<class_ArrayMesh>` API.
+Commits the data to the same format used by :ref:`ArrayMesh.add_surface_from_arrays<class_ArrayMesh_method_add_surface_from_arrays>`, :ref:`ImporterMesh.add_surface<class_ImporterMesh_method_add_surface>`, and :ref:`create_from_arrays<class_SurfaceTool_method_create_from_arrays>`. This way you can further process the mesh data using the :ref:`ArrayMesh<class_ArrayMesh>` or :ref:`ImporterMesh<class_ImporterMesh>` APIs.
 
 .. rst-class:: classref-item-separator
 
@@ -364,6 +366,18 @@ Commits the data to the same format used by :ref:`ArrayMesh.add_surface_from_arr
 |void| **create_from**\ (\ existing\: :ref:`Mesh<class_Mesh>`, surface\: :ref:`int<class_int>`\ )
 
 Creates a vertex array from an existing :ref:`Mesh<class_Mesh>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_SurfaceTool_method_create_from_arrays:
+
+.. rst-class:: classref-method
+
+|void| **create_from_arrays**\ (\ arrays\: :ref:`Array<class_Array>`, primitive_type\: :ref:`PrimitiveType<enum_Mesh_PrimitiveType>` = 3\ )
+
+Creates this SurfaceTool from existing vertex arrays such as returned by :ref:`commit_to_arrays<class_SurfaceTool_method_commit_to_arrays>`, :ref:`Mesh.surface_get_arrays<class_Mesh_method_surface_get_arrays>`, :ref:`Mesh.surface_get_blend_shape_arrays<class_Mesh_method_surface_get_blend_shape_arrays>`, :ref:`ImporterMesh.get_surface_arrays<class_ImporterMesh_method_get_surface_arrays>`, and :ref:`ImporterMesh.get_surface_blend_shape_arrays<class_ImporterMesh_method_get_surface_blend_shape_arrays>`. ``primitive_type`` controls the type of mesh data, defaulting to :ref:`Mesh.PRIMITIVE_TRIANGLES<class_Mesh_constant_PRIMITIVE_TRIANGLES>`.
 
 .. rst-class:: classref-item-separator
 
@@ -401,7 +415,7 @@ Removes the index array by expanding the vertex array.
 
 **Deprecated:** This method is unused internally, as it does not preserve normals or UVs. Consider using :ref:`ImporterMesh.generate_lods<class_ImporterMesh_method_generate_lods>` instead.
 
-Generates a LOD for a given ``nd_threshold`` in linear units (square root of quadric error metric), using at most ``target_index_count`` indices.
+Generates an LOD for a given ``nd_threshold`` in linear units (square root of quadric error metric), using at most ``target_index_count`` indices.
 
 .. rst-class:: classref-item-separator
 
