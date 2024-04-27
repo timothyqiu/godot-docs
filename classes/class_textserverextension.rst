@@ -64,6 +64,8 @@ Methods
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                                       | :ref:`_font_get_descent<class_TextServerExtension_private_method__font_get_descent>`\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`\ ) |virtual| |const|                                                                                                                                                                                                                                          |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                         | :ref:`_font_get_disable_embedded_bitmaps<class_TextServerExtension_private_method__font_get_disable_embedded_bitmaps>`\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|                                                                                                                                                                                                                                      |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                                       | :ref:`_font_get_embolden<class_TextServerExtension_private_method__font_get_embolden>`\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|                                                                                                                                                                                                                                                                      |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                           | :ref:`_font_get_face_count<class_TextServerExtension_private_method__font_get_face_count>`\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|                                                                                                                                                                                                                                                                  |
@@ -198,6 +200,8 @@ Methods
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                          | :ref:`_font_set_descent<class_TextServerExtension_private_method__font_set_descent>`\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, descent\: :ref:`float<class_float>`\ ) |virtual|                                                                                                                                                                                                             |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                          | :ref:`_font_set_disable_embedded_bitmaps<class_TextServerExtension_private_method__font_set_disable_embedded_bitmaps>`\ (\ font_rid\: :ref:`RID<class_RID>`, disable_embedded_bitmaps\: :ref:`bool<class_bool>`\ ) |virtual|                                                                                                                                                                                          |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                          | :ref:`_font_set_embolden<class_TextServerExtension_private_method__font_set_embolden>`\ (\ font_rid\: :ref:`RID<class_RID>`, strength\: :ref:`float<class_float>`\ ) |virtual|                                                                                                                                                                                                                                        |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                          | :ref:`_font_set_face_index<class_TextServerExtension_private_method__font_set_face_index>`\ (\ font_rid\: :ref:`RID<class_RID>`, face_index\: :ref:`int<class_int>`\ ) |virtual|                                                                                                                                                                                                                                      |
@@ -272,7 +276,7 @@ Methods
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`                             | :ref:`_font_supported_variation_list<class_TextServerExtension_private_method__font_supported_variation_list>`\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|                                                                                                                                                                                                                                              |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                     | :ref:`_format_number<class_TextServerExtension_private_method__format_number>`\ (\ string\: :ref:`String<class_String>`, language\: :ref:`String<class_String>`\ ) |virtual| |const|                                                                                                                                                                                                                                  |
+   | :ref:`String<class_String>`                                     | :ref:`_format_number<class_TextServerExtension_private_method__format_number>`\ (\ number\: :ref:`String<class_String>`, language\: :ref:`String<class_String>`\ ) |virtual| |const|                                                                                                                                                                                                                                  |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                          | :ref:`_free_rid<class_TextServerExtension_private_method__free_rid>`\ (\ rid\: :ref:`RID<class_RID>`\ ) |virtual|                                                                                                                                                                                                                                                                                                     |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -300,7 +304,7 @@ Methods
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                           | :ref:`_name_to_tag<class_TextServerExtension_private_method__name_to_tag>`\ (\ name\: :ref:`String<class_String>`\ ) |virtual| |const|                                                                                                                                                                                                                                                                                |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                     | :ref:`_parse_number<class_TextServerExtension_private_method__parse_number>`\ (\ string\: :ref:`String<class_String>`, language\: :ref:`String<class_String>`\ ) |virtual| |const|                                                                                                                                                                                                                                    |
+   | :ref:`String<class_String>`                                     | :ref:`_parse_number<class_TextServerExtension_private_method__parse_number>`\ (\ number\: :ref:`String<class_String>`, language\: :ref:`String<class_String>`\ ) |virtual| |const|                                                                                                                                                                                                                                    |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`\[:ref:`Vector3i<class_Vector3i>`\]    | :ref:`_parse_structured_text<class_TextServerExtension_private_method__parse_structured_text>`\ (\ parser_type\: :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>`, args\: :ref:`Array<class_Array>`, text\: :ref:`String<class_String>`\ ) |virtual| |const|                                                                                                                                         |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -362,6 +366,10 @@ Methods
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedInt32Array<class_PackedInt32Array>`                 | :ref:`_shaped_text_get_line_breaks_adv<class_TextServerExtension_private_method__shaped_text_get_line_breaks_adv>`\ (\ shaped\: :ref:`RID<class_RID>`, width\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`, start\: :ref:`int<class_int>`, once\: :ref:`bool<class_bool>`, break_flags\: |bitfield|\[:ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>`\]\ ) |virtual| |const|                               |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                           | :ref:`_shaped_text_get_object_glyph<class_TextServerExtension_private_method__shaped_text_get_object_glyph>`\ (\ shaped\: :ref:`RID<class_RID>`, key\: :ref:`Variant<class_Variant>`\ ) |virtual| |const|                                                                                                                                                                                                             |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2i<class_Vector2i>`                                 | :ref:`_shaped_text_get_object_range<class_TextServerExtension_private_method__shaped_text_get_object_range>`\ (\ shaped\: :ref:`RID<class_RID>`, key\: :ref:`Variant<class_Variant>`\ ) |virtual| |const|                                                                                                                                                                                                             |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Rect2<class_Rect2>`                                       | :ref:`_shaped_text_get_object_rect<class_TextServerExtension_private_method__shaped_text_get_object_rect>`\ (\ shaped\: :ref:`RID<class_RID>`, key\: :ref:`Variant<class_Variant>`\ ) |virtual| |const|                                                                                                                                                                                                               |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`                                       | :ref:`_shaped_text_get_objects<class_TextServerExtension_private_method__shaped_text_get_objects>`\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|                                                                                                                                                                                                                                                            |
@@ -390,7 +398,7 @@ Methods
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                                       | :ref:`_shaped_text_get_width<class_TextServerExtension_private_method__shaped_text_get_width>`\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|                                                                                                                                                                                                                                                                |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedInt32Array<class_PackedInt32Array>`                 | :ref:`_shaped_text_get_word_breaks<class_TextServerExtension_private_method__shaped_text_get_word_breaks>`\ (\ shaped\: :ref:`RID<class_RID>`, grapheme_flags\: |bitfield|\[:ref:`GraphemeFlag<enum_TextServer_GraphemeFlag>`\]\ ) |virtual| |const|                                                                                                                                                                  |
+   | :ref:`PackedInt32Array<class_PackedInt32Array>`                 | :ref:`_shaped_text_get_word_breaks<class_TextServerExtension_private_method__shaped_text_get_word_breaks>`\ (\ shaped\: :ref:`RID<class_RID>`, grapheme_flags\: |bitfield|\[:ref:`GraphemeFlag<enum_TextServer_GraphemeFlag>`\], skip_grapheme_flags\: |bitfield|\[:ref:`GraphemeFlag<enum_TextServer_GraphemeFlag>`\]\ ) |virtual| |const|                                                                           |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                           | :ref:`_shaped_text_hit_test_grapheme<class_TextServerExtension_private_method__shaped_text_hit_test_grapheme>`\ (\ shaped\: :ref:`RID<class_RID>`, coord\: :ref:`float<class_float>`\ ) |virtual| |const|                                                                                                                                                                                                             |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -446,6 +454,8 @@ Methods
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                     | :ref:`_string_to_lower<class_TextServerExtension_private_method__string_to_lower>`\ (\ string\: :ref:`String<class_String>`, language\: :ref:`String<class_String>`\ ) |virtual| |const|                                                                                                                                                                                                                              |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                     | :ref:`_string_to_title<class_TextServerExtension_private_method__string_to_title>`\ (\ string\: :ref:`String<class_String>`, language\: :ref:`String<class_String>`\ ) |virtual| |const|                                                                                                                                                                                                                              |
+   +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                     | :ref:`_string_to_upper<class_TextServerExtension_private_method__string_to_upper>`\ (\ string\: :ref:`String<class_String>`, language\: :ref:`String<class_String>`\ ) |virtual| |const|                                                                                                                                                                                                                              |
    +-----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                     | :ref:`_strip_diacritics<class_TextServerExtension_private_method__strip_diacritics>`\ (\ string\: :ref:`String<class_String>`\ ) |virtual| |const|                                                                                                                                                                                                                                                                    |
@@ -468,9 +478,9 @@ Method Descriptions
 
 |void| **_cleanup**\ (\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+This method is called before text server is unregistered.
 
 .. rst-class:: classref-item-separator
 
@@ -482,9 +492,9 @@ Method Descriptions
 
 :ref:`RID<class_RID>` **_create_font**\ (\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Creates a new, empty font cache entry resource.
 
 .. rst-class:: classref-item-separator
 
@@ -496,9 +506,9 @@ Method Descriptions
 
 :ref:`RID<class_RID>` **_create_font_linked_variation**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual|
 
-.. container:: contribute
+Optional, implement if font supports extra spacing or baseline offset.
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Creates a new variation existing font which is reusing the same glyph cache and font data.
 
 .. rst-class:: classref-item-separator
 
@@ -510,9 +520,9 @@ Method Descriptions
 
 :ref:`RID<class_RID>` **_create_shaped_text**\ (\ direction\: :ref:`Direction<enum_TextServer_Direction>`, orientation\: :ref:`Orientation<enum_TextServer_Orientation>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Creates a new buffer for complex text layout, with the given ``direction`` and ``orientation``.
 
 .. rst-class:: classref-item-separator
 
@@ -524,9 +534,9 @@ Method Descriptions
 
 |void| **_draw_hex_code_box**\ (\ canvas\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, pos\: :ref:`Vector2<class_Vector2>`, index\: :ref:`int<class_int>`, color\: :ref:`Color<class_Color>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Draws box displaying character hexadecimal code.
 
 .. rst-class:: classref-item-separator
 
@@ -538,9 +548,9 @@ Method Descriptions
 
 |void| **_font_clear_glyphs**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Removes all rendered glyph information from the cache entry.
 
 .. rst-class:: classref-item-separator
 
@@ -552,9 +562,9 @@ Method Descriptions
 
 |void| **_font_clear_kerning_map**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Removes all kerning overrides.
 
 .. rst-class:: classref-item-separator
 
@@ -566,9 +576,9 @@ Method Descriptions
 
 |void| **_font_clear_size_cache**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Removes all font sizes from the cache entry.
 
 .. rst-class:: classref-item-separator
 
@@ -580,9 +590,9 @@ Method Descriptions
 
 |void| **_font_clear_textures**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Removes all textures from font cache entry.
 
 .. rst-class:: classref-item-separator
 
@@ -594,9 +604,9 @@ Method Descriptions
 
 |void| **_font_draw_glyph**\ (\ font_rid\: :ref:`RID<class_RID>`, canvas\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, pos\: :ref:`Vector2<class_Vector2>`, index\: :ref:`int<class_int>`, color\: :ref:`Color<class_Color>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Draws single glyph into a canvas item at the position, using ``font_rid`` at the size ``size``.
 
 .. rst-class:: classref-item-separator
 
@@ -608,9 +618,9 @@ Method Descriptions
 
 |void| **_font_draw_glyph_outline**\ (\ font_rid\: :ref:`RID<class_RID>`, canvas\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, outline_size\: :ref:`int<class_int>`, pos\: :ref:`Vector2<class_Vector2>`, index\: :ref:`int<class_int>`, color\: :ref:`Color<class_Color>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Draws single glyph outline of size ``outline_size`` into a canvas item at the position, using ``font_rid`` at the size ``size``.
 
 .. rst-class:: classref-item-separator
 
@@ -622,9 +632,9 @@ Method Descriptions
 
 :ref:`FontAntialiasing<enum_TextServer_FontAntialiasing>` **_font_get_antialiasing**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns font anti-aliasing mode.
 
 .. rst-class:: classref-item-separator
 
@@ -636,9 +646,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_font_get_ascent**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the font ascent (number of pixels above the baseline).
 
 .. rst-class:: classref-item-separator
 
@@ -650,9 +660,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_font_get_baseline_offset**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns extra baseline offset (as a fraction of font height).
 
 .. rst-class:: classref-item-separator
 
@@ -664,9 +674,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_font_get_char_from_glyph_index**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, glyph_index\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns character code associated with ``glyph_index``, or ``0`` if ``glyph_index`` is invalid.
 
 .. rst-class:: classref-item-separator
 
@@ -678,9 +688,23 @@ Method Descriptions
 
 :ref:`float<class_float>` **_font_get_descent**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the font descent (number of pixels below the baseline).
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TextServerExtension_private_method__font_get_disable_embedded_bitmaps:
+
+.. rst-class:: classref-method
+
+:ref:`bool<class_bool>` **_font_get_disable_embedded_bitmaps**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
+
+**Optional.**\ 
+
+Returns whether the font's embedded bitmap loading is disabled.
 
 .. rst-class:: classref-item-separator
 
@@ -692,9 +716,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_font_get_embolden**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns font embolden strength.
 
 .. rst-class:: classref-item-separator
 
@@ -706,9 +730,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_font_get_face_count**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns number of faces in the TrueType / OpenType collection.
 
 .. rst-class:: classref-item-separator
 
@@ -720,9 +744,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_font_get_face_index**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns an active face index in the TrueType / OpenType collection.
 
 .. rst-class:: classref-item-separator
 
@@ -734,9 +758,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_font_get_fixed_size**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns bitmap font fixed size.
 
 .. rst-class:: classref-item-separator
 
@@ -748,9 +772,9 @@ Method Descriptions
 
 :ref:`FixedSizeScaleMode<enum_TextServer_FixedSizeScaleMode>` **_font_get_fixed_size_scale_mode**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns bitmap font scaling mode.
 
 .. rst-class:: classref-item-separator
 
@@ -762,9 +786,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_font_get_generate_mipmaps**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if font texture mipmap generation is enabled.
 
 .. rst-class:: classref-item-separator
 
@@ -776,9 +800,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_font_get_global_oversampling**\ (\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the font oversampling factor, shared by all fonts in the TextServer.
 
 .. rst-class:: classref-item-separator
 
@@ -790,9 +814,9 @@ Method Descriptions
 
 :ref:`Vector2<class_Vector2>` **_font_get_glyph_advance**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, glyph\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns glyph advance (offset of the next glyph).
 
 .. rst-class:: classref-item-separator
 
@@ -804,9 +828,9 @@ Method Descriptions
 
 :ref:`Dictionary<class_Dictionary>` **_font_get_glyph_contours**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, index\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns outline contours of the glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -818,9 +842,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_font_get_glyph_index**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, char\: :ref:`int<class_int>`, variation_selector\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the glyph index of a ``char``, optionally modified by the ``variation_selector``.
 
 .. rst-class:: classref-item-separator
 
@@ -832,9 +856,9 @@ Method Descriptions
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **_font_get_glyph_list**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns list of rendered glyphs in the cache entry.
 
 .. rst-class:: classref-item-separator
 
@@ -846,9 +870,9 @@ Method Descriptions
 
 :ref:`Vector2<class_Vector2>` **_font_get_glyph_offset**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns glyph offset from the baseline.
 
 .. rst-class:: classref-item-separator
 
@@ -860,9 +884,9 @@ Method Descriptions
 
 :ref:`Vector2<class_Vector2>` **_font_get_glyph_size**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns size of the glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -874,9 +898,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_font_get_glyph_texture_idx**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns index of the cache texture containing the glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -888,9 +912,9 @@ Method Descriptions
 
 :ref:`RID<class_RID>` **_font_get_glyph_texture_rid**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns resource ID of the cache texture containing the glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -902,9 +926,9 @@ Method Descriptions
 
 :ref:`Vector2<class_Vector2>` **_font_get_glyph_texture_size**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns size of the cache texture containing the glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -916,9 +940,9 @@ Method Descriptions
 
 :ref:`Rect2<class_Rect2>` **_font_get_glyph_uv_rect**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns rectangle in the cache texture containing the glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -930,9 +954,9 @@ Method Descriptions
 
 :ref:`Hinting<enum_TextServer_Hinting>` **_font_get_hinting**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the font hinting mode. Used by dynamic fonts only.
 
 .. rst-class:: classref-item-separator
 
@@ -944,9 +968,9 @@ Method Descriptions
 
 :ref:`Vector2<class_Vector2>` **_font_get_kerning**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, glyph_pair\: :ref:`Vector2i<class_Vector2i>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns kerning for the pair of glyphs.
 
 .. rst-class:: classref-item-separator
 
@@ -958,9 +982,9 @@ Method Descriptions
 
 :ref:`Array<class_Array>`\[:ref:`Vector2i<class_Vector2i>`\] **_font_get_kerning_list**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns list of the kerning overrides.
 
 .. rst-class:: classref-item-separator
 
@@ -972,9 +996,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_font_get_language_support_override**\ (\ font_rid\: :ref:`RID<class_RID>`, language\: :ref:`String<class_String>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if support override is enabled for the ``language``.
 
 .. rst-class:: classref-item-separator
 
@@ -986,9 +1010,9 @@ Method Descriptions
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_font_get_language_support_overrides**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns list of language support overrides.
 
 .. rst-class:: classref-item-separator
 
@@ -1000,9 +1024,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_font_get_msdf_pixel_range**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the width of the range around the shape between the minimum and maximum representable signed distance.
 
 .. rst-class:: classref-item-separator
 
@@ -1014,9 +1038,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_font_get_msdf_size**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns source font size used to generate MSDF textures.
 
 .. rst-class:: classref-item-separator
 
@@ -1028,9 +1052,9 @@ Method Descriptions
 
 :ref:`String<class_String>` **_font_get_name**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns font family name.
 
 .. rst-class:: classref-item-separator
 
@@ -1042,9 +1066,9 @@ Method Descriptions
 
 :ref:`Dictionary<class_Dictionary>` **_font_get_opentype_feature_overrides**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns font OpenType feature set override.
 
 .. rst-class:: classref-item-separator
 
@@ -1056,9 +1080,9 @@ Method Descriptions
 
 :ref:`Dictionary<class_Dictionary>` **_font_get_ot_name_strings**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns :ref:`Dictionary<class_Dictionary>` with OpenType font name strings (localized font names, version, description, license information, sample text, etc.).
 
 .. rst-class:: classref-item-separator
 
@@ -1070,9 +1094,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_font_get_oversampling**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns font oversampling factor, if set to ``0.0`` global oversampling factor is used instead. Used by dynamic fonts only.
 
 .. rst-class:: classref-item-separator
 
@@ -1084,9 +1108,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_font_get_scale**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns scaling factor of the color bitmap font.
 
 .. rst-class:: classref-item-separator
 
@@ -1098,9 +1122,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_font_get_script_support_override**\ (\ font_rid\: :ref:`RID<class_RID>`, script\: :ref:`String<class_String>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if support override is enabled for the ``script``.
 
 .. rst-class:: classref-item-separator
 
@@ -1112,9 +1136,9 @@ Method Descriptions
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_font_get_script_support_overrides**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns list of script support overrides.
 
 .. rst-class:: classref-item-separator
 
@@ -1126,9 +1150,9 @@ Method Descriptions
 
 :ref:`Array<class_Array>`\[:ref:`Vector2i<class_Vector2i>`\] **_font_get_size_cache_list**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns list of the font sizes in the cache. Each size is :ref:`Vector2i<class_Vector2i>` with font size and outline size.
 
 .. rst-class:: classref-item-separator
 
@@ -1140,9 +1164,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_font_get_spacing**\ (\ font_rid\: :ref:`RID<class_RID>`, spacing\: :ref:`SpacingType<enum_TextServer_SpacingType>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the spacing for ``spacing`` (see :ref:`SpacingType<enum_TextServer_SpacingType>`) in pixels (not relative to the font size).
 
 .. rst-class:: classref-item-separator
 
@@ -1154,9 +1178,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_font_get_stretch**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns font stretch amount, compared to a normal width. A percentage value between ``50%`` and ``200%``.
 
 .. rst-class:: classref-item-separator
 
@@ -1168,9 +1192,9 @@ Method Descriptions
 
 |bitfield|\[:ref:`FontStyle<enum_TextServer_FontStyle>`\] **_font_get_style**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns font style flags, see :ref:`FontStyle<enum_TextServer_FontStyle>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1182,9 +1206,9 @@ Method Descriptions
 
 :ref:`String<class_String>` **_font_get_style_name**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns font style name.
 
 .. rst-class:: classref-item-separator
 
@@ -1196,9 +1220,9 @@ Method Descriptions
 
 :ref:`SubpixelPositioning<enum_TextServer_SubpixelPositioning>` **_font_get_subpixel_positioning**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns font subpixel glyph positioning mode.
 
 .. rst-class:: classref-item-separator
 
@@ -1210,9 +1234,9 @@ Method Descriptions
 
 :ref:`String<class_String>` **_font_get_supported_chars**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns a string containing all the characters available in the font.
 
 .. rst-class:: classref-item-separator
 
@@ -1224,9 +1248,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_font_get_texture_count**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns number of textures used by font cache entry.
 
 .. rst-class:: classref-item-separator
 
@@ -1238,9 +1262,9 @@ Method Descriptions
 
 :ref:`Image<class_Image>` **_font_get_texture_image**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, texture_index\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns font cache texture image data.
 
 .. rst-class:: classref-item-separator
 
@@ -1252,9 +1276,9 @@ Method Descriptions
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **_font_get_texture_offsets**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, texture_index\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns array containing glyph packing data.
 
 .. rst-class:: classref-item-separator
 
@@ -1266,9 +1290,9 @@ Method Descriptions
 
 :ref:`Transform2D<class_Transform2D>` **_font_get_transform**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns 2D transform applied to the font outlines.
 
 .. rst-class:: classref-item-separator
 
@@ -1280,9 +1304,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_font_get_underline_position**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns pixel offset of the underline below the baseline.
 
 .. rst-class:: classref-item-separator
 
@@ -1294,9 +1318,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_font_get_underline_thickness**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns thickness of the underline in pixels.
 
 .. rst-class:: classref-item-separator
 
@@ -1308,9 +1332,9 @@ Method Descriptions
 
 :ref:`Dictionary<class_Dictionary>` **_font_get_variation_coordinates**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns variation coordinates for the specified font cache entry.
 
 .. rst-class:: classref-item-separator
 
@@ -1322,9 +1346,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_font_get_weight**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns weight (boldness) of the font. A value in the ``100...999`` range, normal font weight is ``400``, bold font weight is ``700``.
 
 .. rst-class:: classref-item-separator
 
@@ -1336,9 +1360,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_font_has_char**\ (\ font_rid\: :ref:`RID<class_RID>`, char\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if a Unicode ``char`` is available in the font.
 
 .. rst-class:: classref-item-separator
 
@@ -1350,9 +1374,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_font_is_allow_system_fallback**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if system fonts can be automatically used as fallbacks.
 
 .. rst-class:: classref-item-separator
 
@@ -1364,9 +1388,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_font_is_force_autohinter**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if auto-hinting is supported and preferred over font built-in hinting.
 
 .. rst-class:: classref-item-separator
 
@@ -1378,9 +1402,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_font_is_language_supported**\ (\ font_rid\: :ref:`RID<class_RID>`, language\: :ref:`String<class_String>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true``, if font supports given language (`ISO 639 <https://en.wikipedia.org/wiki/ISO_639-1>`__ code).
 
 .. rst-class:: classref-item-separator
 
@@ -1392,9 +1416,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_font_is_multichannel_signed_distance_field**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if glyphs of all sizes are rendered using single multichannel signed distance field generated from the dynamic font vector data.
 
 .. rst-class:: classref-item-separator
 
@@ -1406,9 +1430,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_font_is_script_supported**\ (\ font_rid\: :ref:`RID<class_RID>`, script\: :ref:`String<class_String>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true``, if font supports given script (ISO 15924 code).
 
 .. rst-class:: classref-item-separator
 
@@ -1420,9 +1444,9 @@ Method Descriptions
 
 |void| **_font_remove_glyph**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Removes specified rendered glyph information from the cache entry.
 
 .. rst-class:: classref-item-separator
 
@@ -1434,9 +1458,9 @@ Method Descriptions
 
 |void| **_font_remove_kerning**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, glyph_pair\: :ref:`Vector2i<class_Vector2i>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Removes kerning override for the pair of glyphs.
 
 .. rst-class:: classref-item-separator
 
@@ -1448,9 +1472,9 @@ Method Descriptions
 
 |void| **_font_remove_language_support_override**\ (\ font_rid\: :ref:`RID<class_RID>`, language\: :ref:`String<class_String>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Remove language support override.
 
 .. rst-class:: classref-item-separator
 
@@ -1462,9 +1486,9 @@ Method Descriptions
 
 |void| **_font_remove_script_support_override**\ (\ font_rid\: :ref:`RID<class_RID>`, script\: :ref:`String<class_String>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Removes script support override.
 
 .. rst-class:: classref-item-separator
 
@@ -1476,9 +1500,9 @@ Method Descriptions
 
 |void| **_font_remove_size_cache**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Removes specified font size from the cache entry.
 
 .. rst-class:: classref-item-separator
 
@@ -1490,9 +1514,9 @@ Method Descriptions
 
 |void| **_font_remove_texture**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, texture_index\: :ref:`int<class_int>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Removes specified texture from the cache entry.
 
 .. rst-class:: classref-item-separator
 
@@ -1504,9 +1528,9 @@ Method Descriptions
 
 |void| **_font_render_glyph**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, index\: :ref:`int<class_int>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Renders specified glyph to the font cache texture.
 
 .. rst-class:: classref-item-separator
 
@@ -1518,9 +1542,9 @@ Method Descriptions
 
 |void| **_font_render_range**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, start\: :ref:`int<class_int>`, end\: :ref:`int<class_int>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Renders the range of characters to the font cache texture.
 
 .. rst-class:: classref-item-separator
 
@@ -1532,9 +1556,9 @@ Method Descriptions
 
 |void| **_font_set_allow_system_fallback**\ (\ font_rid\: :ref:`RID<class_RID>`, allow_system_fallback\: :ref:`bool<class_bool>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+If set to ``true``, system fonts can be automatically used as fallbacks.
 
 .. rst-class:: classref-item-separator
 
@@ -1546,9 +1570,9 @@ Method Descriptions
 
 |void| **_font_set_antialiasing**\ (\ font_rid\: :ref:`RID<class_RID>`, antialiasing\: :ref:`FontAntialiasing<enum_TextServer_FontAntialiasing>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets font anti-aliasing mode.
 
 .. rst-class:: classref-item-separator
 
@@ -1560,9 +1584,9 @@ Method Descriptions
 
 |void| **_font_set_ascent**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, ascent\: :ref:`float<class_float>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets the font ascent (number of pixels above the baseline).
 
 .. rst-class:: classref-item-separator
 
@@ -1574,9 +1598,9 @@ Method Descriptions
 
 |void| **_font_set_baseline_offset**\ (\ font_rid\: :ref:`RID<class_RID>`, baseline_offset\: :ref:`float<class_float>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets extra baseline offset (as a fraction of font height).
 
 .. rst-class:: classref-item-separator
 
@@ -1588,9 +1612,9 @@ Method Descriptions
 
 |void| **_font_set_data**\ (\ font_rid\: :ref:`RID<class_RID>`, data\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets font source data, e.g contents of the dynamic font source file.
 
 .. rst-class:: classref-item-separator
 
@@ -1602,9 +1626,9 @@ Method Descriptions
 
 |void| **_font_set_data_ptr**\ (\ font_rid\: :ref:`RID<class_RID>`, data_ptr\: ``const uint8_t*``, data_size\: :ref:`int<class_int>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets pointer to the font source data, e.g contents of the dynamic font source file.
 
 .. rst-class:: classref-item-separator
 
@@ -1616,9 +1640,23 @@ Method Descriptions
 
 |void| **_font_set_descent**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, descent\: :ref:`float<class_float>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets the font descent (number of pixels below the baseline).
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TextServerExtension_private_method__font_set_disable_embedded_bitmaps:
+
+.. rst-class:: classref-method
+
+|void| **_font_set_disable_embedded_bitmaps**\ (\ font_rid\: :ref:`RID<class_RID>`, disable_embedded_bitmaps\: :ref:`bool<class_bool>`\ ) |virtual|
+
+**Optional.**\ 
+
+If set to ``true``, embedded font bitmap loading is disabled.
 
 .. rst-class:: classref-item-separator
 
@@ -1630,9 +1668,7 @@ Method Descriptions
 
 |void| **_font_set_embolden**\ (\ font_rid\: :ref:`RID<class_RID>`, strength\: :ref:`float<class_float>`\ ) |virtual|
 
-.. container:: contribute
-
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets font embolden strength. If ``strength`` is not equal to zero, emboldens the font outlines. Negative values reduce the outline thickness.
 
 .. rst-class:: classref-item-separator
 
@@ -1644,9 +1680,9 @@ Method Descriptions
 
 |void| **_font_set_face_index**\ (\ font_rid\: :ref:`RID<class_RID>`, face_index\: :ref:`int<class_int>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets an active face index in the TrueType / OpenType collection.
 
 .. rst-class:: classref-item-separator
 
@@ -1658,9 +1694,9 @@ Method Descriptions
 
 |void| **_font_set_fixed_size**\ (\ font_rid\: :ref:`RID<class_RID>`, fixed_size\: :ref:`int<class_int>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets bitmap font fixed size. If set to value greater than zero, same cache entry will be used for all font sizes.
 
 .. rst-class:: classref-item-separator
 
@@ -1672,9 +1708,9 @@ Method Descriptions
 
 |void| **_font_set_fixed_size_scale_mode**\ (\ font_rid\: :ref:`RID<class_RID>`, fixed_size_scale_mode\: :ref:`FixedSizeScaleMode<enum_TextServer_FixedSizeScaleMode>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets bitmap font scaling mode. This property is used only if ``fixed_size`` is greater than zero.
 
 .. rst-class:: classref-item-separator
 
@@ -1686,9 +1722,9 @@ Method Descriptions
 
 |void| **_font_set_force_autohinter**\ (\ font_rid\: :ref:`RID<class_RID>`, force_autohinter\: :ref:`bool<class_bool>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+If set to ``true`` auto-hinting is preferred over font built-in hinting.
 
 .. rst-class:: classref-item-separator
 
@@ -1700,9 +1736,9 @@ Method Descriptions
 
 |void| **_font_set_generate_mipmaps**\ (\ font_rid\: :ref:`RID<class_RID>`, generate_mipmaps\: :ref:`bool<class_bool>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+If set to ``true`` font texture mipmap generation is enabled.
 
 .. rst-class:: classref-item-separator
 
@@ -1714,9 +1750,9 @@ Method Descriptions
 
 |void| **_font_set_global_oversampling**\ (\ oversampling\: :ref:`float<class_float>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets oversampling factor, shared by all font in the TextServer.
 
 .. rst-class:: classref-item-separator
 
@@ -1728,9 +1764,9 @@ Method Descriptions
 
 |void| **_font_set_glyph_advance**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, glyph\: :ref:`int<class_int>`, advance\: :ref:`Vector2<class_Vector2>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets glyph advance (offset of the next glyph).
 
 .. rst-class:: classref-item-separator
 
@@ -1742,9 +1778,9 @@ Method Descriptions
 
 |void| **_font_set_glyph_offset**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`, offset\: :ref:`Vector2<class_Vector2>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets glyph offset from the baseline.
 
 .. rst-class:: classref-item-separator
 
@@ -1756,9 +1792,9 @@ Method Descriptions
 
 |void| **_font_set_glyph_size**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`, gl_size\: :ref:`Vector2<class_Vector2>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets size of the glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -1770,9 +1806,9 @@ Method Descriptions
 
 |void| **_font_set_glyph_texture_idx**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`, texture_idx\: :ref:`int<class_int>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets index of the cache texture containing the glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -1784,9 +1820,9 @@ Method Descriptions
 
 |void| **_font_set_glyph_uv_rect**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`, uv_rect\: :ref:`Rect2<class_Rect2>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets rectangle in the cache texture containing the glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -1798,9 +1834,9 @@ Method Descriptions
 
 |void| **_font_set_hinting**\ (\ font_rid\: :ref:`RID<class_RID>`, hinting\: :ref:`Hinting<enum_TextServer_Hinting>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets font hinting mode. Used by dynamic fonts only.
 
 .. rst-class:: classref-item-separator
 
@@ -1812,9 +1848,9 @@ Method Descriptions
 
 |void| **_font_set_kerning**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, glyph_pair\: :ref:`Vector2i<class_Vector2i>`, kerning\: :ref:`Vector2<class_Vector2>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets kerning for the pair of glyphs.
 
 .. rst-class:: classref-item-separator
 
@@ -1826,9 +1862,9 @@ Method Descriptions
 
 |void| **_font_set_language_support_override**\ (\ font_rid\: :ref:`RID<class_RID>`, language\: :ref:`String<class_String>`, supported\: :ref:`bool<class_bool>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Adds override for :ref:`_font_is_language_supported<class_TextServerExtension_private_method__font_is_language_supported>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1840,9 +1876,9 @@ Method Descriptions
 
 |void| **_font_set_msdf_pixel_range**\ (\ font_rid\: :ref:`RID<class_RID>`, msdf_pixel_range\: :ref:`int<class_int>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets the width of the range around the shape between the minimum and maximum representable signed distance.
 
 .. rst-class:: classref-item-separator
 
@@ -1854,9 +1890,9 @@ Method Descriptions
 
 |void| **_font_set_msdf_size**\ (\ font_rid\: :ref:`RID<class_RID>`, msdf_size\: :ref:`int<class_int>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets source font size used to generate MSDF textures.
 
 .. rst-class:: classref-item-separator
 
@@ -1868,9 +1904,9 @@ Method Descriptions
 
 |void| **_font_set_multichannel_signed_distance_field**\ (\ font_rid\: :ref:`RID<class_RID>`, msdf\: :ref:`bool<class_bool>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+If set to ``true``, glyphs of all sizes are rendered using single multichannel signed distance field generated from the dynamic font vector data. MSDF rendering allows displaying the font at any scaling factor without blurriness, and without incurring a CPU cost when the font size changes (since the font no longer needs to be rasterized on the CPU). As a downside, font hinting is not available with MSDF. The lack of font hinting may result in less crisp and less readable fonts at small sizes.
 
 .. rst-class:: classref-item-separator
 
@@ -1882,9 +1918,9 @@ Method Descriptions
 
 |void| **_font_set_name**\ (\ font_rid\: :ref:`RID<class_RID>`, name\: :ref:`String<class_String>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets the font family name.
 
 .. rst-class:: classref-item-separator
 
@@ -1896,9 +1932,9 @@ Method Descriptions
 
 |void| **_font_set_opentype_feature_overrides**\ (\ font_rid\: :ref:`RID<class_RID>`, overrides\: :ref:`Dictionary<class_Dictionary>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets font OpenType feature set override.
 
 .. rst-class:: classref-item-separator
 
@@ -1910,9 +1946,9 @@ Method Descriptions
 
 |void| **_font_set_oversampling**\ (\ font_rid\: :ref:`RID<class_RID>`, oversampling\: :ref:`float<class_float>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets font oversampling factor, if set to ``0.0`` global oversampling factor is used instead. Used by dynamic fonts only.
 
 .. rst-class:: classref-item-separator
 
@@ -1924,9 +1960,9 @@ Method Descriptions
 
 |void| **_font_set_scale**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, scale\: :ref:`float<class_float>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets scaling factor of the color bitmap font.
 
 .. rst-class:: classref-item-separator
 
@@ -1938,9 +1974,9 @@ Method Descriptions
 
 |void| **_font_set_script_support_override**\ (\ font_rid\: :ref:`RID<class_RID>`, script\: :ref:`String<class_String>`, supported\: :ref:`bool<class_bool>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Adds override for :ref:`_font_is_script_supported<class_TextServerExtension_private_method__font_is_script_supported>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1952,9 +1988,9 @@ Method Descriptions
 
 |void| **_font_set_spacing**\ (\ font_rid\: :ref:`RID<class_RID>`, spacing\: :ref:`SpacingType<enum_TextServer_SpacingType>`, value\: :ref:`int<class_int>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets the spacing for ``spacing`` (see :ref:`SpacingType<enum_TextServer_SpacingType>`) to ``value`` in pixels (not relative to the font size).
 
 .. rst-class:: classref-item-separator
 
@@ -1966,9 +2002,9 @@ Method Descriptions
 
 |void| **_font_set_stretch**\ (\ font_rid\: :ref:`RID<class_RID>`, stretch\: :ref:`int<class_int>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets font stretch amount, compared to a normal width. A percentage value between ``50%`` and ``200%``.
 
 .. rst-class:: classref-item-separator
 
@@ -1980,9 +2016,9 @@ Method Descriptions
 
 |void| **_font_set_style**\ (\ font_rid\: :ref:`RID<class_RID>`, style\: |bitfield|\[:ref:`FontStyle<enum_TextServer_FontStyle>`\]\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets the font style flags, see :ref:`FontStyle<enum_TextServer_FontStyle>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1994,9 +2030,9 @@ Method Descriptions
 
 |void| **_font_set_style_name**\ (\ font_rid\: :ref:`RID<class_RID>`, name_style\: :ref:`String<class_String>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets the font style name.
 
 .. rst-class:: classref-item-separator
 
@@ -2008,9 +2044,9 @@ Method Descriptions
 
 |void| **_font_set_subpixel_positioning**\ (\ font_rid\: :ref:`RID<class_RID>`, subpixel_positioning\: :ref:`SubpixelPositioning<enum_TextServer_SubpixelPositioning>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets font subpixel glyph positioning mode.
 
 .. rst-class:: classref-item-separator
 
@@ -2022,9 +2058,9 @@ Method Descriptions
 
 |void| **_font_set_texture_image**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, texture_index\: :ref:`int<class_int>`, image\: :ref:`Image<class_Image>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets font cache texture image data.
 
 .. rst-class:: classref-item-separator
 
@@ -2036,9 +2072,9 @@ Method Descriptions
 
 |void| **_font_set_texture_offsets**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`Vector2i<class_Vector2i>`, texture_index\: :ref:`int<class_int>`, offset\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets array containing glyph packing data.
 
 .. rst-class:: classref-item-separator
 
@@ -2050,9 +2086,9 @@ Method Descriptions
 
 |void| **_font_set_transform**\ (\ font_rid\: :ref:`RID<class_RID>`, transform\: :ref:`Transform2D<class_Transform2D>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets 2D transform, applied to the font outlines, can be used for slanting, flipping, and rotating glyphs.
 
 .. rst-class:: classref-item-separator
 
@@ -2064,9 +2100,9 @@ Method Descriptions
 
 |void| **_font_set_underline_position**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, underline_position\: :ref:`float<class_float>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets pixel offset of the underline below the baseline.
 
 .. rst-class:: classref-item-separator
 
@@ -2078,9 +2114,9 @@ Method Descriptions
 
 |void| **_font_set_underline_thickness**\ (\ font_rid\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`, underline_thickness\: :ref:`float<class_float>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets thickness of the underline in pixels.
 
 .. rst-class:: classref-item-separator
 
@@ -2092,9 +2128,9 @@ Method Descriptions
 
 |void| **_font_set_variation_coordinates**\ (\ font_rid\: :ref:`RID<class_RID>`, variation_coordinates\: :ref:`Dictionary<class_Dictionary>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets variation coordinates for the specified font cache entry.
 
 .. rst-class:: classref-item-separator
 
@@ -2106,9 +2142,9 @@ Method Descriptions
 
 |void| **_font_set_weight**\ (\ font_rid\: :ref:`RID<class_RID>`, weight\: :ref:`int<class_int>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets weight (boldness) of the font. A value in the ``100...999`` range, normal font weight is ``400``, bold font weight is ``700``.
 
 .. rst-class:: classref-item-separator
 
@@ -2120,9 +2156,9 @@ Method Descriptions
 
 :ref:`Dictionary<class_Dictionary>` **_font_supported_feature_list**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the dictionary of the supported OpenType features.
 
 .. rst-class:: classref-item-separator
 
@@ -2134,9 +2170,9 @@ Method Descriptions
 
 :ref:`Dictionary<class_Dictionary>` **_font_supported_variation_list**\ (\ font_rid\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the dictionary of the supported OpenType variation coordinates.
 
 .. rst-class:: classref-item-separator
 
@@ -2146,11 +2182,11 @@ Method Descriptions
 
 .. rst-class:: classref-method
 
-:ref:`String<class_String>` **_format_number**\ (\ string\: :ref:`String<class_String>`, language\: :ref:`String<class_String>`\ ) |virtual| |const|
+:ref:`String<class_String>` **_format_number**\ (\ number\: :ref:`String<class_String>`, language\: :ref:`String<class_String>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Converts a number from the Western Arabic (0..9) to the numeral systems used in ``language``.
 
 .. rst-class:: classref-item-separator
 
@@ -2162,9 +2198,9 @@ Method Descriptions
 
 |void| **_free_rid**\ (\ rid\: :ref:`RID<class_RID>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Frees an object created by this :ref:`TextServer<class_TextServer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2176,9 +2212,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_get_features**\ (\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns text server features, see :ref:`Feature<enum_TextServer_Feature>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2190,9 +2226,9 @@ Method Descriptions
 
 :ref:`Vector2<class_Vector2>` **_get_hex_code_box_size**\ (\ size\: :ref:`int<class_int>`, index\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns size of the replacement character (box with character hexadecimal code that is drawn in place of invalid characters).
 
 .. rst-class:: classref-item-separator
 
@@ -2204,9 +2240,9 @@ Method Descriptions
 
 :ref:`String<class_String>` **_get_name**\ (\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the name of the server interface.
 
 .. rst-class:: classref-item-separator
 
@@ -2218,9 +2254,9 @@ Method Descriptions
 
 :ref:`String<class_String>` **_get_support_data_filename**\ (\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns default TextServer database (e.g. ICU break iterators and dictionaries) filename.
 
 .. rst-class:: classref-item-separator
 
@@ -2232,9 +2268,9 @@ Method Descriptions
 
 :ref:`String<class_String>` **_get_support_data_info**\ (\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns TextServer database (e.g. ICU break iterators and dictionaries) description.
 
 .. rst-class:: classref-item-separator
 
@@ -2246,9 +2282,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_has**\ (\ rid\: :ref:`RID<class_RID>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if ``rid`` is valid resource owned by this text server.
 
 .. rst-class:: classref-item-separator
 
@@ -2260,9 +2296,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_has_feature**\ (\ feature\: :ref:`Feature<enum_TextServer_Feature>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if the server supports a feature.
 
 .. rst-class:: classref-item-separator
 
@@ -2274,9 +2310,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_is_confusable**\ (\ string\: :ref:`String<class_String>`, dict\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns index of the first string in ``dict`` which is visually confusable with the ``string``, or ``-1`` if none is found.
 
 .. rst-class:: classref-item-separator
 
@@ -2288,9 +2324,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_is_locale_right_to_left**\ (\ locale\: :ref:`String<class_String>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if locale is right-to-left.
 
 .. rst-class:: classref-item-separator
 
@@ -2302,9 +2338,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_is_valid_identifier**\ (\ string\: :ref:`String<class_String>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if ``string`` is a valid identifier.
 
 .. rst-class:: classref-item-separator
 
@@ -2316,9 +2352,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_load_support_data**\ (\ filename\: :ref:`String<class_String>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Loads optional TextServer database (e.g. ICU break iterators and dictionaries).
 
 .. rst-class:: classref-item-separator
 
@@ -2330,9 +2366,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_name_to_tag**\ (\ name\: :ref:`String<class_String>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Converts readable feature, variation, script, or language name to OpenType tag.
 
 .. rst-class:: classref-item-separator
 
@@ -2342,11 +2378,11 @@ Method Descriptions
 
 .. rst-class:: classref-method
 
-:ref:`String<class_String>` **_parse_number**\ (\ string\: :ref:`String<class_String>`, language\: :ref:`String<class_String>`\ ) |virtual| |const|
+:ref:`String<class_String>` **_parse_number**\ (\ number\: :ref:`String<class_String>`, language\: :ref:`String<class_String>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Converts ``number`` from the numeral systems used in ``language`` to Western Arabic (0..9).
 
 .. rst-class:: classref-item-separator
 
@@ -2358,9 +2394,9 @@ Method Descriptions
 
 :ref:`Array<class_Array>`\[:ref:`Vector3i<class_Vector3i>`\] **_parse_structured_text**\ (\ parser_type\: :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>`, args\: :ref:`Array<class_Array>`, text\: :ref:`String<class_String>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Default implementation of the BiDi algorithm override function. See :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>` for more info.
 
 .. rst-class:: classref-item-separator
 
@@ -2372,9 +2408,9 @@ Method Descriptions
 
 :ref:`String<class_String>` **_percent_sign**\ (\ language\: :ref:`String<class_String>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns percent sign used in the ``language``.
 
 .. rst-class:: classref-item-separator
 
@@ -2386,9 +2422,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_save_support_data**\ (\ filename\: :ref:`String<class_String>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Saves optional TextServer database (e.g. ICU break iterators and dictionaries) to the file.
 
 .. rst-class:: classref-item-separator
 
@@ -2400,9 +2436,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_shaped_get_span_count**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns number of text spans added using :ref:`_shaped_text_add_string<class_TextServerExtension_private_method__shaped_text_add_string>` or :ref:`_shaped_text_add_object<class_TextServerExtension_private_method__shaped_text_add_object>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2414,9 +2450,9 @@ Method Descriptions
 
 :ref:`Variant<class_Variant>` **_shaped_get_span_meta**\ (\ shaped\: :ref:`RID<class_RID>`, index\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns text span metadata.
 
 .. rst-class:: classref-item-separator
 
@@ -2428,9 +2464,9 @@ Method Descriptions
 
 |void| **_shaped_set_span_update_font**\ (\ shaped\: :ref:`RID<class_RID>`, index\: :ref:`int<class_int>`, fonts\: :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\], size\: :ref:`int<class_int>`, opentype_features\: :ref:`Dictionary<class_Dictionary>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Changes text span font, font size, and OpenType features, without changing the text.
 
 .. rst-class:: classref-item-separator
 
@@ -2442,9 +2478,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_shaped_text_add_object**\ (\ shaped\: :ref:`RID<class_RID>`, key\: :ref:`Variant<class_Variant>`, size\: :ref:`Vector2<class_Vector2>`, inline_align\: :ref:`InlineAlignment<enum_@GlobalScope_InlineAlignment>`, length\: :ref:`int<class_int>`, baseline\: :ref:`float<class_float>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Adds inline object to the text buffer, ``key`` must be unique. In the text, object is represented as ``length`` object replacement characters.
 
 .. rst-class:: classref-item-separator
 
@@ -2456,9 +2492,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_shaped_text_add_string**\ (\ shaped\: :ref:`RID<class_RID>`, text\: :ref:`String<class_String>`, fonts\: :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\], size\: :ref:`int<class_int>`, opentype_features\: :ref:`Dictionary<class_Dictionary>`, language\: :ref:`String<class_String>`, meta\: :ref:`Variant<class_Variant>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Adds text span and font to draw it to the text buffer.
 
 .. rst-class:: classref-item-separator
 
@@ -2470,9 +2506,9 @@ Method Descriptions
 
 |void| **_shaped_text_clear**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Clears text buffer (removes text and inline objects).
 
 .. rst-class:: classref-item-separator
 
@@ -2484,9 +2520,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_shaped_text_closest_character_pos**\ (\ shaped\: :ref:`RID<class_RID>`, pos\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns composite character position closest to the ``pos``.
 
 .. rst-class:: classref-item-separator
 
@@ -2498,9 +2534,9 @@ Method Descriptions
 
 |void| **_shaped_text_draw**\ (\ shaped\: :ref:`RID<class_RID>`, canvas\: :ref:`RID<class_RID>`, pos\: :ref:`Vector2<class_Vector2>`, clip_l\: :ref:`float<class_float>`, clip_r\: :ref:`float<class_float>`, color\: :ref:`Color<class_Color>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Draw shaped text into a canvas item at a given position, with ``color``. ``pos`` specifies the leftmost point of the baseline (for horizontal layout) or topmost point of the baseline (for vertical layout).
 
 .. rst-class:: classref-item-separator
 
@@ -2512,9 +2548,9 @@ Method Descriptions
 
 |void| **_shaped_text_draw_outline**\ (\ shaped\: :ref:`RID<class_RID>`, canvas\: :ref:`RID<class_RID>`, pos\: :ref:`Vector2<class_Vector2>`, clip_l\: :ref:`float<class_float>`, clip_r\: :ref:`float<class_float>`, outline_size\: :ref:`int<class_int>`, color\: :ref:`Color<class_Color>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Draw the outline of the shaped text into a canvas item at a given position, with ``color``. ``pos`` specifies the leftmost point of the baseline (for horizontal layout) or topmost point of the baseline (for vertical layout).
 
 .. rst-class:: classref-item-separator
 
@@ -2526,9 +2562,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_shaped_text_fit_to_width**\ (\ shaped\: :ref:`RID<class_RID>`, width\: :ref:`float<class_float>`, justification_flags\: |bitfield|\[:ref:`JustificationFlag<enum_TextServer_JustificationFlag>`\]\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Adjusts text width to fit to specified width, returns new text width.
 
 .. rst-class:: classref-item-separator
 
@@ -2540,9 +2576,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_shaped_text_get_ascent**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the text ascent (number of pixels above the baseline for horizontal layout or to the left of baseline for vertical).
 
 .. rst-class:: classref-item-separator
 
@@ -2554,9 +2590,9 @@ Method Descriptions
 
 |void| **_shaped_text_get_carets**\ (\ shaped\: :ref:`RID<class_RID>`, position\: :ref:`int<class_int>`, caret\: ``CaretInfo*``\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns shapes of the carets corresponding to the character offset ``position`` in the text. Returned caret shape is 1 pixel wide rectangle.
 
 .. rst-class:: classref-item-separator
 
@@ -2568,9 +2604,9 @@ Method Descriptions
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **_shaped_text_get_character_breaks**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns array of the composite character boundaries.
 
 .. rst-class:: classref-item-separator
 
@@ -2582,9 +2618,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_shaped_text_get_custom_ellipsis**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ellipsis character used for text clipping.
 
 .. rst-class:: classref-item-separator
 
@@ -2596,9 +2632,9 @@ Method Descriptions
 
 :ref:`String<class_String>` **_shaped_text_get_custom_punctuation**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns custom punctuation character list, used for word breaking. If set to empty string, server defaults are used.
 
 .. rst-class:: classref-item-separator
 
@@ -2610,9 +2646,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_shaped_text_get_descent**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the text descent (number of pixels below the baseline for horizontal layout or to the right of baseline for vertical).
 
 .. rst-class:: classref-item-separator
 
@@ -2624,9 +2660,9 @@ Method Descriptions
 
 :ref:`Direction<enum_TextServer_Direction>` **_shaped_text_get_direction**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns direction of the text.
 
 .. rst-class:: classref-item-separator
 
@@ -2638,9 +2674,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_shaped_text_get_dominant_direction_in_range**\ (\ shaped\: :ref:`RID<class_RID>`, start\: :ref:`int<class_int>`, end\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns dominant direction of in the range of text.
 
 .. rst-class:: classref-item-separator
 
@@ -2652,9 +2688,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_shaped_text_get_ellipsis_glyph_count**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns number of glyphs in the ellipsis.
 
 .. rst-class:: classref-item-separator
 
@@ -2666,9 +2702,9 @@ Method Descriptions
 
 ``const Glyph*`` **_shaped_text_get_ellipsis_glyphs**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns array of the glyphs in the ellipsis.
 
 .. rst-class:: classref-item-separator
 
@@ -2680,9 +2716,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_shaped_text_get_ellipsis_pos**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns position of the ellipsis.
 
 .. rst-class:: classref-item-separator
 
@@ -2694,9 +2730,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_shaped_text_get_glyph_count**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns number of glyphs in the buffer.
 
 .. rst-class:: classref-item-separator
 
@@ -2708,9 +2744,9 @@ Method Descriptions
 
 ``const Glyph*`` **_shaped_text_get_glyphs**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns an array of glyphs in the visual order.
 
 .. rst-class:: classref-item-separator
 
@@ -2722,9 +2758,9 @@ Method Descriptions
 
 :ref:`Vector2<class_Vector2>` **_shaped_text_get_grapheme_bounds**\ (\ shaped\: :ref:`RID<class_RID>`, pos\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns composite character's bounds as offsets from the start of the line.
 
 .. rst-class:: classref-item-separator
 
@@ -2736,9 +2772,9 @@ Method Descriptions
 
 :ref:`Direction<enum_TextServer_Direction>` **_shaped_text_get_inferred_direction**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns direction of the text, inferred by the BiDi algorithm.
 
 .. rst-class:: classref-item-separator
 
@@ -2750,9 +2786,9 @@ Method Descriptions
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **_shaped_text_get_line_breaks**\ (\ shaped\: :ref:`RID<class_RID>`, width\: :ref:`float<class_float>`, start\: :ref:`int<class_int>`, break_flags\: |bitfield|\[:ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>`\]\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Breaks text to the lines and returns character ranges for each line.
 
 .. rst-class:: classref-item-separator
 
@@ -2764,9 +2800,37 @@ Method Descriptions
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **_shaped_text_get_line_breaks_adv**\ (\ shaped\: :ref:`RID<class_RID>`, width\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`, start\: :ref:`int<class_int>`, once\: :ref:`bool<class_bool>`, break_flags\: |bitfield|\[:ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>`\]\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Breaks text to the lines and columns. Returns character ranges for each segment.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TextServerExtension_private_method__shaped_text_get_object_glyph:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **_shaped_text_get_object_glyph**\ (\ shaped\: :ref:`RID<class_RID>`, key\: :ref:`Variant<class_Variant>`\ ) |virtual| |const|
+
+**Required.**\ 
+
+Returns the glyph index of the inline object.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TextServerExtension_private_method__shaped_text_get_object_range:
+
+.. rst-class:: classref-method
+
+:ref:`Vector2i<class_Vector2i>` **_shaped_text_get_object_range**\ (\ shaped\: :ref:`RID<class_RID>`, key\: :ref:`Variant<class_Variant>`\ ) |virtual| |const|
+
+**Required.**\ 
+
+Returns the character range of the inline object.
 
 .. rst-class:: classref-item-separator
 
@@ -2778,9 +2842,9 @@ Method Descriptions
 
 :ref:`Rect2<class_Rect2>` **_shaped_text_get_object_rect**\ (\ shaped\: :ref:`RID<class_RID>`, key\: :ref:`Variant<class_Variant>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns bounding rectangle of the inline object.
 
 .. rst-class:: classref-item-separator
 
@@ -2792,9 +2856,9 @@ Method Descriptions
 
 :ref:`Array<class_Array>` **_shaped_text_get_objects**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns array of inline objects.
 
 .. rst-class:: classref-item-separator
 
@@ -2806,9 +2870,9 @@ Method Descriptions
 
 :ref:`Orientation<enum_TextServer_Orientation>` **_shaped_text_get_orientation**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns text orientation.
 
 .. rst-class:: classref-item-separator
 
@@ -2820,9 +2884,9 @@ Method Descriptions
 
 :ref:`RID<class_RID>` **_shaped_text_get_parent**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the parent buffer from which the substring originates.
 
 .. rst-class:: classref-item-separator
 
@@ -2834,9 +2898,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_shaped_text_get_preserve_control**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if text buffer is configured to display control characters.
 
 .. rst-class:: classref-item-separator
 
@@ -2848,9 +2912,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_shaped_text_get_preserve_invalid**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if text buffer is configured to display hexadecimal codes in place of invalid characters.
 
 .. rst-class:: classref-item-separator
 
@@ -2862,9 +2926,9 @@ Method Descriptions
 
 :ref:`Vector2i<class_Vector2i>` **_shaped_text_get_range**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns substring buffer character range in the parent buffer.
 
 .. rst-class:: classref-item-separator
 
@@ -2876,9 +2940,9 @@ Method Descriptions
 
 :ref:`PackedVector2Array<class_PackedVector2Array>` **_shaped_text_get_selection**\ (\ shaped\: :ref:`RID<class_RID>`, start\: :ref:`int<class_int>`, end\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns selection rectangles for the specified character range.
 
 .. rst-class:: classref-item-separator
 
@@ -2890,9 +2954,9 @@ Method Descriptions
 
 :ref:`Vector2<class_Vector2>` **_shaped_text_get_size**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns size of the text.
 
 .. rst-class:: classref-item-separator
 
@@ -2904,9 +2968,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_shaped_text_get_spacing**\ (\ shaped\: :ref:`RID<class_RID>`, spacing\: :ref:`SpacingType<enum_TextServer_SpacingType>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns extra spacing added between glyphs or lines in pixels.
 
 .. rst-class:: classref-item-separator
 
@@ -2918,9 +2982,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_shaped_text_get_trim_pos**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the position of the overrun trim.
 
 .. rst-class:: classref-item-separator
 
@@ -2932,9 +2996,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_shaped_text_get_underline_position**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns pixel offset of the underline below the baseline.
 
 .. rst-class:: classref-item-separator
 
@@ -2946,9 +3010,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_shaped_text_get_underline_thickness**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns thickness of the underline.
 
 .. rst-class:: classref-item-separator
 
@@ -2960,9 +3024,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_shaped_text_get_width**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns width (for horizontal layout) or height (for vertical) of the text.
 
 .. rst-class:: classref-item-separator
 
@@ -2972,11 +3036,11 @@ Method Descriptions
 
 .. rst-class:: classref-method
 
-:ref:`PackedInt32Array<class_PackedInt32Array>` **_shaped_text_get_word_breaks**\ (\ shaped\: :ref:`RID<class_RID>`, grapheme_flags\: |bitfield|\[:ref:`GraphemeFlag<enum_TextServer_GraphemeFlag>`\]\ ) |virtual| |const|
+:ref:`PackedInt32Array<class_PackedInt32Array>` **_shaped_text_get_word_breaks**\ (\ shaped\: :ref:`RID<class_RID>`, grapheme_flags\: |bitfield|\[:ref:`GraphemeFlag<enum_TextServer_GraphemeFlag>`\], skip_grapheme_flags\: |bitfield|\[:ref:`GraphemeFlag<enum_TextServer_GraphemeFlag>`\]\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Breaks text into words and returns array of character ranges. Use ``grapheme_flags`` to set what characters are used for breaking (see :ref:`GraphemeFlag<enum_TextServer_GraphemeFlag>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2988,9 +3052,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_shaped_text_hit_test_grapheme**\ (\ shaped\: :ref:`RID<class_RID>`, coord\: :ref:`float<class_float>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns grapheme index at the specified pixel offset at the baseline, or ``-1`` if none is found.
 
 .. rst-class:: classref-item-separator
 
@@ -3002,9 +3066,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_shaped_text_hit_test_position**\ (\ shaped\: :ref:`RID<class_RID>`, coord\: :ref:`float<class_float>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns caret character offset at the specified pixel offset at the baseline. This function always returns a valid position.
 
 .. rst-class:: classref-item-separator
 
@@ -3016,9 +3080,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_shaped_text_is_ready**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if buffer is successfully shaped.
 
 .. rst-class:: classref-item-separator
 
@@ -3030,9 +3094,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_shaped_text_next_character_pos**\ (\ shaped\: :ref:`RID<class_RID>`, pos\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns composite character end position closest to the ``pos``.
 
 .. rst-class:: classref-item-separator
 
@@ -3044,9 +3108,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_shaped_text_next_grapheme_pos**\ (\ shaped\: :ref:`RID<class_RID>`, pos\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns grapheme end position closest to the ``pos``.
 
 .. rst-class:: classref-item-separator
 
@@ -3058,9 +3122,9 @@ Method Descriptions
 
 |void| **_shaped_text_overrun_trim_to_width**\ (\ shaped\: :ref:`RID<class_RID>`, width\: :ref:`float<class_float>`, trim_flags\: |bitfield|\[:ref:`TextOverrunFlag<enum_TextServer_TextOverrunFlag>`\]\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Trims text if it exceeds the given width.
 
 .. rst-class:: classref-item-separator
 
@@ -3072,9 +3136,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_shaped_text_prev_character_pos**\ (\ shaped\: :ref:`RID<class_RID>`, pos\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns composite character start position closest to the ``pos``.
 
 .. rst-class:: classref-item-separator
 
@@ -3086,9 +3150,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **_shaped_text_prev_grapheme_pos**\ (\ shaped\: :ref:`RID<class_RID>`, pos\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns grapheme start position closest to the ``pos``.
 
 .. rst-class:: classref-item-separator
 
@@ -3100,9 +3164,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_shaped_text_resize_object**\ (\ shaped\: :ref:`RID<class_RID>`, key\: :ref:`Variant<class_Variant>`, size\: :ref:`Vector2<class_Vector2>`, inline_align\: :ref:`InlineAlignment<enum_@GlobalScope_InlineAlignment>`, baseline\: :ref:`float<class_float>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets new size and alignment of embedded object.
 
 .. rst-class:: classref-item-separator
 
@@ -3114,9 +3178,9 @@ Method Descriptions
 
 |void| **_shaped_text_set_bidi_override**\ (\ shaped\: :ref:`RID<class_RID>`, override\: :ref:`Array<class_Array>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Overrides BiDi for the structured text.
 
 .. rst-class:: classref-item-separator
 
@@ -3128,9 +3192,9 @@ Method Descriptions
 
 |void| **_shaped_text_set_custom_ellipsis**\ (\ shaped\: :ref:`RID<class_RID>`, char\: :ref:`int<class_int>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets ellipsis character used for text clipping.
 
 .. rst-class:: classref-item-separator
 
@@ -3142,9 +3206,9 @@ Method Descriptions
 
 |void| **_shaped_text_set_custom_punctuation**\ (\ shaped\: :ref:`RID<class_RID>`, punct\: :ref:`String<class_String>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets custom punctuation character list, used for word breaking. If set to empty string, server defaults are used.
 
 .. rst-class:: classref-item-separator
 
@@ -3156,9 +3220,9 @@ Method Descriptions
 
 |void| **_shaped_text_set_direction**\ (\ shaped\: :ref:`RID<class_RID>`, direction\: :ref:`Direction<enum_TextServer_Direction>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets desired text direction. If set to :ref:`TextServer.DIRECTION_AUTO<class_TextServer_constant_DIRECTION_AUTO>`, direction will be detected based on the buffer contents and current locale.
 
 .. rst-class:: classref-item-separator
 
@@ -3170,9 +3234,9 @@ Method Descriptions
 
 |void| **_shaped_text_set_orientation**\ (\ shaped\: :ref:`RID<class_RID>`, orientation\: :ref:`Orientation<enum_TextServer_Orientation>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets desired text orientation.
 
 .. rst-class:: classref-item-separator
 
@@ -3184,9 +3248,9 @@ Method Descriptions
 
 |void| **_shaped_text_set_preserve_control**\ (\ shaped\: :ref:`RID<class_RID>`, enabled\: :ref:`bool<class_bool>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+If set to ``true`` text buffer will display control characters.
 
 .. rst-class:: classref-item-separator
 
@@ -3198,9 +3262,9 @@ Method Descriptions
 
 |void| **_shaped_text_set_preserve_invalid**\ (\ shaped\: :ref:`RID<class_RID>`, enabled\: :ref:`bool<class_bool>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+If set to ``true`` text buffer will display invalid characters as hexadecimal codes, otherwise nothing is displayed.
 
 .. rst-class:: classref-item-separator
 
@@ -3212,9 +3276,9 @@ Method Descriptions
 
 |void| **_shaped_text_set_spacing**\ (\ shaped\: :ref:`RID<class_RID>`, spacing\: :ref:`SpacingType<enum_TextServer_SpacingType>`, value\: :ref:`int<class_int>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Sets extra spacing added between glyphs or lines in pixels.
 
 .. rst-class:: classref-item-separator
 
@@ -3226,9 +3290,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_shaped_text_shape**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Shapes buffer if it's not shaped. Returns ``true`` if the string is shaped successfully.
 
 .. rst-class:: classref-item-separator
 
@@ -3240,9 +3304,9 @@ Method Descriptions
 
 ``const Glyph*`` **_shaped_text_sort_logical**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns text glyphs in the logical order.
 
 .. rst-class:: classref-item-separator
 
@@ -3254,9 +3318,9 @@ Method Descriptions
 
 :ref:`RID<class_RID>` **_shaped_text_substr**\ (\ shaped\: :ref:`RID<class_RID>`, start\: :ref:`int<class_int>`, length\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Required.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns text buffer for the substring of the text in the ``shaped`` text buffer (including inline objects).
 
 .. rst-class:: classref-item-separator
 
@@ -3268,9 +3332,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_shaped_text_tab_align**\ (\ shaped\: :ref:`RID<class_RID>`, tab_stops\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Aligns shaped text to the given tab-stops.
 
 .. rst-class:: classref-item-separator
 
@@ -3282,9 +3346,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_shaped_text_update_breaks**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Updates break points in the shaped text. This method is called by default implementation of text breaking functions.
 
 .. rst-class:: classref-item-separator
 
@@ -3296,9 +3360,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_shaped_text_update_justification_ops**\ (\ shaped\: :ref:`RID<class_RID>`\ ) |virtual|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Updates justification points in the shaped text. This method is called by default implementation of text justification functions.
 
 .. rst-class:: classref-item-separator
 
@@ -3310,9 +3374,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_spoof_check**\ (\ string\: :ref:`String<class_String>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns ``true`` if ``string`` is likely to be an attempt at confusing the reader.
 
 .. rst-class:: classref-item-separator
 
@@ -3324,9 +3388,9 @@ Method Descriptions
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **_string_get_character_breaks**\ (\ string\: :ref:`String<class_String>`, language\: :ref:`String<class_String>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns array of the composite character boundaries.
 
 .. rst-class:: classref-item-separator
 
@@ -3338,9 +3402,9 @@ Method Descriptions
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **_string_get_word_breaks**\ (\ string\: :ref:`String<class_String>`, language\: :ref:`String<class_String>`, chars_per_line\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns an array of the word break boundaries. Elements in the returned array are the offsets of the start and end of words. Therefore the length of the array is always even.
 
 .. rst-class:: classref-item-separator
 
@@ -3352,9 +3416,23 @@ Method Descriptions
 
 :ref:`String<class_String>` **_string_to_lower**\ (\ string\: :ref:`String<class_String>`, language\: :ref:`String<class_String>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the string converted to lowercase.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_TextServerExtension_private_method__string_to_title:
+
+.. rst-class:: classref-method
+
+:ref:`String<class_String>` **_string_to_title**\ (\ string\: :ref:`String<class_String>`, language\: :ref:`String<class_String>`\ ) |virtual| |const|
+
+**Optional.**\ 
+
+Returns the string converted to title case.
 
 .. rst-class:: classref-item-separator
 
@@ -3366,9 +3444,9 @@ Method Descriptions
 
 :ref:`String<class_String>` **_string_to_upper**\ (\ string\: :ref:`String<class_String>`, language\: :ref:`String<class_String>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Returns the string converted to uppercase.
 
 .. rst-class:: classref-item-separator
 
@@ -3380,9 +3458,9 @@ Method Descriptions
 
 :ref:`String<class_String>` **_strip_diacritics**\ (\ string\: :ref:`String<class_String>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Strips diacritics from the string.
 
 .. rst-class:: classref-item-separator
 
@@ -3394,9 +3472,9 @@ Method Descriptions
 
 :ref:`String<class_String>` **_tag_to_name**\ (\ tag\: :ref:`int<class_int>`\ ) |virtual| |const|
 
-.. container:: contribute
+**Optional.**\ 
 
-	There is currently no description for this method. Please help us by :ref:`contributing one <doc_updating_the_class_reference>`!
+Converts OpenType tag to readable feature, variation, script, or language name.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`

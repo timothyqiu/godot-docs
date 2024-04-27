@@ -21,6 +21,38 @@ Description
 
 **NativeMenu** handles low-level access to the OS native global menu bar and popup menus.
 
+\ **Note:** This is low-level API, consider using :ref:`MenuBar<class_MenuBar>` with :ref:`MenuBar.prefer_global_menu<class_MenuBar_property_prefer_global_menu>` set to ``true``, and :ref:`PopupMenu<class_PopupMenu>` with :ref:`PopupMenu.prefer_native_menu<class_PopupMenu_property_prefer_native_menu>` set to ``true``.
+
+To create a menu, use :ref:`create_menu<class_NativeMenu_method_create_menu>`, add menu items using ``add_*_item`` methods. To remove a menu, use :ref:`free_menu<class_NativeMenu_method_free_menu>`.
+
+::
+
+    var menu
+    
+    func _menu_callback(item_id):
+        if item_id == "ITEM_CUT":
+            cut()
+        elif item_id == "ITEM_COPY":
+            copy()
+        elif item_id == "ITEM_PASTE":
+            paste()
+    
+    func _enter_tree():
+        # Create new menu and add items:
+        menu = NativeMenu.create_menu()
+        NativeMenu.add_item(menu, "Cut", _menu_callback, Callable(), "ITEM_CUT")
+        NativeMenu.add_item(menu, "Copy", _menu_callback, Callable(), "ITEM_COPY")
+        NativeMenu.add_separator(menu)
+        NativeMenu.add_item(menu, "Paste", _menu_callback, Callable(), "ITEM_PASTE")
+    
+    func _on_button_pressed():
+        # Show popup menu at mouse position:
+        NativeMenu.popup(menu, DisplayServer.mouse_get_position())
+    
+    func _exit_tree():
+        # Remove menu when it's no longer needed:
+        NativeMenu.free_menu(menu)
+
 .. rst-class:: classref-reftable-group
 
 Methods
@@ -51,6 +83,8 @@ Methods
    | |void|                            | :ref:`clear<class_NativeMenu_method_clear>`\ (\ rid\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                                                                                                                                                                                                                        |
    +-----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`             | :ref:`create_menu<class_NativeMenu_method_create_menu>`\ (\ )                                                                                                                                                                                                                                                                                                                                                                                                                         |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`             | :ref:`find_item_index_with_submenu<class_NativeMenu_method_find_item_index_with_submenu>`\ (\ rid\: :ref:`RID<class_RID>`, submenu_rid\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                                                                             |
    +-----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`             | :ref:`find_item_index_with_tag<class_NativeMenu_method_find_item_index_with_tag>`\ (\ rid\: :ref:`RID<class_RID>`, tag\: :ref:`Variant<class_Variant>`\ ) |const|                                                                                                                                                                                                                                                                                                                     |
    +-----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -115,6 +149,8 @@ Methods
    | |void|                            | :ref:`popup<class_NativeMenu_method_popup>`\ (\ rid\: :ref:`RID<class_RID>`, position\: :ref:`Vector2i<class_Vector2i>`\ )                                                                                                                                                                                                                                                                                                                                                            |
    +-----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                            | :ref:`remove_item<class_NativeMenu_method_remove_item>`\ (\ rid\: :ref:`RID<class_RID>`, idx\: :ref:`int<class_int>`\ )                                                                                                                                                                                                                                                                                                                                                               |
+   +-----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                            | :ref:`set_interface_direction<class_NativeMenu_method_set_interface_direction>`\ (\ rid\: :ref:`RID<class_RID>`, is_rtl\: :ref:`bool<class_bool>`\ )                                                                                                                                                                                                                                                                                                                                  |
    +-----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                            | :ref:`set_item_accelerator<class_NativeMenu_method_set_item_accelerator>`\ (\ rid\: :ref:`RID<class_RID>`, idx\: :ref:`int<class_int>`, keycode\: :ref:`Key<enum_@GlobalScope_Key>`\ )                                                                                                                                                                                                                                                                                                |
    +-----------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -187,6 +223,30 @@ enum **Feature**:
 :ref:`Feature<enum_NativeMenu_Feature>` **FEATURE_POPUP_MENU** = ``1``
 
 **NativeMenu** supports native popup menus.
+
+.. _class_NativeMenu_constant_FEATURE_OPEN_CLOSE_CALLBACK:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Feature<enum_NativeMenu_Feature>` **FEATURE_OPEN_CLOSE_CALLBACK** = ``2``
+
+**NativeMenu** supports menu open and close callbacks.
+
+.. _class_NativeMenu_constant_FEATURE_HOVER_CALLBACK:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Feature<enum_NativeMenu_Feature>` **FEATURE_HOVER_CALLBACK** = ``3``
+
+**NativeMenu** supports menu item hover callback.
+
+.. _class_NativeMenu_constant_FEATURE_KEY_CALLBACK:
+
+.. rst-class:: classref-enumeration-constant
+
+:ref:`Feature<enum_NativeMenu_Feature>` **FEATURE_KEY_CALLBACK** = ``4``
+
+**NativeMenu** supports menu item accelerator/key callback.
 
 .. rst-class:: classref-item-separator
 
@@ -269,7 +329,9 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 \ **Note:** The ``callback`` and ``key_callback`` Callables need to accept exactly one Variant parameter, the parameter passed to the Callables will be the value passed to ``tag``.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
+
+\ **Note:** On Windows, ``accelerator`` and ``key_callback`` are ignored.
 
 .. rst-class:: classref-item-separator
 
@@ -289,7 +351,9 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 \ **Note:** The ``callback`` and ``key_callback`` Callables need to accept exactly one Variant parameter, the parameter passed to the Callables will be the value passed to ``tag``.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
+
+\ **Note:** On Windows, ``accelerator`` and ``key_callback`` are ignored.
 
 .. rst-class:: classref-item-separator
 
@@ -309,7 +373,9 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 \ **Note:** The ``callback`` and ``key_callback`` Callables need to accept exactly one Variant parameter, the parameter passed to the Callables will be the value passed to ``tag``.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
+
+\ **Note:** On Windows, ``accelerator`` and ``key_callback`` are ignored.
 
 .. rst-class:: classref-item-separator
 
@@ -331,7 +397,9 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 \ **Note:** The ``callback`` and ``key_callback`` Callables need to accept exactly one Variant parameter, the parameter passed to the Callables will be the value passed to ``tag``.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
+
+\ **Note:** On Windows, ``accelerator`` and ``key_callback`` are ignored.
 
 .. rst-class:: classref-item-separator
 
@@ -351,7 +419,9 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 \ **Note:** The ``callback`` and ``key_callback`` Callables need to accept exactly one Variant parameter, the parameter passed to the Callables will be the value passed to ``tag``.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
+
+\ **Note:** On Windows, ``accelerator`` and ``key_callback`` are ignored.
 
 .. rst-class:: classref-item-separator
 
@@ -375,7 +445,9 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 \ **Note:** The ``callback`` and ``key_callback`` Callables need to accept exactly one Variant parameter, the parameter passed to the Callables will be the value passed to ``tag``.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
+
+\ **Note:** On Windows, ``accelerator`` and ``key_callback`` are ignored.
 
 .. rst-class:: classref-item-separator
 
@@ -397,7 +469,9 @@ An ``accelerator`` can optionally be defined, which is a keyboard shortcut that 
 
 \ **Note:** The ``callback`` and ``key_callback`` Callables need to accept exactly one Variant parameter, the parameter passed to the Callables will be the value passed to ``tag``.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
+
+\ **Note:** On Windows, ``accelerator`` and ``key_callback`` are ignored.
 
 .. rst-class:: classref-item-separator
 
@@ -413,7 +487,7 @@ Adds a separator between items to the global menu ``rid``. Separators also occup
 
 Returns index of the inserted item, it's not guaranteed to be the same as ``index`` value.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -429,7 +503,7 @@ Adds an item that will act as a submenu of the global menu ``rid``. The ``submen
 
 Returns index of the inserted item, it's not guaranteed to be the same as ``index`` value.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -443,7 +517,7 @@ Returns index of the inserted item, it's not guaranteed to be the same as ``inde
 
 Removes all items from the global menu ``rid``.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -457,7 +531,21 @@ Removes all items from the global menu ``rid``.
 
 Creates a new global menu object.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_NativeMenu_method_find_item_index_with_submenu:
+
+.. rst-class:: classref-method
+
+:ref:`int<class_int>` **find_item_index_with_submenu**\ (\ rid\: :ref:`RID<class_RID>`, submenu_rid\: :ref:`RID<class_RID>`\ ) |const|
+
+Returns the index of the item with the submenu specified by ``submenu_rid``. Indices are automatically assigned to each item by the engine, and cannot be set manually.
+
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -469,9 +557,9 @@ Creates a new global menu object.
 
 :ref:`int<class_int>` **find_item_index_with_tag**\ (\ rid\: :ref:`RID<class_RID>`, tag\: :ref:`Variant<class_Variant>`\ ) |const|
 
-Returns the index of the item with the specified ``tag``. Index is automatically assigned to each item by the engine. Index can not be set manually.
+Returns the index of the item with the specified ``tag``. Indices are automatically assigned to each item by the engine, and cannot be set manually.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -483,9 +571,9 @@ Returns the index of the item with the specified ``tag``. Index is automatically
 
 :ref:`int<class_int>` **find_item_index_with_text**\ (\ rid\: :ref:`RID<class_RID>`, text\: :ref:`String<class_String>`\ ) |const|
 
-Returns the index of the item with the specified ``text``. Index is automatically assigned to each item by the engine. Index can not be set manually.
+Returns the index of the item with the specified ``text``. Indices are automatically assigned to each item by the engine, and cannot be set manually.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -499,7 +587,7 @@ Returns the index of the item with the specified ``text``. Index is automaticall
 
 Frees a global menu object created by this **NativeMenu**.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -527,7 +615,7 @@ Returns the accelerator of the item at index ``idx``. Accelerators are special c
 
 Returns the callback of the item at index ``idx``.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -541,7 +629,7 @@ Returns the callback of the item at index ``idx``.
 
 Returns number of items in the global menu ``rid``.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -555,7 +643,7 @@ Returns number of items in the global menu ``rid``.
 
 Returns the icon of the item at index ``idx``.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -597,7 +685,7 @@ Returns the callback of the item accelerator at index ``idx``.
 
 Returns number of states of a multistate item. See :ref:`add_multistate_item<class_NativeMenu_method_add_multistate_item>` for details.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -611,7 +699,7 @@ Returns number of states of a multistate item. See :ref:`add_multistate_item<cla
 
 Returns the state of a multistate item. See :ref:`add_multistate_item<class_NativeMenu_method_add_multistate_item>` for details.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -625,7 +713,7 @@ Returns the state of a multistate item. See :ref:`add_multistate_item<class_Nati
 
 Returns the submenu ID of the item at index ``idx``. See :ref:`add_submenu_item<class_NativeMenu_method_add_submenu_item>` for more info on how to add a submenu.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -639,7 +727,7 @@ Returns the submenu ID of the item at index ``idx``. See :ref:`add_submenu_item<
 
 Returns the metadata of the specified item, which might be of any type. You can set it with :ref:`set_item_tag<class_NativeMenu_method_set_item_tag>`, which provides a simple way of assigning context data to items.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -653,7 +741,7 @@ Returns the metadata of the specified item, which might be of any type. You can 
 
 Returns the text of the item at index ``idx``.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -723,7 +811,7 @@ b]Note:** This method is implemented only on macOS.
 
 Returns global menu size.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -765,7 +853,7 @@ Returns readable name of a special system menu.
 
 Returns ``true`` if the specified ``feature`` is supported by the current **NativeMenu**, ``false`` otherwise.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -779,7 +867,7 @@ Returns ``true`` if the specified ``feature`` is supported by the current **Nati
 
 Returns ``true`` if ``rid`` is valid global menu.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -807,7 +895,7 @@ Returns ``true`` if a special system menu is supported.
 
 Returns ``true`` if the item at index ``idx`` is checkable in some way, i.e. if it has a checkbox or radio button.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -821,7 +909,7 @@ Returns ``true`` if the item at index ``idx`` is checkable in some way, i.e. if 
 
 Returns ``true`` if the item at index ``idx`` is checked.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -837,7 +925,7 @@ Returns ``true`` if the item at index ``idx`` is disabled. When it is disabled i
 
 See :ref:`set_item_disabled<class_NativeMenu_method_set_item_disabled>` for more info on how to disable an item.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -869,7 +957,7 @@ Returns ``true`` if the item at index ``idx`` has radio button-style checkabilit
 
 \ **Note:** This is purely cosmetic; you must add the logic for checking/unchecking items in radio groups.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -897,7 +985,7 @@ Return ``true`` is global menu is a special system menu.
 
 Shows the global menu at ``position`` in the screen coordinates.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -913,7 +1001,21 @@ Removes the item at index ``idx`` from the global menu ``rid``.
 
 \ **Note:** The indices of items after the removed item will be shifted by one.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_NativeMenu_method_set_interface_direction:
+
+.. rst-class:: classref-method
+
+|void| **set_interface_direction**\ (\ rid\: :ref:`RID<class_RID>`, is_rtl\: :ref:`bool<class_bool>`\ )
+
+Sets the menu text layout direction from right-to-left if ``is_rtl`` is ``true``.
+
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -943,7 +1045,7 @@ Sets the callback of the item at index ``idx``. Callback is emitted when an item
 
 \ **Note:** The ``callback`` Callable needs to accept exactly one Variant parameter, the parameter passed to the Callable will be the value passed to the ``tag`` parameter when the menu item was created.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -957,7 +1059,7 @@ Sets the callback of the item at index ``idx``. Callback is emitted when an item
 
 Sets whether the item at index ``idx`` has a checkbox. If ``false``, sets the type of the item to plain text.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -971,7 +1073,7 @@ Sets whether the item at index ``idx`` has a checkbox. If ``false``, sets the ty
 
 Sets the checkstate status of the item at index ``idx``.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -985,7 +1087,7 @@ Sets the checkstate status of the item at index ``idx``.
 
 Enables/disables the item at index ``idx``. When it is disabled, it can't be selected and its action can't be invoked.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1029,9 +1131,9 @@ Sets the callback of the item at index ``idx``. The callback is emitted when an 
 
 Replaces the :ref:`Texture2D<class_Texture2D>` icon of the specified ``idx``.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
-\ **Note:** This method is not supported by macOS "_dock" menu items.
+\ **Note:** This method is not supported by macOS Dock menu items.
 
 .. rst-class:: classref-item-separator
 
@@ -1075,7 +1177,7 @@ Sets the callback of the item at index ``idx``. Callback is emitted when its acc
 
 Sets number of state of a multistate item. See :ref:`add_multistate_item<class_NativeMenu_method_add_multistate_item>` for details.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1091,7 +1193,7 @@ Sets the type of the item at the specified index ``idx`` to radio button. If ``f
 
 \ **Note:** This is purely cosmetic; you must add the logic for checking/unchecking items in radio groups.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1105,7 +1207,7 @@ Sets the type of the item at the specified index ``idx`` to radio button. If ``f
 
 Sets the state of a multistate item. See :ref:`add_multistate_item<class_NativeMenu_method_add_multistate_item>` for details.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1119,7 +1221,7 @@ Sets the state of a multistate item. See :ref:`add_multistate_item<class_NativeM
 
 Sets the submenu RID of the item at index ``idx``. The submenu is a global menu that would be shown when the item is clicked.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1133,7 +1235,7 @@ Sets the submenu RID of the item at index ``idx``. The submenu is a global menu 
 
 Sets the metadata of an item, which may be of any type. You can later get it with :ref:`get_item_tag<class_NativeMenu_method_get_item_tag>`, which provides a simple way of assigning context data to items.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1147,7 +1249,7 @@ Sets the metadata of an item, which may be of any type. You can later get it wit
 
 Sets the text of the item at index ``idx``.
 
-\ **Note:** This method is implemented only on macOS.
+\ **Note:** This method is implemented on macOS and Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1189,6 +1291,8 @@ Sets the minimum width of the global menu.
 
 Registers callable to emit when the menu is about to show.
 
+\ **Note:** This method is implemented only on macOS.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -1200,6 +1304,8 @@ Registers callable to emit when the menu is about to show.
 |void| **set_popup_open_callback**\ (\ rid\: :ref:`RID<class_RID>`, callback\: :ref:`Callable<class_Callable>`\ )
 
 Registers callable to emit when the menu is about to closed.
+
+\ **Note:** This method is implemented only on macOS.
 
 .. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
 .. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
