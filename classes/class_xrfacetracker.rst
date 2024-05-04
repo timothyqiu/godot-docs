@@ -12,7 +12,7 @@ XRFaceTracker
 
 **Experimental:** This class may be changed or removed in future versions.
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Inherits:** :ref:`XRTracker<class_XRTracker>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
 A tracked face.
 
@@ -40,9 +40,11 @@ Properties
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+----------------------------------------------------------------+--------------------------+
-   | :ref:`PackedFloat32Array<class_PackedFloat32Array>` | :ref:`blend_shapes<class_XRFaceTracker_property_blend_shapes>` | ``PackedFloat32Array()`` |
-   +-----------------------------------------------------+----------------------------------------------------------------+--------------------------+
+   +-----------------------------------------------------+----------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`PackedFloat32Array<class_PackedFloat32Array>` | :ref:`blend_shapes<class_XRFaceTracker_property_blend_shapes>` | ``PackedFloat32Array()``                                           |
+   +-----------------------------------------------------+----------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`TrackerType<enum_XRServer_TrackerType>`       | type                                                           | ``64`` (overrides :ref:`XRTracker<class_XRTracker_property_type>`) |
+   +-----------------------------------------------------+----------------------------------------------------------------+--------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
@@ -1246,6 +1248,8 @@ Property Descriptions
 - :ref:`PackedFloat32Array<class_PackedFloat32Array>` **get_blend_shapes**\ (\ )
 
 The array of face blend shape weights with indices corresponding to the :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` enum.
+
+**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedFloat32Array<class_PackedFloat32Array>` for more details.
 
 .. rst-class:: classref-section-separator
 

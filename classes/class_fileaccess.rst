@@ -28,24 +28,24 @@ Here's a sample on how to write and read from a file:
 
  .. code-tab:: gdscript
 
-    func save(content):
+    func save_to_file(content):
         var file = FileAccess.open("user://save_game.dat", FileAccess.WRITE)
         file.store_string(content)
     
-    func load():
+    func load_from_file():
         var file = FileAccess.open("user://save_game.dat", FileAccess.READ)
         var content = file.get_as_text()
         return content
 
  .. code-tab:: csharp
 
-    public void Save(string content)
+    public void SaveToFile(string content)
     {
         using var file = FileAccess.Open("user://save_game.dat", FileAccess.ModeFlags.Write);
         file.StoreString(content);
     }
     
-    public string Load()
+    public string LoadFromFile()
     {
         using var file = FileAccess.Open("user://save_game.dat", FileAccess.ModeFlags.Read);
         string content = file.GetAsText();
@@ -71,7 +71,7 @@ Tutorials
 
 - :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
 
-- `3D Voxel Demo <https://godotengine.org/asset-library/asset/676>`__
+- `3D Voxel Demo <https://godotengine.org/asset-library/asset/2755>`__
 
 .. rst-class:: classref-reftable-group
 
@@ -165,6 +165,8 @@ Methods
    | :ref:`FileAccess<class_FileAccess>`                                           | :ref:`open_encrypted<class_FileAccess_method_open_encrypted>`\ (\ path\: :ref:`String<class_String>`, mode_flags\: :ref:`ModeFlags<enum_FileAccess_ModeFlags>`, key\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) |static|                              |
    +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`FileAccess<class_FileAccess>`                                           | :ref:`open_encrypted_with_pass<class_FileAccess_method_open_encrypted_with_pass>`\ (\ path\: :ref:`String<class_String>`, mode_flags\: :ref:`ModeFlags<enum_FileAccess_ModeFlags>`, pass\: :ref:`String<class_String>`\ ) |static|                           |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error<enum_@GlobalScope_Error>`                                         | :ref:`resize<class_FileAccess_method_resize>`\ (\ length\: :ref:`int<class_int>`\ )                                                                                                                                                                          |
    +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                        | :ref:`seek<class_FileAccess_method_seek>`\ (\ position\: :ref:`int<class_int>`\ )                                                                                                                                                                            |
    +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -606,7 +608,7 @@ Text is interpreted as being UTF-8 encoded. Text values must be enclosed in doub
 
 For example, the following CSV lines are valid and will be properly parsed as two strings each:
 
-::
+.. code:: text
 
     Alice,"Hello, Bob!"
     Bob,Alice! What a surprise!
@@ -714,7 +716,7 @@ Returns the size of the file in bytes.
 
 :ref:`String<class_String>` **get_line**\ (\ ) |const|
 
-Returns the next line of the file as a :ref:`String<class_String>`.
+Returns the next line of the file as a :ref:`String<class_String>`. The returned string doesn't include newline (``\n``) or carriage return (``\r``) characters, but does include any other leading or trailing whitespace.
 
 Text is interpreted as being UTF-8 encoded.
 
@@ -840,7 +842,7 @@ Returns the next bits from the file as a floating-point number.
 
 :ref:`String<class_String>` **get_sha256**\ (\ path\: :ref:`String<class_String>`\ ) |static|
 
-Returns a SHA-256 :ref:`String<class_String>` representing the file at the given path or an empty :ref:`String<class_String>` on failure.
+Returns an SHA-256 :ref:`String<class_String>` representing the file at the given path or an empty :ref:`String<class_String>` on failure.
 
 .. rst-class:: classref-item-separator
 
@@ -943,6 +945,18 @@ Returns ``null`` if opening the file failed. You can use :ref:`get_open_error<cl
 Creates a new **FileAccess** object and opens an encrypted file in write or read mode. You need to pass a password to encrypt/decrypt it.
 
 Returns ``null`` if opening the file failed. You can use :ref:`get_open_error<class_FileAccess_method_get_open_error>` to check the error that occurred.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_FileAccess_method_resize:
+
+.. rst-class:: classref-method
+
+:ref:`Error<enum_@GlobalScope_Error>` **resize**\ (\ length\: :ref:`int<class_int>`\ )
+
+Resizes the file to a specified length. The file must be open in a mode that permits writing. If the file is extended, NUL characters are appended. If the file is truncated, all data from the end file to the original length of the file is lost.
 
 .. rst-class:: classref-item-separator
 

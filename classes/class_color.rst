@@ -34,11 +34,11 @@ Colors can be created in various ways: By the various **Color** constructors, by
 Tutorials
 ---------
 
-- `2D GD Paint Demo <https://godotengine.org/asset-library/asset/517>`__
+- `2D GD Paint Demo <https://godotengine.org/asset-library/asset/2768>`__
 
-- `Tween Demo <https://godotengine.org/asset-library/asset/146>`__
+- `Tween Interpolation Demo <https://godotengine.org/asset-library/asset/2733>`__
 
-- `GUI Drag And Drop Demo <https://godotengine.org/asset-library/asset/133>`__
+- `GUI Drag And Drop Demo <https://godotengine.org/asset-library/asset/2767>`__
 
 .. rst-class:: classref-reftable-group
 
@@ -1757,7 +1757,7 @@ Constructs a color from an `OK HSL profile <https://bottosson.github.io/posts/co
 
 :ref:`Color<class_Color>` **from_rgbe9995**\ (\ rgbe\: :ref:`int<class_int>`\ ) |static|
 
-Decodes a **Color** from a RGBE9995 format integer. See :ref:`Image.FORMAT_RGBE9995<class_Image_constant_FORMAT_RGBE9995>`.
+Decodes a **Color** from an RGBE9995 format integer. See :ref:`Image.FORMAT_RGBE9995<class_Image_constant_FORMAT_RGBE9995>`.
 
 .. rst-class:: classref-item-separator
 

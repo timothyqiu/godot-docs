@@ -38,7 +38,7 @@ Tutorials
 
 - `3Blue1Brown Essence of Linear Algebra <https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab>`__
 
-- `Matrix Transform Demo <https://godotengine.org/asset-library/asset/584>`__
+- `Matrix Transform Demo <https://godotengine.org/asset-library/asset/2787>`__
 
 - `All 2D Demos <https://github.com/godotengine/godot-demo-projects/tree/master/2d>`__
 
@@ -103,6 +103,8 @@ Methods
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>` | :ref:`clamp<class_Vector2_method_clamp>`\ (\ min\: :ref:`Vector2<class_Vector2>`, max\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                 |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`clampf<class_Vector2_method_clampf>`\ (\ min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                       |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`     | :ref:`cross<class_Vector2_method_cross>`\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                                                     |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>` | :ref:`cubic_interpolate<class_Vector2_method_cubic_interpolate>`\ (\ b\: :ref:`Vector2<class_Vector2>`, pre_a\: :ref:`Vector2<class_Vector2>`, post_b\: :ref:`Vector2<class_Vector2>`, weight\: :ref:`float<class_float>`\ ) |const|                                                                                                                             |
@@ -137,9 +139,17 @@ Methods
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>` | :ref:`limit_length<class_Vector2_method_limit_length>`\ (\ length\: :ref:`float<class_float>` = 1.0\ ) |const|                                                                                                                                                                                                                                                   |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`max<class_Vector2_method_max>`\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                                                         |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`         | :ref:`max_axis_index<class_Vector2_method_max_axis_index>`\ (\ ) |const|                                                                                                                                                                                                                                                                                         |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`maxf<class_Vector2_method_maxf>`\ (\ with\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                                                           |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`min<class_Vector2_method_min>`\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                                                         |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`         | :ref:`min_axis_index<class_Vector2_method_min_axis_index>`\ (\ ) |const|                                                                                                                                                                                                                                                                                         |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`minf<class_Vector2_method_minf>`\ (\ with\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                                                           |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>` | :ref:`move_toward<class_Vector2_method_move_toward>`\ (\ to\: :ref:`Vector2<class_Vector2>`, delta\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                        |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -153,7 +163,7 @@ Methods
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>` | :ref:`project<class_Vector2_method_project>`\ (\ b\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                                                    |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`reflect<class_Vector2_method_reflect>`\ (\ n\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                                                    |
+   | :ref:`Vector2<class_Vector2>` | :ref:`reflect<class_Vector2_method_reflect>`\ (\ line\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                                                 |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>` | :ref:`rotated<class_Vector2_method_rotated>`\ (\ angle\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                                                    |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -166,6 +176,8 @@ Methods
    | :ref:`Vector2<class_Vector2>` | :ref:`slide<class_Vector2_method_slide>`\ (\ n\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                                                        |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>` | :ref:`snapped<class_Vector2_method_snapped>`\ (\ step\: :ref:`Vector2<class_Vector2>`\ ) |const|                                                                                                                                                                                                                                                                 |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`snappedf<class_Vector2_method_snappedf>`\ (\ step\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                                                   |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
@@ -482,7 +494,9 @@ Returns the point at the given ``t`` on the `Bézier curve <https://en.wikipedia
 
 :ref:`Vector2<class_Vector2>` **bounce**\ (\ n\: :ref:`Vector2<class_Vector2>`\ ) |const|
 
-Returns a new vector "bounced off" from a plane defined by the given normal.
+Returns the vector "bounced off" from a line defined by the given normal ``n`` perpendicular to the line.
+
+\ **Note:** :ref:`bounce<class_Vector2_method_bounce>` performs the operation that most engines and frameworks call ``reflect()``.
 
 .. rst-class:: classref-item-separator
 
@@ -512,6 +526,18 @@ Returns a new vector with all components clamped between the components of ``min
 
 ----
 
+.. _class_Vector2_method_clampf:
+
+.. rst-class:: classref-method
+
+:ref:`Vector2<class_Vector2>` **clampf**\ (\ min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`\ ) |const|
+
+Returns a new vector with all components clamped between ``min`` and ``max``, by running :ref:`@GlobalScope.clamp<class_@GlobalScope_method_clamp>` on each component.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Vector2_method_cross:
 
 .. rst-class:: classref-method
@@ -520,7 +546,7 @@ Returns a new vector with all components clamped between the components of ``min
 
 Returns the 2D analog of the cross product for this vector and ``with``.
 
-This is the signed area of the parallelogram formed by the two vectors. If the second vector is clockwise from the first vector, then the cross product is the positive area. If counter-clockwise, the cross product is the negative area.
+This is the signed area of the parallelogram formed by the two vectors. If the second vector is clockwise from the first vector, then the cross product is the positive area. If counter-clockwise, the cross product is the negative area. If the two vectors are parallel this returns zero, making it useful for testing if two vectors are parallel.
 
 \ **Note:** Cross product is not defined in 2D mathematically. This method embeds the 2D vectors in the XY plane of 3D space and uses their cross product's Z component as the analog.
 
@@ -740,6 +766,18 @@ Returns the vector with a maximum length by limiting its length to ``length``.
 
 ----
 
+.. _class_Vector2_method_max:
+
+.. rst-class:: classref-method
+
+:ref:`Vector2<class_Vector2>` **max**\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const|
+
+Returns the component-wise maximum of this and ``with``, equivalent to ``Vector2(maxf(x, with.x), maxf(y, with.y))``.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Vector2_method_max_axis_index:
 
 .. rst-class:: classref-method
@@ -752,6 +790,30 @@ Returns the axis of the vector's highest value. See ``AXIS_*`` constants. If all
 
 ----
 
+.. _class_Vector2_method_maxf:
+
+.. rst-class:: classref-method
+
+:ref:`Vector2<class_Vector2>` **maxf**\ (\ with\: :ref:`float<class_float>`\ ) |const|
+
+Returns the component-wise maximum of this and ``with``, equivalent to ``Vector2(maxf(x, with), maxf(y, with))``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Vector2_method_min:
+
+.. rst-class:: classref-method
+
+:ref:`Vector2<class_Vector2>` **min**\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const|
+
+Returns the component-wise minimum of this and ``with``, equivalent to ``Vector2(minf(x, with.x), minf(y, with.y))``.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Vector2_method_min_axis_index:
 
 .. rst-class:: classref-method
@@ -759,6 +821,18 @@ Returns the axis of the vector's highest value. See ``AXIS_*`` constants. If all
 :ref:`int<class_int>` **min_axis_index**\ (\ ) |const|
 
 Returns the axis of the vector's lowest value. See ``AXIS_*`` constants. If all components are equal, this method returns :ref:`AXIS_Y<class_Vector2_constant_AXIS_Y>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Vector2_method_minf:
+
+.. rst-class:: classref-method
+
+:ref:`Vector2<class_Vector2>` **minf**\ (\ with\: :ref:`float<class_float>`\ ) |const|
+
+Returns the component-wise minimum of this and ``with``, equivalent to ``Vector2(minf(x, with), minf(y, with))``.
 
 .. rst-class:: classref-item-separator
 
@@ -844,9 +918,11 @@ Returns a new vector resulting from projecting this vector onto the given vector
 
 .. rst-class:: classref-method
 
-:ref:`Vector2<class_Vector2>` **reflect**\ (\ n\: :ref:`Vector2<class_Vector2>`\ ) |const|
+:ref:`Vector2<class_Vector2>` **reflect**\ (\ line\: :ref:`Vector2<class_Vector2>`\ ) |const|
 
-Returns the result of reflecting the vector from a line defined by the given direction vector ``n``.
+Returns the result of reflecting the vector from a line defined by the given direction vector ``line``.
+
+\ **Note:** :ref:`reflect<class_Vector2_method_reflect>` differs from what other engines and frameworks call ``reflect()``. In other engines, ``reflect()`` takes a normal direction which is a direction perpendicular to the line. In Godot, you specify the direction of the line directly. See also :ref:`bounce<class_Vector2_method_bounce>` which does what most engines call ``reflect()``.
 
 .. rst-class:: classref-item-separator
 
@@ -923,6 +999,18 @@ Returns a new vector resulting from sliding this vector along a line with normal
 :ref:`Vector2<class_Vector2>` **snapped**\ (\ step\: :ref:`Vector2<class_Vector2>`\ ) |const|
 
 Returns a new vector with each component snapped to the nearest multiple of the corresponding component in ``step``. This can also be used to round the components to an arbitrary number of decimals.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Vector2_method_snappedf:
+
+.. rst-class:: classref-method
+
+:ref:`Vector2<class_Vector2>` **snappedf**\ (\ step\: :ref:`float<class_float>`\ ) |const|
+
+Returns a new vector with each component snapped to the nearest multiple of ``step``. This can also be used to round the components to an arbitrary number of decimals.
 
 .. rst-class:: classref-section-separator
 
