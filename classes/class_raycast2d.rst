@@ -311,6 +311,27 @@ Returns the :ref:`RID<class_RID>` of the first object that the ray intersects, o
 
 Returns the shape ID of the first object that the ray intersects, or ``0`` if no object is intersecting the ray (i.e. :ref:`is_colliding<class_RayCast2D_method_is_colliding>` returns ``false``).
 
+To get the intersected shape node, for a :ref:`CollisionObject2D<class_CollisionObject2D>` target, use:
+
+
+.. tabs::
+
+ .. code-tab:: gdscript
+
+    var target = get_collider() # A CollisionObject2D.
+    var shape_id = get_collider_shape() # The shape index in the collider.
+    var owner_id = target.shape_find_owner(shape_id) # The owner ID in the collider.
+    var shape = target.shape_owner_get_owner(owner_id)
+
+ .. code-tab:: csharp
+
+    var target = (CollisionObject2D)GetCollider(); // A CollisionObject2D.
+    var shapeId = GetColliderShape(); // The shape index in the collider.
+    var ownerId = target.ShapeFindOwner(shapeId); // The owner ID in the collider.
+    var shape = target.ShapeOwnerGetOwner(ownerId);
+
+
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -335,6 +356,8 @@ Returns whether or not the specified layer of the :ref:`collision_mask<class_Ray
 
 Returns the normal of the intersecting object's shape at the collision point, or ``Vector2(0, 0)`` if the ray starts inside the shape and :ref:`hit_from_inside<class_RayCast2D_property_hit_from_inside>` is ``true``.
 
+\ **Note:** Check that :ref:`is_colliding<class_RayCast2D_method_is_colliding>` returns ``true`` before calling this method to ensure the returned normal is valid and up-to-date.
+
 .. rst-class:: classref-item-separator
 
 ----
@@ -345,9 +368,9 @@ Returns the normal of the intersecting object's shape at the collision point, or
 
 :ref:`Vector2<class_Vector2>` **get_collision_point**\ (\ ) |const|
 
-Returns the collision point at which the ray intersects the closest object. If :ref:`hit_from_inside<class_RayCast2D_property_hit_from_inside>` is ``true`` and the ray starts inside of a collision shape, this function will return the origin point of the ray.
+Returns the collision point at which the ray intersects the closest object, in the global coordinate system. If :ref:`hit_from_inside<class_RayCast2D_property_hit_from_inside>` is ``true`` and the ray starts inside of a collision shape, this function will return the origin point of the ray.
 
-\ **Note:** This point is in the **global** coordinate system.
+\ **Note:** Check that :ref:`is_colliding<class_RayCast2D_method_is_colliding>` returns ``true`` before calling this method to ensure the returned point is valid and up-to-date.
 
 .. rst-class:: classref-item-separator
 

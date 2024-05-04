@@ -29,6 +29,8 @@ Canvas items are drawn in tree order on their canvas layer. By default, children
 
 A **CanvasItem** can be hidden, which will also hide its children. By adjusting various other properties of a **CanvasItem**, you can also modulate its color (via :ref:`modulate<class_CanvasItem_property_modulate>` or :ref:`self_modulate<class_CanvasItem_property_self_modulate>`), change its Z-index, blend mode, and more.
 
+Note that properties like transform, modulation, and visibility are only propagated to *direct* **CanvasItem** child nodes. If there is a non-**CanvasItem** node in between, like :ref:`Node<class_Node>` or :ref:`AnimationPlayer<class_AnimationPlayer>`, the **CanvasItem** nodes below will have an independent position and :ref:`modulate<class_CanvasItem_property_modulate>` chain. See also :ref:`top_level<class_CanvasItem_property_top_level>`.
+
 .. rst-class:: classref-introduction-group
 
 Tutorials
@@ -38,7 +40,7 @@ Tutorials
 
 - :doc:`Custom drawing in 2D <../tutorials/2d/custom_drawing_in_2d>`
 
-- `Audio Spectrum Demo <https://godotengine.org/asset-library/asset/528>`__
+- `Audio Spectrum Visualizer Demo <https://godotengine.org/asset-library/asset/2762>`__
 
 .. rst-class:: classref-reftable-group
 
@@ -99,7 +101,7 @@ Methods
    +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                | :ref:`draw_char_outline<class_CanvasItem_method_draw_char_outline>`\ (\ font\: :ref:`Font<class_Font>`, pos\: :ref:`Vector2<class_Vector2>`, char\: :ref:`String<class_String>`, font_size\: :ref:`int<class_int>` = 16, size\: :ref:`int<class_int>` = -1, modulate\: :ref:`Color<class_Color>` = Color(1, 1, 1, 1)\ ) |const|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
    +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`draw_circle<class_CanvasItem_method_draw_circle>`\ (\ position\: :ref:`Vector2<class_Vector2>`, radius\: :ref:`float<class_float>`, color\: :ref:`Color<class_Color>`\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+   | |void|                                | :ref:`draw_circle<class_CanvasItem_method_draw_circle>`\ (\ position\: :ref:`Vector2<class_Vector2>`, radius\: :ref:`float<class_float>`, color\: :ref:`Color<class_Color>`, filled\: :ref:`bool<class_bool>` = true, width\: :ref:`float<class_float>` = -1.0, antialiased\: :ref:`bool<class_bool>` = false\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
    +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                | :ref:`draw_colored_polygon<class_CanvasItem_method_draw_colored_polygon>`\ (\ points\: :ref:`PackedVector2Array<class_PackedVector2Array>`, color\: :ref:`Color<class_Color>`, uvs\: :ref:`PackedVector2Array<class_PackedVector2Array>` = PackedVector2Array(), texture\: :ref:`Texture2D<class_Texture2D>` = null\ )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
    +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -733,9 +735,11 @@ If ``true``, this **CanvasItem** is drawn. The node is only visible if all of it
 - |void| **set_y_sort_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_y_sort_enabled**\ (\ )
 
-If ``true``, this **CanvasItem** and its **CanvasItem** child nodes are sorted according to the Y position. Nodes with a lower Y position are drawn before those with a higher Y position. If ``false``, Y-sorting is disabled.
+If ``true``, this and child **CanvasItem** nodes with a lower Y position are rendered in front of nodes with a higher Y position. If ``false``, this and child **CanvasItem** nodes are rendered normally in scene tree order.
 
-You can nest nodes with Y-sorting. Child Y-sorted nodes are sorted in the same space as the parent Y-sort. This feature allows you to organize a scene better or divide it into multiple ones without changing your scene tree.
+With Y-sorting enabled on a parent node ('A') but disabled on a child node ('B'), the child node ('B') is sorted but its children ('C1', 'C2', etc) render together on the same Y position as the child node 'B'. This allows you to organize the render order of a scene without changing the scene tree.
+
+Nodes sort relative to each other only if they are on the same :ref:`z_index<class_CanvasItem_property_z_index>`.
 
 .. rst-class:: classref-item-separator
 
@@ -769,7 +773,7 @@ If ``true``, the node's Z index is relative to its parent's Z index. If this nod
 - |void| **set_z_index**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_z_index**\ (\ )
 
-Z index. Controls the order in which the nodes render. A node with a higher Z index will display in front of others. Must be between :ref:`RenderingServer.CANVAS_ITEM_Z_MIN<class_RenderingServer_constant_CANVAS_ITEM_Z_MIN>` and :ref:`RenderingServer.CANVAS_ITEM_Z_MAX<class_RenderingServer_constant_CANVAS_ITEM_Z_MAX>` (inclusive).
+Controls the order in which the nodes render. A node with a higher Z index will display in front of others. Must be between :ref:`RenderingServer.CANVAS_ITEM_Z_MIN<class_RenderingServer_constant_CANVAS_ITEM_Z_MIN>` and :ref:`RenderingServer.CANVAS_ITEM_Z_MAX<class_RenderingServer_constant_CANVAS_ITEM_Z_MAX>` (inclusive).
 
 \ **Note:** Changing the Z index of a :ref:`Control<class_Control>` only affects the drawing order, not the order in which input events are handled. This can be useful to implement certain UI animations, e.g. a menu where hovered items are scaled and should overlap others.
 
@@ -852,9 +856,15 @@ Draws a string first character outline using a custom font.
 
 .. rst-class:: classref-method
 
-|void| **draw_circle**\ (\ position\: :ref:`Vector2<class_Vector2>`, radius\: :ref:`float<class_float>`, color\: :ref:`Color<class_Color>`\ )
+|void| **draw_circle**\ (\ position\: :ref:`Vector2<class_Vector2>`, radius\: :ref:`float<class_float>`, color\: :ref:`Color<class_Color>`, filled\: :ref:`bool<class_bool>` = true, width\: :ref:`float<class_float>` = -1.0, antialiased\: :ref:`bool<class_bool>` = false\ )
 
-Draws a colored, filled circle. See also :ref:`draw_arc<class_CanvasItem_method_draw_arc>`, :ref:`draw_polyline<class_CanvasItem_method_draw_polyline>` and :ref:`draw_polygon<class_CanvasItem_method_draw_polygon>`.
+Draws a circle. See also :ref:`draw_arc<class_CanvasItem_method_draw_arc>`, :ref:`draw_polyline<class_CanvasItem_method_draw_polyline>`, and :ref:`draw_polygon<class_CanvasItem_method_draw_polygon>`.
+
+If ``filled`` is ``true``, the circle will be filled with the ``color`` specified. If ``filled`` is ``false``, the circle will be drawn as a stroke with the ``color`` and ``width`` specified.
+
+If ``width`` is negative, then two-point primitives will be drawn instead of a four-point ones. This means that when the CanvasItem is scaled, the lines will remain thin. If this behavior is not desired, then pass a positive ``width`` like ``1.0``.
+
+\ **Note:** ``width`` is only effective if ``filled`` is ``false``.
 
 .. rst-class:: classref-item-separator
 

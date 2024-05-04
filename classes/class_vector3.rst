@@ -38,7 +38,7 @@ Tutorials
 
 - `3Blue1Brown Essence of Linear Algebra <https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab>`__
 
-- `Matrix Transform Demo <https://godotengine.org/asset-library/asset/584>`__
+- `Matrix Transform Demo <https://godotengine.org/asset-library/asset/2787>`__
 
 - `All 3D Demos <https://github.com/godotengine/godot-demo-projects/tree/master/3d>`__
 
@@ -99,6 +99,8 @@ Methods
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector3<class_Vector3>` | :ref:`clamp<class_Vector3_method_clamp>`\ (\ min\: :ref:`Vector3<class_Vector3>`, max\: :ref:`Vector3<class_Vector3>`\ ) |const|                                                                                                                                                                                                                                 |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>` | :ref:`clampf<class_Vector3_method_clampf>`\ (\ min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                       |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector3<class_Vector3>` | :ref:`cross<class_Vector3_method_cross>`\ (\ with\: :ref:`Vector3<class_Vector3>`\ ) |const|                                                                                                                                                                                                                                                                     |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector3<class_Vector3>` | :ref:`cubic_interpolate<class_Vector3_method_cubic_interpolate>`\ (\ b\: :ref:`Vector3<class_Vector3>`, pre_a\: :ref:`Vector3<class_Vector3>`, post_b\: :ref:`Vector3<class_Vector3>`, weight\: :ref:`float<class_float>`\ ) |const|                                                                                                                             |
@@ -133,9 +135,17 @@ Methods
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector3<class_Vector3>` | :ref:`limit_length<class_Vector3_method_limit_length>`\ (\ length\: :ref:`float<class_float>` = 1.0\ ) |const|                                                                                                                                                                                                                                                   |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>` | :ref:`max<class_Vector3_method_max>`\ (\ with\: :ref:`Vector3<class_Vector3>`\ ) |const|                                                                                                                                                                                                                                                                         |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`         | :ref:`max_axis_index<class_Vector3_method_max_axis_index>`\ (\ ) |const|                                                                                                                                                                                                                                                                                         |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>` | :ref:`maxf<class_Vector3_method_maxf>`\ (\ with\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                                                           |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>` | :ref:`min<class_Vector3_method_min>`\ (\ with\: :ref:`Vector3<class_Vector3>`\ ) |const|                                                                                                                                                                                                                                                                         |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`         | :ref:`min_axis_index<class_Vector3_method_min_axis_index>`\ (\ ) |const|                                                                                                                                                                                                                                                                                         |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>` | :ref:`minf<class_Vector3_method_minf>`\ (\ with\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                                                           |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector3<class_Vector3>` | :ref:`move_toward<class_Vector3_method_move_toward>`\ (\ to\: :ref:`Vector3<class_Vector3>`, delta\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                        |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -168,6 +178,8 @@ Methods
    | :ref:`Vector3<class_Vector3>` | :ref:`slide<class_Vector3_method_slide>`\ (\ n\: :ref:`Vector3<class_Vector3>`\ ) |const|                                                                                                                                                                                                                                                                        |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector3<class_Vector3>` | :ref:`snapped<class_Vector3_method_snapped>`\ (\ step\: :ref:`Vector3<class_Vector3>`\ ) |const|                                                                                                                                                                                                                                                                 |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>` | :ref:`snappedf<class_Vector3_method_snappedf>`\ (\ step\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                                                   |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
@@ -524,7 +536,9 @@ Returns the point at the given ``t`` on the `Bézier curve <https://en.wikipedia
 
 :ref:`Vector3<class_Vector3>` **bounce**\ (\ n\: :ref:`Vector3<class_Vector3>`\ ) |const|
 
-Returns the vector "bounced off" from a plane defined by the given normal.
+Returns the vector "bounced off" from a plane defined by the given normal ``n``.
+
+\ **Note:** :ref:`bounce<class_Vector3_method_bounce>` performs the operation that most engines and frameworks call ``reflect()``.
 
 .. rst-class:: classref-item-separator
 
@@ -554,6 +568,18 @@ Returns a new vector with all components clamped between the components of ``min
 
 ----
 
+.. _class_Vector3_method_clampf:
+
+.. rst-class:: classref-method
+
+:ref:`Vector3<class_Vector3>` **clampf**\ (\ min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`\ ) |const|
+
+Returns a new vector with all components clamped between ``min`` and ``max``, by running :ref:`@GlobalScope.clamp<class_@GlobalScope_method_clamp>` on each component.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Vector3_method_cross:
 
 .. rst-class:: classref-method
@@ -561,6 +587,8 @@ Returns a new vector with all components clamped between the components of ``min
 :ref:`Vector3<class_Vector3>` **cross**\ (\ with\: :ref:`Vector3<class_Vector3>`\ ) |const|
 
 Returns the cross product of this vector and ``with``.
+
+This returns a vector perpendicular to both this and ``with``, which would be the normal vector of the plane defined by the two vectors. As there are two such vectors, in opposite directions, this method returns the vector defined by a right-handed coordinate system. If the two vectors are parallel this returns an empty vector, making it useful for testing if two vectors are parallel.
 
 .. rst-class:: classref-item-separator
 
@@ -772,6 +800,18 @@ Returns the vector with a maximum length by limiting its length to ``length``.
 
 ----
 
+.. _class_Vector3_method_max:
+
+.. rst-class:: classref-method
+
+:ref:`Vector3<class_Vector3>` **max**\ (\ with\: :ref:`Vector3<class_Vector3>`\ ) |const|
+
+Returns the component-wise maximum of this and ``with``, equivalent to ``Vector3(maxf(x, with.x), maxf(y, with.y), maxf(z, with.z))``.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Vector3_method_max_axis_index:
 
 .. rst-class:: classref-method
@@ -784,6 +824,30 @@ Returns the axis of the vector's highest value. See ``AXIS_*`` constants. If all
 
 ----
 
+.. _class_Vector3_method_maxf:
+
+.. rst-class:: classref-method
+
+:ref:`Vector3<class_Vector3>` **maxf**\ (\ with\: :ref:`float<class_float>`\ ) |const|
+
+Returns the component-wise maximum of this and ``with``, equivalent to ``Vector3(maxf(x, with), maxf(y, with), maxf(z, with))``.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Vector3_method_min:
+
+.. rst-class:: classref-method
+
+:ref:`Vector3<class_Vector3>` **min**\ (\ with\: :ref:`Vector3<class_Vector3>`\ ) |const|
+
+Returns the component-wise minimum of this and ``with``, equivalent to ``Vector3(minf(x, with.x), minf(y, with.y), minf(z, with.z))``.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_Vector3_method_min_axis_index:
 
 .. rst-class:: classref-method
@@ -791,6 +855,18 @@ Returns the axis of the vector's highest value. See ``AXIS_*`` constants. If all
 :ref:`int<class_int>` **min_axis_index**\ (\ ) |const|
 
 Returns the axis of the vector's lowest value. See ``AXIS_*`` constants. If all components are equal, this method returns :ref:`AXIS_Z<class_Vector3_constant_AXIS_Z>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Vector3_method_minf:
+
+.. rst-class:: classref-method
+
+:ref:`Vector3<class_Vector3>` **minf**\ (\ with\: :ref:`float<class_float>`\ ) |const|
+
+Returns the component-wise minimum of this and ``with``, equivalent to ``Vector3(minf(x, with), minf(y, with), minf(z, with))``.
 
 .. rst-class:: classref-item-separator
 
@@ -906,7 +982,9 @@ Returns a new vector resulting from projecting this vector onto the given vector
 
 :ref:`Vector3<class_Vector3>` **reflect**\ (\ n\: :ref:`Vector3<class_Vector3>`\ ) |const|
 
-Returns the result of reflecting the vector from a plane defined by the given normal ``n``.
+Returns the result of reflecting the vector through a plane defined by the given normal vector ``n``.
+
+\ **Note:** :ref:`reflect<class_Vector3_method_reflect>` differs from what other engines and frameworks call ``reflect()``. In other engines, ``reflect()`` returns the result of the vector reflected by the given plane. The reflection thus passes through the given normal. While in Godot the reflection passes through the plane and can be thought of as bouncing off the normal. See also :ref:`bounce<class_Vector3_method_bounce>` which does what most engines call ``reflect()``.
 
 .. rst-class:: classref-item-separator
 
@@ -995,6 +1073,18 @@ Returns a new vector resulting from sliding this vector along a plane with norma
 :ref:`Vector3<class_Vector3>` **snapped**\ (\ step\: :ref:`Vector3<class_Vector3>`\ ) |const|
 
 Returns a new vector with each component snapped to the nearest multiple of the corresponding component in ``step``. This can also be used to round the components to an arbitrary number of decimals.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_Vector3_method_snappedf:
+
+.. rst-class:: classref-method
+
+:ref:`Vector3<class_Vector3>` **snappedf**\ (\ step\: :ref:`float<class_float>`\ ) |const|
+
+Returns a new vector with each component snapped to the nearest multiple of ``step``. This can also be used to round the components to an arbitrary number of decimals.
 
 .. rst-class:: classref-section-separator
 
